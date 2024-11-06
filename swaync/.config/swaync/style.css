@@ -11,7 +11,7 @@
 .notification-default-action,
 .control-center {
 	border-radius: 0.75em;
-	border: 2px solid alpha(@lavender, 0.3);
+	border: 2px solid @mauve;
 	background-color: @crust;
 }
 

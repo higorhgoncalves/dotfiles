@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-	border: 2px solid alpha(@lavender, 0.3);
+	border: 2px solid @mauve;
 	border-radius: 0.75em;
 	/* background: alpha(black, 0.5); */
 	background-color: @crust;
@@ -19,7 +19,7 @@ window#waybar {
 
 tooltip {
 	background: alpha(@crust, 0.9);
-	border: 2px solid alpha(@lavender, 0.3);
+	border: 2px solid @mauve;
 	border-radius: 0.75em;
 }
 
@@ -38,7 +38,7 @@ tooltip {
 }
 
 #tray menuitem:hover {
-	background: alpha(@lavender, 0.5);
+	background: alpha(@mauve, 0.5);
 }
 
 #systemtray,
@@ -46,7 +46,7 @@ tooltip {
 #stats {
 	margin: 0.5em 0;
 	background: alpha(@crust, 0.3);
-	border: 2px solid alpha(@lavender, 0.3);
+	border: 2px solid @mauve;
 	border-radius: 0.75em;
 }
 
