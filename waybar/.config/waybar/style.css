@@ -63,6 +63,7 @@ tooltip {
 
 #systemtray {
 	margin: 0.5em 0.5em;
+	padding-right: 0.5em;
 }
 
 #tray,

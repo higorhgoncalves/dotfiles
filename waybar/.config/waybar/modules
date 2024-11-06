@@ -93,7 +93,7 @@
 	},
 	"clock": {
 		"interval": 60,
-		"format": "<span foreground='#f5c2e7'>   </span>{:%H:%M %d/%m/%Y %a}",
+		"format": "<span foreground='#f5c2e7'>  </span>{:%H:%M %d/%m/%Y %a}",
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}></tt>"
 	},
 	"cpu": {

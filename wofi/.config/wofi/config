@@ -1,7 +1,7 @@
 mode=drun
 allow_images=true
 no_actions=true
-width=600
+width=500
 
 mode=run
-width=600
+width=500
