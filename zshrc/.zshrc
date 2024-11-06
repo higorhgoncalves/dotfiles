@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-eval "$(atuin init zsh --disable-up-arrow)"
 
+eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(starship init zsh)"
+
+alias fzfp='fzf --preview="bat --color=always {}"'
