@@ -92,8 +92,10 @@
 		"tooltip-format": "{capacity}%"
 	},
 	"clock": {
+                "timezone": "America/Sao_Paulo",
+                "locale": "pt_BR.UTF-8",
 		"interval": 60,
-		"format": "<span foreground='#f5c2e7'>  </span>{:%H:%M %d/%m/%Y %a}",
+		"format": "<span foreground='#f5c2e7'>  </span>{:L%H:%M %d/%m/%Y %A}",
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}></tt>"
 	},
 	"cpu": {
@@ -107,7 +109,7 @@
 		"max-length": 10
 	},
 	"disk": {
-		"format": "  {free}"
+		"format": "  {used}"
 	},
 	"custom/separator-right": {
 		"format": "",
