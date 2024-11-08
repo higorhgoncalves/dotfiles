@@ -108,4 +108,4 @@ source $ZSH/oh-my-zsh.sh
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(starship init zsh)"
 
-alias fzfp='fzf --preview="bat --color=always {}"'
+alias fzfbat='fzf --preview="bat --color=always {}"'
