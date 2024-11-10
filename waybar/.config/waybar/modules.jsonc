@@ -1,4 +1,21 @@
 {
+	"custom/launchpad": {
+		"format": " ",
+		"tooltip": false,
+		"on-click": "wofi --show drun"
+	},
+	"custom/overview": {
+		"format": "",
+		"tooltip": false,
+		"on-click": "hyprctl dispatch overview:open"
+	},
+	"group/systemmenu": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/launchpad",
+			"custom/overview"
+		]
+	},
 	"hyprland/workspaces": {
 		"all-outputs": true,
 		"active-only": "false",
@@ -41,9 +58,10 @@
 		"format": "{icon}",
 		"tooltip": true,
 		"tooltip-format": "{volume}",
-		"scroll-step": 5,
+		"scroll-step": 1,
 		"format-muted": "󰝟",
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol",
 		"format-icons": [
 			"󰕿",
 			"󰖀",
@@ -66,30 +84,28 @@
 	},
 	"backlight": {
 		"tooltip": false,
-		"format": " {}%",
+		"format": "󰃟 {}%",
 		"interval": 1,
 		"on-scroll-up": "brightnessctl set 20+",
 		"on-scroll-down": "brightnessctl set 20-"
 	},
 	"battery": {
+		"interval": 5,
 		"states": {
-			"good": 95,
 			"warning": 30,
 			"critical": 20
 		},
 		"format": "{icon}",
-		"format-charging": " {capacity}%",
-		"format-plugged": " {capacity}%",
-		"format-alt": "{time} {icon}",
+		"format-charging": "󰂄",
 		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
+			"󰁺",
+			"󰁻",
+			"󰁾",
+			"󰂀",
+			"󰁹"
 		],
 		"tooltip": true,
-		"tooltip-format": "{capacity}%"
+		"tooltip-format": "{capacity}% {time}"
 	},
 	"clock": {
 		"timezone": "America/Sao_Paulo",
@@ -153,7 +169,7 @@
 		"on-click-right": "swaync-client -d -sw"
 	},
 	"custom/power": {
-		"format": "⏻ ",
+		"format": "󰐥 ",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/components/power_menu.xml",

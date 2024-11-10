@@ -4,6 +4,7 @@
 	"position": "top",
 	"margin": "5 10 0 10",
 	"modules-left": [
+		"group/systemmenu",
 		"hyprland/workspaces",
 		"hyprland/window"
 	],

@@ -41,7 +41,8 @@ tooltip {
 	background: alpha(@mauve, 0.5);
 }
 
-#systemtray,
+#systemmenu, 
+#systemtray, 
 #workspaces, 
 #stats {
 	margin: 0.5em 0;
@@ -61,8 +62,13 @@ tooltip {
 	padding-right: 0.5em;
 }
 
+#systemmenu {
+	margin-left: 0.5em;
+	padding: 0.25em;
+}
+
 #systemtray {
-	margin: 0.5em 0.5em;
+	margin: 0.5em;
 	padding-right: 0.5em;
 }
 
@@ -78,6 +84,22 @@ tooltip {
 #network,
 #battery {
 	padding: 0.25em 0.5em;
+}
+
+#battery.critical {
+	color: @red;
+}
+
+#custom-launchpad{
+	padding: 0.1em;
+	margin: 0.15em 0.25em;
+	border-radius: 0.5em;
+}
+
+#custom-overview {
+	padding: 0.25em 0.5em;
+	margin: 0.15em 0.25em;
+	border-radius: 0.5em;
 }
 
 #backlight {
@@ -107,6 +129,4 @@ menuitem:disabled {
 menuitem:hover {
 	background-color: @base;
 	box-shadow: inset 2px 0px 0 @mauve, inset 0px -2px 0 @mauve, inset 0px 2px 0 @mauve, inset -2px 0px 0 @mauve;
-	/* border: 1px solid @mauve; */
 }
-
