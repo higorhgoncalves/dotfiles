@@ -1,10 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](blue)\
+[](crust)\
 $os\
 $username\
-[](bg:red fg:blue)\
+[](bg:red fg:crust)\
 $directory\
 [](fg:red bg:peach)\
 $git_branch\
@@ -22,9 +22,9 @@ $python\
 [](fg:yellow bg:green)\
 $docker_context\
 $conda\
-[](fg:green bg:crust)\
+[](fg:green bg:blue)\
 $time\
-[ ](fg:crust)\
+[ ](fg:blue)\
 $line_break$character"""
 
 palette = 'catppuccin_mocha'
@@ -59,7 +59,7 @@ crust = "#11111b"
 
 [os]
 disabled = false
-style = "bg:blue fg:surface0"
+style = "bg:crust fg:text"
 
 [os.symbols]
 Windows = "󰍲"
@@ -86,8 +86,8 @@ Pop = ""
 
 [username]
 show_always = true
-style_user = "bg:blue fg:surface0"
-style_root = "bg:blue fg:surface0"
+style_user = "bg:crust fg:text"
+style_root = "bg:crust fg:text"
 format = '[ $user ]($style)'
 
 [directory]
@@ -169,8 +169,8 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:green)]($style)'
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:crust"
-format = '[[   $time ](fg:text bg:crust)]($style)'
+style = "bg:blue"
+format = '[[   $time ](fg:surface0 bg:blue)]($style)'
 
 [line_break]
 disabled = false
