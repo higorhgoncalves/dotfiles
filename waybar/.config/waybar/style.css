@@ -75,8 +75,38 @@ tooltip {
 #custom-launcher,
 #wireplumber,
 #clock,
-#backlight,
 #network,
 #battery {
 	padding: 0.25em 0.5em;
 }
+
+#backlight {
+	padding: 0.25em 0.25em 0.25em 0.5em;
+}
+
+#custom-power {
+	padding: 0.25em 0em 0.25em 0.5em;
+}
+
+menu {
+	border-radius: 0.75em;
+	background-color: @crust;
+	border: 1px solid @mauve;
+}
+
+menuitem {
+	border-radius: 0.5em;
+	margin: 5px 5px;
+	padding: 10px 0px;
+}
+
+menuitem:disabled {
+	background-color: @surface0;
+}
+
+menuitem:hover {
+	background-color: @base;
+	box-shadow: inset 2px 0px 0 @mauve, inset 0px -2px 0 @mauve, inset 0px 2px 0 @mauve, inset -2px 0px 0 @mauve;
+	/* border: 1px solid @mauve; */
+}
+

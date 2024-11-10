@@ -92,11 +92,13 @@
 		"tooltip-format": "{capacity}%"
 	},
 	"clock": {
-                "timezone": "America/Sao_Paulo",
-                "locale": "pt_BR.UTF-8",
+		"timezone": "America/Sao_Paulo",
+		"locale": "pt_BR.UTF-8",
 		"interval": 60,
 		"format": "<span foreground='#f5c2e7'>  </span>{:L%H:%M %d/%m/%Y %A}",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}></tt>"
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+		"on-click": "gnome-clocks",
+		"on-click-right": "gnome-calendar"
 	},
 	"cpu": {
 		"interval": 15,
@@ -148,16 +150,31 @@
 		"exec-if": "which swaync-client",
 		"exec": "swaync-client -swb",
 		"on-click": "sleep 0.1; swaync-client -t -sw",
-		"on-click-right": "swaync-client -d -sw",
+		"on-click-right": "swaync-client -d -sw"
+	},
+	"custom/power": {
+		"format": "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "~/.config/waybar/components/power_menu.xml",
+		"defaultSize": "800 200",
+		"menu-actions": {
+			"lock": "loginctl lock-session",
+			"shutdown": "poweroff",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
 	},
 	"group/systemtray": {
 		"orientation": "horizontal",
 		"modules": [
 			"tray",
 			"wireplumber",
-			"battery",
 			"backlight",
+			"battery",
 			"custom/notification",
+			"custom/power"
 		]
 	},
 	"group/stats": {
