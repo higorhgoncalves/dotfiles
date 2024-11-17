@@ -13,8 +13,8 @@
 window#waybar {
 	border: 2px solid @mauve;
 	border-radius: 0.75em;
-	/* background: alpha(black, 0.5); */
-	background-color: @crust;
+	background: alpha(@crust, 0.9);
+	/* background-color: @crust; */
 }
 
 tooltip {
