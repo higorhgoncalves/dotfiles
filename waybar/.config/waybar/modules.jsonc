@@ -5,17 +5,17 @@
 		"tooltip-format": "Launch applications",
 		"on-click": "wofi --show drun"
 	},
-	"custom/overview": {
-		"format": "",
-		"tooltip": true,
-		"tooltip-format": "Manage workspaces",
-		"on-click": "hyprctl dispatch overview:open"
-	},
+	// "custom/overview": {
+	// 	"format": "",
+	// 	"tooltip": true,
+	// 	"tooltip-format": "Manage workspaces",
+	// 	"on-click": "hyprctl dispatch overview:open"
+	// },
 	"group/systemmenu": {
 		"orientation": "horizontal",
 		"modules": [
-			"custom/launchpad",
-			"custom/overview"
+			"custom/launchpad"
+			// "custom/overview"
 		]
 	},
 	"hyprland/workspaces": {
