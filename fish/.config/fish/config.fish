@@ -10,4 +10,9 @@ if status is-interactive
     # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
+    
+    alias ls='eza'
+
+    alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+    alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
 end
