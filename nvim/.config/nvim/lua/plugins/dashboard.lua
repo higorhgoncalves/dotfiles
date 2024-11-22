@@ -34,9 +34,15 @@ return {
                 -- stylua: ignore
                 center = {
                     {
+                        action = "ene",
+                        desc = " New File",
+                        icon = " ",
+                        key = "n"
+                    },
+                    {
                         action = "Neotree toggle",
                         desc = " Browse Files",
-                        icon = " ",
+                        icon = " ",
                         key = "b"
                     },
                     {
