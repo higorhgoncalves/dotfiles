@@ -14,12 +14,17 @@ return {
     config = function()
       -- Set up nvim-cmp.
       local cmp = require("cmp")
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        include = { "html", "php" }
+      })
 
       cmp.setup({
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            local luasnip = require('luasnip')
+            luasnip.lsp_expand(args.body)
+            luasnip.filetype_extend("php", { "html" })
+            luasnip.filetype_extend("html", { "php" })
           end,
         },
         window = {
@@ -34,12 +39,18 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          -- { name = "nvim_lsp" },
           { name = 'luasnip' },
-        }, {
+          { name = "nvim_lsp" },
           { name = "buffer" },
+          { name = "path" },
         }),
       })
+
+      local luasnip = require("luasnip")
+
+      -- Permitir que snippets de HTML sejam usados em arquivos PHP e vice-versa
+      luasnip.filetype_extend("php", { "html" })
+      luasnip.filetype_extend("html", { "php" })
     end,
-  }
+  },
 }

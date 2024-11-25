@@ -1,72 +1,65 @@
-return {
-  {
+return {{
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
-    end,
-  },
-  {
+        require("mason").setup()
+    end
+}, {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "intelephense",
-          "ts_ls",
-          "html",
-        },
-      })
-    end,
-  },
-  {
+        require("mason-lspconfig").setup({
+            ensure_installed = {"lua_ls", "intelephense", "phpactor", "html", "cssls", "ts_ls"}
+        })
+    end
+}, {
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-      local configs = require 'lspconfig.configs'
+        local on_attach = function(client, bufnr)
+            -- Desabilita a formatação padrão do LSP para evitar conflitos com null-ls
+            if client.name == "html" or client.name == "cssls" or client.name == "ts_ls" or client.name == "intelephense" then
+                client.server_capabilities.documentFormattingProvider = false
+            end
+        end
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local lspconfig = require("lspconfig")
 
-      if not configs.intelephense then
-      configs.intelephense = {
-        default_config = {
-          cmd = { 'intelephense', '--stdio' };
-          filetypes = { 'php' };
-          root_dir = function()
-            return vim.loop.cwd()
-          end;
-          settings = {
-            intelephense = {
-              files = {
-                maxSize = 1000000;
-              };
-            }
-          }
-        }
-      }
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig.intelephense.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig.phpactor.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig.html.setup({
+            capabilities = capabilities,
+            filetypes = {
+                "html", "php"
+            },
+            single_file_support = true,
+            on_attach = on_attach,
+        })
+        lspconfig.cssls.setup({
+            capabilities = capabilities,
+            filetypes = {
+                "css", "php"
+            },
+            single_file_support = true,
+            on_attach = on_attach,
+        })
+        lspconfig.ts_ls.setup({
+            capabilities = capabilities,
+            filetypes = { "javascript", "php" },
+            single_file_support = true,
+            on_attach = on_attach,
+        })
+        
+
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+        vim.keymap.set({"n"}, "<leader>ca", vim.lsp.buf.code_action, {})
     end
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.intelephense.setup({
-        on_attach = function(client, bufnr)
-          -- Enable (omnifunc) completion triggered by <c-x><c-o>
-          vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-          vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {})
-          -- Here we should add additional keymaps and configuration options.
-        end,
-        flags = {
-          debounce_text_changes = 150,
-        },
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
-    end,
-  },
-}
+}}
