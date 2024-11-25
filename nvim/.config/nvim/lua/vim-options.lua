@@ -6,6 +6,7 @@ vim.cmd("set number")
 -- vim.cmd("set number relativenumber")
 -- vim.o.statuscolumn = "%l\\ %r"
 vim.g.mapleader = " "
+vim.opt.clipboard = "unnamedplus"
 
 -- Navigate vim panes better
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
