@@ -15,4 +15,7 @@ if status is-interactive
 
     alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
     alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
+
+    thefuck --alias | source
+    zoxide init fish | source
 end
