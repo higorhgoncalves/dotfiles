@@ -9,13 +9,13 @@ return {
     },
     cmd = 'Neotree',
     keys = {
-      { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+      { '<leader>nt', ':Neotree toggle<CR>', desc = '[N]eoTree [T]oggle', silent = true },
     },
     opts = {
       filesystem = {
         window = {
           mappings = {
-            ['\\'] = 'close_window',
+            ['\\'] = {'close_window', nowait = true},
           },
         },
       },

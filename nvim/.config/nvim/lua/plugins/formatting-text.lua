@@ -6,4 +6,7 @@ return {
     main = 'ibl',
     opts = {},
   },
+  {
+    'mg979/vim-visual-multi',
+  }
 }

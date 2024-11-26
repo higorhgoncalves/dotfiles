@@ -2,6 +2,8 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
+vim.cmd("inoremap <S-Tab> <C-d>")
+
 vim.cmd("set number")
 -- vim.cmd("set number relativenumber")
 -- vim.o.statuscolumn = "%l\\ %r"
