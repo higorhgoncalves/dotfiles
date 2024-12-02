@@ -205,6 +205,8 @@
         "format": "|"
     },
     "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+		"on-scroll-down": "hyprctl dispatch workspace e+1",
         "format": "{icon}",
         "format-icons": {
             "default": "",
@@ -352,7 +354,8 @@
 		"locale": "pt_BR.UTF-8",
 		"interval": 60,
         "rotate": 0,
-		"format": "<span foreground='#f5c2e7'> </span>{:L%H:%M %d/%m/%Y}",
+        // "format": "<span foreground='#f5c2e7'> </span>{:L%H:%M %d/%m/%Y}",
+		"format": "{:L%H:%M %d/%m/%Y}",
 		"tooltip-format": "<tt>{calendar}</tt>",
 		"on-click": "gnome-clocks",
 		// "on-click-right": "gnome-calendar",

@@ -2,7 +2,6 @@
 
 * {
     font-family: "CaskaydiaCove Nerd Font";
-    /*font-family: "CaskaydiaCove Nerd Font";*/
     font-weight: bold;
     font-size: 15px;
 }
@@ -11,12 +10,12 @@
     font-family: "CaskaydiaCove Nerd Font";
     font-size: 18px;
     color: @flamingo;
-    margin: 2px 2px 0px 0px;
+    margin: 2px 0.5em 0px 0px;
 }
 
 window#waybar {
     background: @crust;
-    /* border: 2px solid @mauve; */
+    border: 2px solid @mauve;
     border-radius: 13px;
 }
 
@@ -49,8 +48,8 @@ tooltip {
     text-shadow: none;
     border-radius: 9px;
     transition: 0.2s ease;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
     /*   animation: ws_normal 20s ease-in-out 1; */
 }
 
@@ -60,8 +59,8 @@ tooltip {
     /* background-image: url("/home/anik/Documents/bar1.png");*/
     color: @text;
     transition: all 0.3s ease;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
     /*  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682); */
 }
 
@@ -202,7 +201,7 @@ tooltip {
     color: @blue;
     background: rgba(22, 19, 32, 0.0);
     opacity: 1;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0.9em 0px 0px;
     padding: 2px 3px 0px 3px;
 }
 
@@ -257,14 +256,20 @@ tooltip {
 #custom-notifications,
 #custom-spotify,
 #taskbar,
-#custom-theme,
-#custom-menu {
+#custom-theme {
     color: @text;
     background: rgba(23, 23, 23, 0.0);
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0.9em 0px 0px;
     padding-left: 1px;
     padding-right: 1px;
-    opacity: 0.1
+}
+
+#custom-menu {
+    color: @mauve;
+    background: transparent;
+    margin: 0px 0em 0px 0px;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 #tray,
