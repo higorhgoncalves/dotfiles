@@ -1,132 +1,409 @@
 @import "mocha.css"; 
 
 * {
-	background: transparent;
-	color: @text;
-	font-family: ProFontWindows Nerd Font;
-	font-size: 1.005em;
-	border: none;
-	box-shadow: none;
-	min-height: 0;
+    font-family: "CaskaydiaCove Nerd Font";
+    /*font-family: "CaskaydiaCove Nerd Font";*/
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#custom-notification {
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 18px;
+    color: @flamingo;
+    margin: 2px 2px 0px 0px;
 }
 
 window#waybar {
-	border: 2px solid @mauve;
-	border-radius: 0.75em;
-	background: alpha(@crust, 0.9);
-	/* background-color: @crust; */
+    background: @crust;
+    /* border: 2px solid @mauve; */
+    border-radius: 13px;
 }
+
 
 tooltip {
-	background: alpha(@crust, 0.9);
-	border: 2px solid @mauve;
-	border-radius: 0.75em;
-}
-
-#workspaces button {
-	padding: 0em 0em;
-	margin: 0em 0em;
-}
-
-#tray menu {
-	border-radius: 0.5em;
-	background: alpha(@crust, 0.9);
-}
-
-#tray separator {
-	background: @text;
-}
-
-#tray menuitem:hover {
-	background: alpha(@mauve, 0.5);
-}
-
-#systemmenu, 
-#systemtray, 
-#workspaces, 
-#stats {
-	margin: 0.5em 0;
-	background: alpha(@crust, 0.3);
-	border: 2px solid @mauve;
-	border-radius: 0.75em;
-}
-
-#cpu,
-#memory,
-#disk {
-	padding: 0.5em 0.5em;
+    background: @crust;
+    color: @text;
+    font-size: 13px;
+    border-radius: 7px;
+    border: 2px solid @mauve;
 }
 
 #workspaces {
-	margin-left: 0.5em;
-	padding-right: 0.5em;
+    background: transparent;
+    color: @text;
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 9px;
+    transition: 0.2s ease;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
 }
 
-#systemmenu {
-	margin-left: 0.5em;
-	padding: 0.25em;
+
+#workspaces button {
+    background: transparent;
+    color: @text;
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 9px;
+    transition: 0.2s ease;
+    padding-left: 4px;
+    padding-right: 4px;
+    /*   animation: ws_normal 20s ease-in-out 1; */
 }
 
-#systemtray {
-	margin: 0.5em;
-	padding-right: 0.5em;
+
+
+#workspaces button.active {
+    /* background-image: url("/home/anik/Documents/bar1.png");*/
+    color: @text;
+    transition: all 0.3s ease;
+    padding-left: 4px;
+    padding-right: 4px;
+    /*  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682); */
 }
 
-#tray,
-#window,
-#custom-notification,
-#custom-launcher,
-#custom-updates,
-#custom-notification,
-#custom-launcher,
-#wireplumber,
-#clock,
-#network,
-#battery {
-	padding: 0.25em 0.5em;
+#workspaces button:hover {
+    background: none;
+    color: @green;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#battery.critical {
-	color: @red;
+#taskbar button {
+    box-shadow: none;
+    text-shadow: none;
+    font-size: 4px;
+    padding: 0px;
+    border-radius: 9px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @wb-color;
+    animation: tb_normal 20s ease-in-out 1;
 }
 
-#custom-launchpad{
-	padding: 0.1em;
-	margin: 0.15em 0.25em;
-	border-radius: 0.5em;
+#taskbar button.active {
+    background: @wb-act-bg;
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+    min-height: 9px;
 }
 
-#custom-overview {
-	padding: 0.25em 0.5em;
-	margin: 0.15em 0.25em;
-	border-radius: 0.5em;
+#taskbar button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-color;
+    animation: tb_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#backlight {
-	padding: 0.25em 0.25em 0.25em 0.5em;
+#tray menu * {
+    min-height: 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: @text;
+}
+
+#tray menu separator {
+    min-height: 10px;
+}
+
+
+#custom-spacer {
+    opacity: 0.0;
+}
+
+#custom-smallspacer {
+    opacity: 0.0;
+}
+
+
+#custom-mouse {
+    font-size: 14px;
+    margin-bottom: 6px;
+    background: #161320;
 }
 
 #custom-power {
-	padding: 0.25em 0em 0.25em 0.5em;
+    font-size: 18px;
+    color: @red;
+    margin: 6px 0px 6px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#backlight {
+    color: @blue;
+    background: rgba(23, 23, 23, 0.0);
+    font-weight: normal;
+    font-size: 18px;
+    margin: 1px 0px 0px 0px;
+    padding-left: 0px;
+    padding-right: 2px;
+
+}
+
+#bluetooth,
+#custom-cliphist {
+    color: #E6E7E7;
+    background: #161320;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+}
+
+#battery {
+    font-weight: normal;
+    color: @yellow;
+    background: transparent;
+    opacity: 1;
+    margin: 0px 0px 0px 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+#idle_inhibitor {
+    color: @green;
+    background: @bar-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+}
+
+#clock {
+    color: @text;
+    font-size: 15px;
+    font-weight: 900;
+    font-family: "CaskaydiaCove Nerd Font";
+    background: transparent;
+    opacity: 1;
+    margin: 3px 0px 0px 0px;
+    border: none;
+
+}
+
+#pulseaudio {
+    font-weight: normal;
+    font-size: 15px;
+    color: @blue;
+    background: rgba(22, 19, 32, 0.0);
+    opacity: 1;
+    margin: 0px 0px 0px 0px;
+    padding: 2px 3px 0px 3px;
+}
+
+#cpu {
+    font-weight: normal;
+    font-size: 22px;
+    color: @mauve;
+}
+
+#custom-gpuinfo,
+#custom-keybindhint,
+#language,
+#memory {
+    font-weight: normal;
+    font-size: 22px;
+    color: @peach;
+}
+
+#cpu,
+#memory {
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0px 0px 0px 0px;
+    padding: 2px 0px 3px 0px;
+}
+
+#mpris {
+    color: white;
+    animation: repeat;
+    animation-name: blink;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: #4a4a4a;
+
+    }
+}
+
+#network {
+    color: @text;
+    font-weight: normal;
+    font-size: 19px;
+    padding-right: 0px;
+    padding-left: 4px
+}
+
+#custom-notifications,
+#custom-spotify,
+#taskbar,
+#custom-theme,
+#custom-menu {
+    color: @text;
+    background: rgba(23, 23, 23, 0.0);
+    margin: 0px 0px 0px 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    opacity: 0.1
+}
+
+#tray,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#window {
+    color: @text;
+    font-family: "CaskaydiaCove Nerd Font";
+    padding: 3px 0px 2px 0px;
+}
+
+#tray {
+    padding-right: 10px;
+}
+
+
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#cava,
+#upower#headset,
+#upower {
+    color: @green;
+}
+
+#mpris {
+    font-weight: bold
+}
+
+#custom-rr_end {
+    font-weight: normal;
+    color: @text;
+    background: rgba(23, 23, 23, 0.0);
+    opacity: 1;
+    margin: 0px 0px 0px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    background: #A1BDCE;
+    background-color: transparent;
+    box-shadow: none;
+    margin-right: 7px;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    margin-top: -3px;
+    min-width: 90px;
+    min-height: 10px;
+    margin-bottom: -4px;
+    border-radius: 8px;
+    background: @surface1;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    border-radius: 8px;
+    background-color: @blue;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @yellow;
+}
+
+
+#battery.critical:not(.charging) {
+    color: @red;
+}
+
+
+#taskbar {
+    padding: 1px;
+}
+
+#custom-r_end {
+    border-radius: 0px 7px 7px 0px;
+    margin-right: 1px;
+    padding-right: 3px;
+}
+
+#custom-l_end {
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 1px;
+    padding-left: 3px;
+}
+
+#custom-sr_end {
+    border-radius: 0px;
+    margin-right: 1px;
+    padding-right: 3px;
+}
+
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 1px;
+    padding-left: 3px;
+}
+
+#custom-rr_end {
+    border-radius: 0px 7px 7px 0px;
+    margin-right: 1px;
+    padding-right: 3px;
+}
+
+#custom-rl_end {
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 1px;
+    padding-left: 3px;
+}
+
+
+/* Style for launchers */
+#custom-expand {
+    min-width: 25px;
+    color: @text;
+    font-size: 16px;
+}
+
+#group-minimized {
+    border-left: solid;
+    border-left-width: 0.5;
+}
+
+menu * {
+    color: @text;
 }
 
 menu {
-	border-radius: 0.75em;
-	background-color: @crust;
-	border: 1px solid @mauve;
+    background: @crust;
+    /* border: 2px solid @mauve; */
 }
 
-menuitem {
-	border-radius: 0.5em;
-	margin: 5px 5px;
-	padding: 10px 0px;
-}
-
-menuitem:disabled {
-	background-color: @surface0;
-}
-
-menuitem:hover {
-	background-color: @base;
-	box-shadow: inset 2px 0px 0 @mauve, inset 0px -2px 0 @mauve, inset 0px 2px 0 @mauve, inset -2px 0px 0 @mauve;
+separator {
+    background: @crust;
 }
