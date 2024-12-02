@@ -1,6 +1,7 @@
-@import "mocha.css"; 
+@import "mocha.css";
+
 * {
-        font-family: ProFontWindows Nerd Font;
+	font-family: CaskaydiaCove Nerd Font;
 	color: @text;
 }
 
@@ -17,7 +18,7 @@
 }
 
 .notification {
-	box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -41,7 +42,7 @@
 	padding: 1px;
 }
 
-.widget-dnd> switch slider {
+.widget-dnd>switch slider {
 	border: 1px solid alpha(@lavender, 0.3);
 	border-radius: 0.75em;
 	background: rgb(15, 15, 15);
