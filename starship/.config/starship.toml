@@ -170,7 +170,7 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:green)]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:blue"
-format = '[[  $time ](fg:surface0 bg:blue)]($style)'
+format = '[[  $time ](fg:surface0 bg:blue)]($style)'
 
 [line_break]
 disabled = false
