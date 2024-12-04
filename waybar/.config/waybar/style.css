@@ -1,13 +1,13 @@
 @import "mocha.css"; 
 
 * {
-    font-family: "CaskaydiaCove Nerd Font";
+    font-family: "JetBrainsMonoNL Nerd Font";
     font-weight: bold;
     font-size: 15px;
 }
 
 #custom-notification {
-    font-family: "CaskaydiaCove Nerd Font";
+    font-family: "JetBrainsMonoNL Nerd Font";
     font-size: 18px;
     color: @flamingo;
     margin: 2px 0.5em 0px 0px;
@@ -135,9 +135,8 @@ tooltip {
 #custom-power {
     font-size: 18px;
     color: @red;
-    margin: 6px 0px 6px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+    margin: 2px 0px 0px 0px;
+    padding: 0px 4px;
 }
 
 #backlight {
@@ -148,7 +147,6 @@ tooltip {
     margin: 1px 0px 0px 0px;
     padding-left: 0px;
     padding-right: 2px;
-
 }
 
 #bluetooth,
@@ -185,14 +183,8 @@ tooltip {
 
 #clock {
     color: @text;
-    font-size: 15px;
-    font-weight: 900;
-    font-family: "CaskaydiaCove Nerd Font";
-    background: transparent;
-    opacity: 1;
+    font-family: "JetBrainsMonoNL Nerd Font";
     margin: 3px 0px 0px 0px;
-    border: none;
-
 }
 
 #pulseaudio {
@@ -278,8 +270,8 @@ tooltip {
 #custom-wbar,
 #window {
     color: @text;
-    font-family: "CaskaydiaCove Nerd Font";
-    padding: 3px 0px 2px 0px;
+    font-family: "JetBrainsMonoNL Nerd Font";
+    padding: 3px 0px 0px 0px;
 }
 
 #tray {
