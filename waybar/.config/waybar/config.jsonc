@@ -467,6 +467,7 @@
         "rotate": 0,
         "format-muted": "婢",
         "tooltip-format": "{icon} {desc} // {volume}%",
+        "on-click-right": "pavucontrol",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",

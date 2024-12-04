@@ -144,7 +144,7 @@ tooltip {
     background: rgba(23, 23, 23, 0.0);
     font-weight: normal;
     font-size: 18px;
-    margin: 1px 0px 0px 0px;
+    margin: 1px 0.5em 0px 0px;
     padding-left: 0px;
     padding-right: 2px;
 }
@@ -160,12 +160,13 @@ tooltip {
 
 }
 
+#upower,
 #battery {
     font-weight: normal;
     color: @yellow;
     background: transparent;
     opacity: 1;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0.5em 0px 0px;
     padding-left: 0px;
     padding-right: 0px;
 
