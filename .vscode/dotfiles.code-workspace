@@ -5,9 +5,6 @@
 		},
 		{
 			"path": ".."
-		},
-		{
-			"path": "../../.config/home-manager"
 		}
 	],
 	"settings": {}
