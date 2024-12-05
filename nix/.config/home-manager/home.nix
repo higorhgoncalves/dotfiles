@@ -58,6 +58,10 @@
 
     pkgs.xfce.mousepad
 
+    #colorscheme
+    pkgs.catppuccin-gtk # Tema GTK
+    pkgs.libsForQt5.qt5ct
+
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -94,6 +98,8 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_STYLE_OVERRIDE = "Fusion";
   };
 
 #  home.activation = {
@@ -102,7 +108,84 @@
 #    '';
 #  };
 
+  # homeConfigurations = {
+    
+  # }
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # programs.fish.enable = true;
+  
+  programs.git = {
+    enable = true;
+    userName = "Higor Henrique Prata Gonçalves";
+    userEmail = "higor.henrique@legisweb.com.br";
+    # aliases = {
+    #   pu = "push";
+    #   co = "checkout";
+    #   cm = "commit";
+    # };
+  };
+
+  # gtk = {
+  #   enable = true;
+  #   theme.name = "catppuccin-mocha-blue-standard+default";
+  #   cursorTheme.name = "Bibata-Modern-Classic";
+  #   iconTheme.name = "Papirus-Dark";
+  #   # font = "Cantarell 11";
+  # };
+
+  # xdg.gtk = {
+  #   enable = true;
+  #   themes = {
+  #     gtk3 = "Catppuccin-Mocha-Standard-Mauve";
+  #     gtk4 = "Catppuccin-Mocha-Standard-Mauve";
+  #   };
+  # };
+
+  xdg.mimeApps.defaultApplications = {
+    "text/plain" = "nvim.desktop";
+    "application/pdf" = "zen-alpha.desktop";
+    # "image/*" = "gthumb.desktop";
+    # "video/*" = "vlc.desktop";
+    # "audio/*" = "vlc.desktop";
+  };
+
+  # programs.zsh = {
+  #   enable = true;
+  #   enableCompletion = true;
+  #   enableAutosuggestions = true;
+  #   enableSyntaxHighlighting = true;
+  #   enableFzfKeyBindings = true;
+  #   enableFzfWidgets = true;
+  #   enableFzfTabCompletion = true;
+  #   enableFzfHistory = true;
+  #   enableFzfSearch = true
+  # };
+
+  # programs.fish.enable = {
+  #   enable = true;
+  #   # userConfig = {
+  #   #   # Add fish configuration here
+  #   # };
+  # }
+  # envExtra = ''
+
+  # '';
+  # envExtra = {
+  #   # # You can set environment variables that will be available in your shell
+  #   # # sessions. For example, this adds a 'MY_VAR' environment variable:
+  #   # MY_VAR = "Hello, ${config.home.username}!";
+  #   # 
+  #   # # You can also set the PATH environment variable. This will be prepended to
+  #   # # the existing PATH.
+  #   # PATH = "${pkgs.hello}/bin";
+  #   # 
+  #   # # You can also append to the PATH environment variable.
+  #   # PATH = "${pkgs.hello}/bin${config.envExtra.PATH}";
+  #   # 
+  #   # # You
+  #   # # can also set the MANPATH environment variable. This will be prepended to
+  #   # # the existing MANPATH.
+  #   # MANPATH = "${pkgs.hello}/share
+  # };
 }
