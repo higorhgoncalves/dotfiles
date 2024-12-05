@@ -7,7 +7,7 @@ return {{
     "williamboman/mason-lspconfig.nvim",
     config = function()
         require("mason-lspconfig").setup({
-            ensure_installed = {"lua_ls", "intelephense", "phpactor", "html", "cssls", "ts_ls"}
+            ensure_installed = {"lua_ls", "intelephense", "phpactor", "html", "cssls", "ts_ls", "nil_ls"}
         })
     end
 }, {
@@ -50,6 +50,10 @@ return {{
         --     single_file_support = true,
         --     -- on_attach = on_attach,
         -- })
+        lspconfig.nil_ls.setup({
+            capabilities = capabilities,
+            -- on_attach = on_attach,
+        })
         lspconfig.ts_ls.setup({
             capabilities = capabilities,
             filetypes = { "javascript", "php" },
