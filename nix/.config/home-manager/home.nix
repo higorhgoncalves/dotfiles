@@ -44,7 +44,6 @@
     pkgs.fzf
     pkgs.atuin
     pkgs.fd
-    pkgs.ripgrep
     pkgs.bat
     pkgs.ncdu
     pkgs.duf
@@ -55,6 +54,10 @@
     pkgs.starship
     pkgs.neovim
     pkgs.openvpn
+    pkgs.cargo
+    pkgs.lua51Packages.luarocks
+    pkgs.nodejs
+    pkgs.ripgrep
 
     pkgs.xfce.mousepad
 
