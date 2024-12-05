@@ -15,6 +15,20 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      openvpn = prev.openvpn.overrideAttrs (oldAttrs: rec {
+        pname = "openvpn";
+        version = "2.5.8"; # Versão desejada
+  
+        src = prev.fetchurl {
+          url = "https://swupdate.openvpn.org/community/releases/openvpn-${version}.tar.gz";
+          sha256 = "a6f315b7231d44527e65901ff646f87d7f07862c87f33531daa109fb48c53db2"; # Substitua pelo hash correto
+        };
+      });
+    })
+  ];
+  
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -34,12 +48,15 @@
     pkgs.bat
     pkgs.ncdu
     pkgs.duf
-    pkgs.exa
+    pkgs.eza
     pkgs.zoxide
     pkgs.stow
     pkgs.git
     pkgs.starship
     pkgs.neovim
+    pkgs.openvpn
+
+    pkgs.xfce.mousepad
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -76,14 +93,14 @@
   #  /etc/profiles/per-user/administrador/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
-  home.activation = {
-    afterSwitch = ''
-      stow -d ~/dotfiles -t ~ config_name
-    '';
-  };
+#  home.activation = {
+#    afterSwitch = ''
+#      stow -d ~/dotfiles -t ~ config_name
+#    '';
+#  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
