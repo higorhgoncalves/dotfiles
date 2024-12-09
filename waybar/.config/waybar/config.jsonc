@@ -184,15 +184,16 @@
     "custom/power": {
 		"format": "󰐥 ",
 		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "~/.config/waybar/components/power_menu.xml",
-		"menu-actions": {
-			"lock": "loginctl lock-session",
-			"shutdown": "poweroff",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "on-click": "nwg-bar",
+		// "menu": "on-click",
+		// "menu-file": "~/.config/waybar/components/power_menu.xml",
+		// "menu-actions": {
+		// 	"lock": "loginctl lock-session",
+		// 	"shutdown": "poweroff",
+		// 	"reboot": "reboot",
+		// 	"suspend": "systemctl suspend",
+		// 	"hibernate": "systemctl hibernate"
+		// }
 	},
     "hyprland/window": {
         //"format": "{}"   // <--- these is the default value  
