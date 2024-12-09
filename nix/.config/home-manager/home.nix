@@ -39,7 +39,7 @@
     pkgs.nerd-fonts.jetbrains-mono
 
     # terminal
-    pkgs.kitty
+    # pkgs.kitty
     pkgs.fish
     pkgs.fzf
     pkgs.atuin
