@@ -1,20 +1,17 @@
 { config, pkgs, ... }:
-
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Home Manager precisa de algumas informações sobre você e os caminhos que deve gerenciar.
   home.username = "administrador";
   home.homeDirectory = "/home/administrador";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
+  # Este valor determina a versão do Home Manager que sua configuração é compatível.
+  # Isso ajuda a evitar quebras quando uma nova versão do Home Manager introduz mudanças incompatíveis.
   #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  # Você não deve mudar este valor, mesmo se atualizar o Home Manager. Se quiser atualizar o valor,
+  # certifique-se de verificar as notas de lançamento do Home Manager.
+  home.stateVersion = "24.05"; # Leia o comentário antes de mudar.
 
+  # Definindo um overlay para substituir a versão do openvpn
   nixpkgs.overlays = [
     (final: prev: {
       openvpn = prev.openvpn.overrideAttrs (oldAttrs: rec {
@@ -29,14 +26,14 @@
     })
   ];
 
+  # Pacotes a serem instalados
   home.packages = with pkgs; [
-    # fonts
+    # fontes
     nerd-fonts.profont
     nerd-fonts.caskaydia-mono
     nerd-fonts.jetbrains-mono
 
-    # terminal
-    # kitty
+    # Pacotes de sistema
     fish
     fzf
     atuin
@@ -49,50 +46,40 @@
     stow
     git
     starship
-    neovim
     openvpn
+    
+    # Pacotes de desenvolvimento
+    neovim
     cargo
     lua51Packages.luarocks
     nodejs
     ripgrep
     nil
     nixpkgs-fmt
+    
+    # Aplicativos gráficos
+    pidgin
 
-    #colorscheme
-    catppuccin-gtk # Tema GTK
-    libsForQt5.qt5ct
+    # Aplicativos de Ambiente de Desktop
+    wofi
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # Temas
+    dracula-theme # Tema GTK2
+    catppuccin-gtk # Tema GTK3/4
+    libsForQt5.qt5ct # Tema QT5
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+  # Home Manager é muito bom em gerenciar arquivos de configuração. A principal maneira de gerenciar
+  # arquivos simples é através de 'home.file'.
+  home.file = {};
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
+  # Home Manager também pode gerenciar suas variáveis de ambiente através de 'home.sessionVariables'.
+  # Se você não quiser gerenciar seu shell através do Home Manager, então você deve manualmente
+  # adicionar 'hm-session-vars.sh' localizado em
   #
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   #
-  # or
+  # ou
   #
   #  /etc/profiles/per-user/administrador/etc/profile.d/hm-session-vars.sh
   #
@@ -102,52 +89,37 @@
     QT_STYLE_OVERRIDE = "Fusion";
   };
 
-  #  home.activation = {
-  #    afterSwitch = ''
-  #      stow -d ~/dotfiles -t ~ config_name
-  #    '';
-  #  };
-
-  # homeConfigurations = {
-
-  # }
-
-  # Let Home Manager install and manage itself.
+  # Deixe o Home Manager instalar e gerenciar a si mesmo.
   programs.home-manager.enable = true;
 
+  # Configurações do Git
   programs.git = {
     enable = true;
     userName = "Higor Henrique Prata Gonçalves";
     userEmail = "higor.henrique@legisweb.com.br";
-    # aliases = {
-    #   pu = "push";
-    #   co = "checkout";
-    #   cm = "commit";
-    # };
   };
 
-
+  # Configurações do GTK
   gtk = {
     enable = true;
-    theme.name = "catppuccin-mocha-blue-standard+default";
     cursorTheme.name = "Bibata-Modern-Classic";
     iconTheme.name = "Papirus-Dark";
     font.name = "JetBrains Mono Nerd Font 11";
-    # font = "JetBrains Mono Nerd Font 11";
+
+    gtk2.extraConfig = ''
+      gtk-theme-name = "Dracula"
+    '';
+
+    gtk3.extraConfig = {
+      gtk-theme-name="catppuccin-mocha-blue-standard+default";
+    };
+
+    gtk4.extraConfig = {
+      gtk-theme-name="catppuccin-mocha-blue-standard+default";
+    };
   };
 
-  # home.file.".gtkrc-2.0".text = ''
-  #   gtk-theme-name="Adwaita-dark"
-  # '';
-
-  xdg.mimeApps.defaultApplications = {
-    "text/plain" = "nvim.desktop";
-    "application/pdf" = "zen-alpha.desktop";
-    # "image/*" = "gthumb.desktop";
-    # "video/*" = "vlc.desktop";
-    # "audio/*" = "vlc.desktop";
-  };
-
+  # Configurações do Fish shell
   programs.fish = {
     enable = true;
     
@@ -160,7 +132,7 @@
         set -gx ATUIN_NOBIND "true"
         atuin init fish | source
 
-        # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+        # vincular ao ctrl-r no modo normal e de inserção, adicione quaisquer outras vinculações aqui também
         bind \cr _atuin_search
         bind -M insert \cr _atuin_search
         
@@ -169,30 +141,20 @@
 
         [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
+        set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
         thefuck --alias | source
         zoxide init fish | source
       end
     '';
-    
   };
 
+  # Habilitar XDG
+  xdg.enable = true;
+  targets.genericLinux.enable = true;
 
-  # '';
-  # envExtra = {
-  #   # # You can set environment variables that will be available in your shell
-  #   # # sessions. For example, this adds a 'MY_VAR' environment variable:
-  #   # MY_VAR = "Hello, ${config.home.username}!";
-  #   # 
-  #   # # You can also set the PATH environment variable. This will be prepended to
-  #   # # the existing PATH.
-  #   # PATH = "${pkgs.hello}/bin";
-  #   # 
-  #   # # You can also append to the PATH environment variable.
-  #   # PATH = "${pkgs.hello}/bin${config.envExtra.PATH}";
-  #   # 
-  #   # # You
-  #   # # can also set the MANPATH environment variable. This will be prepended to
-  #   # # the existing MANPATH.
-  #   # MANPATH = "${pkgs.hello}/share
-  # };
+  # Configurações de aplicativos padrão
+  xdg.mimeApps.defaultApplications = {
+    "text/plain" = "nvim.desktop";
+    "application/pdf" = "zen-alpha.desktop";
+  };
 }
