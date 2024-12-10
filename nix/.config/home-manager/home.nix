@@ -20,7 +20,7 @@
       openvpn = prev.openvpn.overrideAttrs (oldAttrs: rec {
         pname = "openvpn";
         version = "2.5.8"; # Versão desejada
-  
+
         src = prev.fetchurl {
           url = "https://swupdate.openvpn.org/community/releases/openvpn-${version}.tar.gz";
           sha256 = "a6f315b7231d44527e65901ff646f87d7f07862c87f33531daa109fb48c53db2"; # Substitua pelo hash correto
@@ -28,47 +28,44 @@
       });
     })
   ];
-  
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    # # You can install some extra packages in your user environment by listing
+
+  home.packages = with pkgs; [
     # fonts
-    pkgs.nerd-fonts.profont
-    pkgs.nerd-fonts.caskaydia-mono
-    pkgs.nerd-fonts.jetbrains-mono
+    nerd-fonts.profont
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.jetbrains-mono
 
     # terminal
-    # pkgs.kitty
-    pkgs.fish
-    pkgs.fzf
-    pkgs.atuin
-    pkgs.fd
-    pkgs.bat
-    pkgs.ncdu
-    pkgs.duf
-    pkgs.eza
-    pkgs.zoxide
-    pkgs.stow
-    pkgs.git
-    pkgs.starship
-    pkgs.neovim
-    pkgs.openvpn
-    pkgs.cargo
-    pkgs.lua51Packages.luarocks
-    pkgs.nodejs
-    pkgs.ripgrep
-
-    pkgs.xfce.mousepad
+    # kitty
+    fish
+    fzf
+    atuin
+    fd
+    bat
+    ncdu
+    duf
+    eza
+    zoxide
+    stow
+    git
+    starship
+    neovim
+    openvpn
+    cargo
+    lua51Packages.luarocks
+    nodejs
+    ripgrep
+    nil
+    nixpkgs-fmt
 
     #colorscheme
-    pkgs.catppuccin-gtk # Tema GTK
-    pkgs.libsForQt5.qt5ct
+    catppuccin-gtk # Tema GTK
+    libsForQt5.qt5ct
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
+    # (writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
@@ -105,19 +102,19 @@
     QT_STYLE_OVERRIDE = "Fusion";
   };
 
-#  home.activation = {
-#    afterSwitch = ''
-#      stow -d ~/dotfiles -t ~ config_name
-#    '';
-#  };
+  #  home.activation = {
+  #    afterSwitch = ''
+  #      stow -d ~/dotfiles -t ~ config_name
+  #    '';
+  #  };
 
   # homeConfigurations = {
-    
+
   # }
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
+
   programs.git = {
     enable = true;
     userName = "Higor Henrique Prata Gonçalves";
@@ -129,21 +126,19 @@
     # };
   };
 
-  # gtk = {
-  #   enable = true;
-  #   theme.name = "catppuccin-mocha-blue-standard+default";
-  #   cursorTheme.name = "Bibata-Modern-Classic";
-  #   iconTheme.name = "Papirus-Dark";
-  #   # font = "Cantarell 11";
-  # };
 
-  # xdg.gtk = {
-  #   enable = true;
-  #   themes = {
-  #     gtk3 = "Catppuccin-Mocha-Standard-Mauve";
-  #     gtk4 = "Catppuccin-Mocha-Standard-Mauve";
-  #   };
-  # };
+  gtk = {
+    enable = true;
+    theme.name = "catppuccin-mocha-blue-standard+default";
+    cursorTheme.name = "Bibata-Modern-Classic";
+    iconTheme.name = "Papirus-Dark";
+    font.name = "JetBrains Mono Nerd Font 11";
+    # font = "JetBrains Mono Nerd Font 11";
+  };
+
+  # home.file.".gtkrc-2.0".text = ''
+  #   gtk-theme-name="Adwaita-dark"
+  # '';
 
   xdg.mimeApps.defaultApplications = {
     "text/plain" = "nvim.desktop";
@@ -153,25 +148,34 @@
     # "audio/*" = "vlc.desktop";
   };
 
-  # programs.zsh = {
-  #   enable = true;
-  #   enableCompletion = true;
-  #   enableAutosuggestions = true;
-  #   enableSyntaxHighlighting = true;
-  #   enableFzfKeyBindings = true;
-  #   enableFzfWidgets = true;
-  #   enableFzfTabCompletion = true;
-  #   enableFzfHistory = true;
-  #   enableFzfSearch = true
-  # };
+  programs.fish = {
+    enable = true;
+    
+    interactiveShellInit = ''
+      if status is-interactive
+        set -U fish_greeting ""
 
-  # programs.fish.enable = {
-  #   enable = true;
-  #   # userConfig = {
-  #   #   # Add fish configuration here
-  #   # };
-  # }
-  # envExtra = ''
+        starship init fish | source
+
+        set -gx ATUIN_NOBIND "true"
+        atuin init fish | source
+
+        # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+        bind \cr _atuin_search
+        bind -M insert \cr _atuin_search
+        
+        alias ls="eza"
+        alias cd="z"
+
+        [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+        thefuck --alias | source
+        zoxide init fish | source
+      end
+    '';
+    
+  };
+
 
   # '';
   # envExtra = {
