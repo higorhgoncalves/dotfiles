@@ -10,6 +10,14 @@
   # certifique-se de verificar as notas de lançamento do Home Manager.
   home.stateVersion = "24.05"; # Leia o comentário antes de mudar.
 
+  home.keyboard = {
+    layout = "us";
+    variant = "alt-intl";
+    model = "";
+    options = "";
+    rules = "";
+  };
+  
   # Deixe o Home Manager instalar e gerenciar a si mesmo.
   programs.home-manager.enable = true;
 
