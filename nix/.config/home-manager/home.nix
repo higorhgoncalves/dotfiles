@@ -59,7 +59,6 @@
     git
     starship
     openvpn
-    bcg729
 
     # Pacotes de desenvolvimento
     neovim
