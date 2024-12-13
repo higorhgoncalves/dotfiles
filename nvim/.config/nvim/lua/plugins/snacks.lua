@@ -6,40 +6,37 @@ return {
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
-		-- bigfile = { enabled = true },
+		dim = { enabled = true },
+		git = { enabled = true },
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
-		input = {
-			enabled = true,
-			backdrop = false,
-			position = "float",
-			border = "rounded",
-			title_pos = "center",
-			height = 1,
-			width = 60,
-			relative = "editor",
-			row = 2,
-			-- relative = "cursor",
-			-- row = -3,
-			-- col = 0,
-			wo = {
-				winhighlight = "NormalFloat:SnacksInputNormal,FloatBorder:SnacksInputBorder,FloatTitle:SnacksInputTitle",
-				cursorline = false,
-			},
-			bo = { filetype = "snacks_input" },
-			keys = {
-				i_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "i" },
-				-- i_esc = { "<esc>", "stopinsert", mode = "i" },
-				i_cr = { "<cr>", { "cmp_accept", "confirm" }, mode = "i" },
-				i_tab = { "<tab>", { "cmp_select_next", "cmp" }, mode = "i" },
-				q = "cancel",
-			},
-		},
-		-- quickfile = { enabled = true },
-		-- statuscolumn = { enabled = true },
-		-- words = { enabled = true },
+		indent = { enabled = true },
+		words = { enabled = true },
+		scope = { enabled = true },
+		toggle = { enabled = true },
 		lazygit = { enabled = true },
 	},
 	keys = {
+		{
+			"<leader>cR",
+			function()
+				Snacks.rename.rename_file()
+			end,
+			desc = "Rename File",
+		},
+		{
+			"<leader>gB",
+			function()
+				Snacks.gitbrowse()
+			end,
+			desc = "Git Browse",
+		},
+		{
+			"<leader>gb",
+			function()
+				Snacks.git.blame_line()
+			end,
+			desc = "Git Blame Line",
+		},
 		{
 			"<leader>gf",
 			function()
@@ -61,5 +58,35 @@ return {
 			end,
 			desc = "Lazygit Log (cwd)",
 		},
+		{
+			"<leader>un",
+			function()
+				Snacks.notifier.hide()
+			end,
+			desc = "Dismiss All Notifications",
+		},
 	},
+	init = function()
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "VeryLazy",
+			callback = function()
+				-- Create some toggle mappings
+				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+				Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+				Snacks.toggle.diagnostics():map("<leader>ud")
+				Snacks.toggle.line_number():map("<leader>ul")
+				Snacks.toggle
+					.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+					:map("<leader>uc")
+				Snacks.toggle.treesitter():map("<leader>uT")
+				Snacks.toggle
+					.option("background", { off = "light", on = "dark", name = "Dark Background" })
+					:map("<leader>ub")
+				Snacks.toggle.inlay_hints():map("<leader>uh")
+				Snacks.toggle.indent():map("<leader>ug")
+				Snacks.toggle.dim():map("<leader>uD")
+			end,
+		})
+	end,
 }
