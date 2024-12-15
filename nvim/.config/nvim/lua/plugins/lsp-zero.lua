@@ -40,31 +40,31 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					-- Super tab
-					["<Tab>"] = cmp.mapping(function(fallback)
-						local col = vim.fn.col(".") - 1
-
-						if cmp.visible() then
-							cmp.select_next_item({ behavior = "select" })
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-							fallback()
-						else
-							cmp.complete()
-						end
-					end, { "i", "s" }),
-
-					-- Super shift tab
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item({ behavior = "select" })
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
+					-- -- Super tab
+					-- ["<Tab>"] = cmp.mapping(function(fallback)
+					-- 	local col = vim.fn.col(".") - 1
+					--
+					-- 	if cmp.visible() then
+					-- 		cmp.select_next_item({ behavior = "select" })
+					-- 	elseif luasnip.expand_or_locally_jumpable() then
+					-- 		luasnip.expand_or_jump()
+					-- 	elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+					-- 		fallback()
+					-- 	else
+					-- 		cmp.complete()
+					-- 	end
+					-- end, { "i", "s" }),
+					--
+					-- -- Super shift tab
+					-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_prev_item({ behavior = "select" })
+					-- 	elseif luasnip.locally_jumpable(-1) then
+					-- 		luasnip.jump(-1)
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
@@ -109,40 +109,14 @@ return {
 				callback = function(event)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "" })
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, desc = "Go to definition" })
-					vim.keymap.set(
-						"n",
-						"gD",
-						vim.lsp.buf.declaration,
-						{ buffer = event.buf, desc = "Go to declaration" }
-					)
-					vim.keymap.set(
-						"n",
-						"gi",
-						vim.lsp.buf.implementation,
-						{ buffer = event.buf, desc = "Go to implementation" }
-					)
-					vim.keymap.set(
-						"n",
-						"go",
-						vim.lsp.buf.type_definition,
-						{ buffer = event.buf, desc = "Go to type definition" }
-					)
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "Go to declaration" })
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, desc = "Go to implementation" })
+					vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { buffer = event.buf, desc = "Go to type definition" })
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = event.buf, desc = "Go to references" })
-					vim.keymap.set(
-						"n",
-						"gs",
-						vim.lsp.buf.signature_help,
-						{ buffer = event.buf, desc = "Show signature help" }
-					)
+					vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Show signature help" })
 					vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
-					vim.keymap.set({ "n", "x" }, "<leader>af", function()
-						vim.lsp.buf.format({ async = true })
-					end, { buffer = event.buf, desc = "AutoFormat" })
-					vim.keymap.set(
-						"n",
-						"<leader>ca",
-						vim.lsp.buf.code_action,
-						{ buffer = event.buf, desc = "Show code actions" }
+					vim.keymap.set({ "n", "x" }, "<leader>af", function() vim.lsp.buf.format({ async = true, wrapLineLength = 9999 }) end, { buffer = event.buf, desc = "AutoFormat" })
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Show code actions" }
 					)
 				end,
 			})
