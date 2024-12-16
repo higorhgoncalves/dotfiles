@@ -19,6 +19,7 @@ return {
 		dim = { enabled = true },
 		git = { enabled = true },
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
+        input = { enabled = true },
 		indent = { enabled = true },
 		words = { enabled = true },
 		scope = { enabled = true },
