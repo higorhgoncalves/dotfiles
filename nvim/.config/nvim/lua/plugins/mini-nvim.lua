@@ -22,6 +22,8 @@ return {
 
 		vim.keymap.set("n", "<leader>mf", ":lua MiniFiles.open()<CR>", { desc = "MiniFiles browser" })
 
+        require("mini.sessions").setup()
+
 		-- Simple and easy statusline.
 		--  You could remove this setup call if you don't like it,
 		--  and try some other statusline plugin
