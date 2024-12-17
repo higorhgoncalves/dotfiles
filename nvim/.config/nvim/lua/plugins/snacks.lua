@@ -10,8 +10,8 @@ return {
             enabled = true,
             sections = {
                 { section = "header" },
-                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = {1, 0} },
                 { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = {1,0} },
+                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = {1, 0} },
                 { section = "keys" },
                 { section = "startup" },
             },
@@ -34,6 +34,13 @@ return {
 			end,
 			desc = "Rename File",
 		},
+        {
+            "<leader>nh",
+            function()
+                Snacks.notifier.show_history()
+            end,
+            desc = "Show Notification History",
+        },
 		{
 			"<leader>gB",
 			function()
