@@ -44,14 +44,17 @@ return {
 
 		vim.keymap.set("n", "<C-e>", function()
 			toggle_telescope(harpoon:list())
-		end, { desc = "Open harpoon window" })
+		end, { desc = "Navigation List" })
+		vim.keymap.set("n", "<leader>wl", function()
+			toggle_telescope(harpoon:list())
+		end, { desc = "Open Workspace Navigation List" })
 
-		vim.keymap.set("n", "<leader>ha", function()
+		vim.keymap.set("n", "<leader>wa", function()
 			harpoon:list():add()
-		end, { desc = 'Add to Harpoon List' })
-		vim.keymap.set("n", "<leader>hr", function()
+		end, { desc = 'Add to Workspace Navigation List' })
+		vim.keymap.set("n", "<leader>wr", function()
 			harpoon:list():remove()
-		end, { desc = 'Remove from Harpoon List' })
+		end, { desc = 'Remove from Workspace Navigation List' })
 		-- vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 		-- vim.keymap.set("n", "<C-h>", function()

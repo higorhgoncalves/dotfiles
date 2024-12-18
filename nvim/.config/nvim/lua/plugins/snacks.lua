@@ -6,20 +6,20 @@ return {
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
-        dashboard = {
-            enabled = true,
-            sections = {
-                { section = "header" },
-                { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = {1,0} },
-                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = {1, 0} },
-                { section = "keys" },
-                { section = "startup" },
-            },
-        },
+		dashboard = {
+			enabled = true,
+			sections = {
+				{ section = "header" },
+				{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = { 1, 0 } },
+				{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = { 1, 0 } },
+				{ section = "keys" },
+				{ section = "startup" },
+			},
+		},
 		dim = { enabled = true },
 		git = { enabled = true },
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
-        input = { enabled = true },
+		input = { enabled = true },
 		indent = { enabled = true },
 		words = { enabled = true },
 		scope = { enabled = true },
@@ -34,13 +34,13 @@ return {
 			end,
 			desc = "Rename File",
 		},
-        {
-            "<leader>nh",
-            function()
-                Snacks.notifier.show_history()
-            end,
-            desc = "Show Notification History",
-        },
+		{
+			"<leader>wh",
+			function()
+				Snacks.notifier.show_history()
+			end,
+			desc = "Open Workspace Notification History",
+		},
 		{
 			"<leader>gB",
 			function()

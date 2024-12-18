@@ -29,6 +29,6 @@ vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { desc = "Navigate to the left pan
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { desc = "Navigate to the bottom pane" })
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { desc = "Navigate to the top pane" })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Navigate to the right pane" })
-vim.keymap.set("n", "<leader>ai", "gg=G", { desc = "AutoIndent" })
+vim.keymap.set("n", "<leader>di", "gg=G", { desc = "Document Auto Indent" })
 
 vim.keymap.set("n", "<M-r>", ":set rnu! rnu?<CR>", { desc = "Toggle relative line numbers" })

@@ -17,17 +17,26 @@ return {
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
 
-		-- require("mini.animate").setup({})
+		-- File browser
+		--
+		-- - <leader>mf - open file browser
 		require("mini.files").setup()
 
-		vim.keymap.set("n", "<leader>mf", ":lua MiniFiles.open()<CR>", { desc = "MiniFiles browser" })
+		-- Split and join lines
+		--
+		-- - gS - [G]split lines
+		require("mini.splitjoin").setup()
 
-        require("mini.sessions").setup()
+		-- Sessions
+		-- Save and restore your editing sessions
+		-- - :mksession - save session
+		require("mini.sessions").setup()
 
 		-- Simple and easy statusline.
 		--  You could remove this setup call if you don't like it,
 		--  and try some other statusline plugin
 		local statusline = require("mini.statusline")
+
 		-- set use_icons to true if you have a Nerd Font
 		statusline.setup({ use_icons = vim.g.have_nerd_font })
 
@@ -38,6 +47,9 @@ return {
 		statusline.section_location = function()
 			return "%2l:%-2v"
 		end
+
+		-- Keybindings
+		vim.keymap.set("n", "<leader>wf", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
 
 		-- ... and there is more!
 		--  Check out: https://github.com/echasnovski/mini.nvim

@@ -107,16 +107,47 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "LSP actions",
 				callback = function(event)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "" })
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Show LSP Information" })
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, desc = "Go to definition" })
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "Go to declaration" })
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, desc = "Go to implementation" })
-					vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { buffer = event.buf, desc = "Go to type definition" })
+					vim.keymap.set(
+						"n",
+						"gD",
+						vim.lsp.buf.declaration,
+						{ buffer = event.buf, desc = "Go to declaration" }
+					)
+					vim.keymap.set(
+						"n",
+						"gi",
+						vim.lsp.buf.implementation,
+						{ buffer = event.buf, desc = "Go to implementation" }
+					)
+					vim.keymap.set(
+						"n",
+						"go",
+						vim.lsp.buf.type_definition,
+						{ buffer = event.buf, desc = "Go to type definition" }
+					)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = event.buf, desc = "Go to references" })
-					vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Show signature help" })
-					vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
-					vim.keymap.set({ "n", "x" }, "<leader>af", function() vim.lsp.buf.format({ async = true, wrapLineLength = 9999 }) end, { buffer = event.buf, desc = "AutoFormat" })
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Show code actions" }
+					vim.keymap.set(
+						"n",
+						"gs",
+						vim.lsp.buf.signature_help,
+						{ buffer = event.buf, desc = "Show signature help" }
+					)
+					vim.keymap.set(
+						"n",
+						"<leader>cr",
+						vim.lsp.buf.rename,
+						{ buffer = event.buf, desc = "Code LSP Rename" }
+					)
+					vim.keymap.set({ "n", "x" }, "<leader>dfl", function()
+						vim.lsp.buf.format({ async = true, wrapLineLength = 9999 })
+					end, { buffer = event.buf, desc = "Document Auto Format (LSP)" })
+					vim.keymap.set(
+						"n",
+						"<leader>ca",
+						vim.lsp.buf.code_action,
+						{ buffer = event.buf, desc = "Show code actions" }
 					)
 				end,
 			})
