@@ -47,27 +47,27 @@
 
     # Pacotes de sistema
     fish
-    fzf
-    atuin
-    fd
-    bat
-    ncdu
-    duf
-    eza
-    zoxide
-    stow
-    git
+    # fzf
+    # atuin
+    # fd
+    # bat
+    # ncdu
+    # duf
+    # eza
+    # zoxide
+    # stow
+    # git
     starship
-    openvpn
+    # openvpn
 
     # Pacotes de desenvolvimento
-    neovim
-    cargo
-    lua51Packages.luarocks
-    nodejs
-    ripgrep
-    nixd
-    nixfmt-classic
+    # neovim
+    # cargo
+    # lua51Packages.luarocks
+    # # nodejs
+    # ripgrep
+    # nixd
+    # nixfmt-classic
 
     # Pacotes VSCode
     # vscode
