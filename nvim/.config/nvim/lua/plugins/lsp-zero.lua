@@ -90,7 +90,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"intelephense",
+					-- "intelephense",
 					"phpactor",
 					"html",
 					"biome",
@@ -141,7 +141,7 @@ return {
 						{ buffer = event.buf, desc = "Code LSP Rename" }
 					)
 					vim.keymap.set({ "n", "x" }, "<leader>dfl", function()
-						vim.lsp.buf.format({ async = true, wrapLineLength = 9999 })
+						vim.lsp.buf.format({ async = true })
 					end, { buffer = event.buf, desc = "Document Auto Format (LSP)" })
 					vim.keymap.set(
 						"n",
