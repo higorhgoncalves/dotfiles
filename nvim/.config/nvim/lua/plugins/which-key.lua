@@ -49,6 +49,7 @@ return {
 				{ "<leader>df", group = "[D]ocument [F]ormat" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>f", group = "[F]ind" },
+				{ "<leader>fG", group = "[F]ind [G]it" },
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>u", group = "[U]Toggle" },
 				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
