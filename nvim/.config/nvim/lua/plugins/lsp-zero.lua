@@ -84,6 +84,9 @@ return {
 				lspconfig_defaults.capabilities,
 				require("cmp_nvim_lsp").default_capabilities()
 			)
+			-- Combine additional default capabilities of Nvim-CMP with the LSP capabilities to work smoothly in autocomplete:
+			local capabilities =
+				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 			-- Configuração dos servidores LSP
 			require("mason").setup({})
@@ -91,7 +94,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					-- "intelephense",
-					"phpactor",
+					-- "phpactor",
 					"html",
 					"biome",
 					"cssls",
@@ -99,6 +102,28 @@ return {
 				handlers = {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
+					end,
+
+					-- this is the "custom handler" for `intelephense`
+					intelephense = function()
+						require("lspconfig").intelephense.setup({
+							capabilities = capabilities,
+							single_file_support = false,
+							init_options = {
+								licenceKey = "/home/administrador/intelephense/key.txt",
+							},
+							settings = {
+								intelephense = {
+									files = {
+										maxSize = 5000000,
+									},
+								},
+							},
+							on_attach = function(client, bufnr)
+								-- print("hello from intelephense")
+								vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+							end,
+						})
 					end,
 				},
 			})
