@@ -81,10 +81,10 @@
     # vscode-extensions.ecmel.vscode-html-css
 
     # Aplicativos gráficos
-    pidgin
+    # pidgin
 
     # Aplicativos de Ambiente de Desktop
-    wofi
+    # wofi
 
     # Temas
     dracula-theme # Tema GTK2
