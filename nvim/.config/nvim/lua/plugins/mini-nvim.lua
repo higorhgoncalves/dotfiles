@@ -30,7 +30,7 @@ return {
 				toggle = "",
 			},
 		})
-		vim.keymap.set("n", "<leader>ds", ":lua MiniSplitjoin.toggle()", { desc = "Document Split/Join lines" })
+		vim.keymap.set("n", "<leader>ds", ":lua MiniSplitjoin.toggle()<cr>", { desc = "Document Split/Join lines" })
 
 		-- Sessions
 		-- Save and restore your editing sessions
