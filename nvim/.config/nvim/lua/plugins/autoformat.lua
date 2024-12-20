@@ -36,9 +36,9 @@ return { -- Autoformat
 			-- python = { "isort", "black" },
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
-			html = { "prettier", "prettierd", stop_after_first = true },
-			css = { "prettier", "prettierd", stop_after_first = true },
-			javascript = { "prettier", "prettierd", stop_after_first = true },
+			html = { "prettierd", "prettier", stop_after_first = true },
+			css = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd", "prettier", stop_after_first = true },
 			php = { "pretty-php", "pint", "php-cs-fixer", stop_after_first = true },
 		},
 		formatters = {
