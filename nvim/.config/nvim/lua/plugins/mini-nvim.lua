@@ -25,7 +25,12 @@ return {
 		-- Split and join lines
 		--
 		-- - gS - [G]split lines
-		require("mini.splitjoin").setup()
+		require("mini.splitjoin").setup({
+			mappings = {
+				toggle = "",
+			},
+		})
+		vim.keymap.set("n", "<leader>ds", ":lua MiniSplitjoin.toggle()", { desc = "Document Split/Join lines" })
 
 		-- Sessions
 		-- Save and restore your editing sessions
