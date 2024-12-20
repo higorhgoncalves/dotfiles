@@ -41,5 +41,10 @@ return { -- Autoformat
 			javascript = { "prettier", "prettierd", stop_after_first = true },
 			php = { "pretty-php", "pint", "php-cs-fixer", stop_after_first = true },
 		},
+		formatters = {
+			prettier = {
+				append_args = { "--tab-width", "4" },
+			},
+		},
 	},
 }
