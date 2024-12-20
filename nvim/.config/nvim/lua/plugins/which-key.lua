@@ -47,6 +47,7 @@ return {
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>df", group = "[D]ocument [F]ormat" },
+				{ "<leader>dc", group = "[D]ocument [C]lipboard" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>f", group = "[F]ind" },
 				{ "<leader>fG", group = "[F]ind [G]it" },

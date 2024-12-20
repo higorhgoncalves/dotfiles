@@ -28,7 +28,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>cR",
+			"<leader>rR",
 			function()
 				Snacks.rename.rename_file()
 			end,
