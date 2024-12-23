@@ -5,6 +5,8 @@ return {
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{
 		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
@@ -25,11 +27,6 @@ return {
 			luasnip.filetype_extend("html", { "css", "javascript" })
 
 			cmp.setup({
-				-- snippet = {
-				-- 	expand = function(args)
-				-- 		luasnip.lsp_expand(args.body)
-				-- 	end,
-				-- },
 				snippet = {
 					expand = function(args)
 						-- You need Neovim v0.10 to use vim.snippet
@@ -66,9 +63,12 @@ return {
 				lspconfig_defaults.capabilities,
 				require("cmp_nvim_lsp").default_capabilities()
 			)
-			-- Combine additional default capabilities of Nvim-CMP with the LSP capabilities to work smoothly in autocomplete:
-			local capabilities =
-				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+			-- -- Combine additional default capabilities of Nvim-CMP with the LSP capabilities to work smoothly in autocomplete:
+			-- local capabilities =
+			-- 	require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+			-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			-- Configuração dos servidores LSP
 			require("mason").setup({})
@@ -89,7 +89,6 @@ return {
 					-- this is the "custom handler" for `intelephense`
 					intelephense = function()
 						require("lspconfig").intelephense.setup({
-							capabilities = capabilities,
 							single_file_support = false,
 							init_options = {
 								licenceKey = "/home/administrador/intelephense/key.txt",
@@ -101,10 +100,10 @@ return {
 									},
 								},
 							},
-							on_attach = function(client, bufnr)
-								-- print("hello from intelephense")
-								vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-							end,
+							-- on_attach = function(client, bufnr)
+							-- 	-- print("hello from intelephense")
+							-- 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+							-- end,
 						})
 					end,
 				},
