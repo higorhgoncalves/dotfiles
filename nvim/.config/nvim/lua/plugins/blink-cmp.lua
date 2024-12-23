@@ -76,13 +76,31 @@ return {
 					return { "lsp", "path", "snippets", "buffer" }
 				end
 			end,
-			-- providers = {
-			-- 	snippets = {
-			-- 		should_show_items = function(ctx)
-			-- 			return ctx.trigger.kind == vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter
-			-- 		end,
-			-- 	},
-			-- },
+			providers = {
+				snippets = {
+					-- 		should_show_items = function(ctx)
+					-- 			return ctx.trigger.kind == vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter
+					-- 		end,
+					-- enabled = function(ctx)
+					-- 	return ctx ~= nil
+					-- 		and ctx.trigger.kind ~= vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter
+					-- end,
+					opts = {
+						friendly_snippets = true,
+						-- search_paths = {
+						-- 	vim.fn.stdpath("config") .. "/snippets",
+						-- },
+						global_snippets = { "all" },
+						extended_filetypes = {
+							php = { "html", "css", "javascript" },
+						},
+						ignored_filetypes = {},
+						get_filetype = function(context)
+							return vim.bo.filetype
+						end,
+					},
+				},
+			},
 			cmdline = {},
 		},
 
