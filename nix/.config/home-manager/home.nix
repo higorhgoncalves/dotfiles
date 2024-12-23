@@ -188,6 +188,9 @@
 
       alias ls="eza"
       alias cd="z"
+      alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+      alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
+
 
       [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
