@@ -133,7 +133,7 @@ return {
 			documentation = { window = { border = "single" }, auto_show = true, auto_show_delay_ms = 500 },
 
 			-- Display a preview of the selected item on the current line
-			ghost_text = { enabled = true },
+			-- ghost_text = { enabled = true },
 		},
 
 		-- Experimental signature help support
