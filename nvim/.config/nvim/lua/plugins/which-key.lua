@@ -45,6 +45,7 @@ return {
 			-- Document existing key chains
 			spec = {
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+				{ "<leader>cc", group = "[C]opilot[C]hat", mode = { "n" } },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>df", group = "[D]ocument [F]ormat" },
 				{ "<leader>dc", group = "[D]ocument [C]lipboard" },
