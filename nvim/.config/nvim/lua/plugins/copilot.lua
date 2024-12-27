@@ -120,6 +120,7 @@ return {
 						require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
 					end
 				end,
+				mode = { "n", "x" },
 				desc = "CopilotChat - Quick chat",
 			},
 			{
@@ -128,6 +129,7 @@ return {
 					local actions = require("CopilotChat.actions")
 					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 				end,
+				mode = { "n", "x" },
 				desc = "CopilotChat - Prompt actions",
 			},
 		},
