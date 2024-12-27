@@ -3,9 +3,20 @@ gtk-tabs-location = bottom
 gtk-wide-tabs = false
 
 shell-integration = fish
+window-inherit-working-directory = false
 
-cursor-invert-fg-bg = true
-cursor-style = block
+# shell-integration-features = no-cursor
+# cursor-invert-fg-bg = true
+# cursor-style = block
+# cursor-style = underline
 
 theme = catppuccin-mocha
 font-family = "JetBrainsMonoNL Nerd Font"
+# background-opacity = 0.9
+window-theme = ghostty
+window-padding-y = 0
+# window-padding-balance = true
+
+keybind = super+shift+;=reload_config
+
+term = xterm
