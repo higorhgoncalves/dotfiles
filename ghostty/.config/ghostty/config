@@ -1,5 +1,6 @@
 gtk-titlebar = false
 gtk-tabs-location = bottom
+gtk-wide-tabs = false
 
 shell-integration = fish
 
