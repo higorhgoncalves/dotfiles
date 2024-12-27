@@ -1,0 +1,10 @@
+gtk-titlebar = false
+gtk-tabs-location = bottom
+
+shell-integration = fish
+
+cursor-invert-fg-bg = true
+cursor-style = block
+
+theme = catppuccin-mocha
+font-family = "JetBrainsMonoNL Nerd Font"
