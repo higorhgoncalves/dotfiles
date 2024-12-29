@@ -22,6 +22,7 @@ return {
 						},
 					},
 				},
+				phpactor = {},
 				html = {},
 				cssls = {},
 				biome = {},
@@ -33,8 +34,8 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					-- "intelephense",
-					-- "phpactor",
+					"intelephense",
+					"phpactor",
 					"html",
 					"biome",
 					"cssls",
@@ -43,27 +44,6 @@ return {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
 					end,
-
-					-- -- this is the "custom handler" for `intelephense`
-					-- intelephense = function()
-					--     require("lspconfig").intelephense.setup({
-					--         single_file_support = false,
-					--         init_options = {
-					--             licenceKey = "/home/administrador/intelephense/key.txt",
-					--         },
-					--         settings = {
-					--             intelephense = {
-					--                 files = {
-					--                     maxSize = 5000000,
-					--                 },
-					--             },
-					--         },
-					--         -- on_attach = function(client, bufnr)
-					--         -- 	-- print("hello from intelephense")
-					--         -- 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-					--         -- end,
-					--     })
-					-- end,
 				},
 			})
 
@@ -137,5 +117,6 @@ return {
 		--
 		--     lspconfig['lua-ls'].setup({ capabilities = capabilities })
 		-- end,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 }
