@@ -95,7 +95,7 @@ return {
 							php = { "html", "css", "javascript" },
 						},
 						ignored_filetypes = {},
-						get_filetype = function(context)
+						get_filetype = function(ctx)
 							return vim.bo.filetype
 						end,
 					},
@@ -107,7 +107,7 @@ return {
 		-- Style
 		completion = {
 			menu = {
-				border = "single",
+				border = "rounded",
 				draw = {
 					components = {
 						kind_icon = {
@@ -139,7 +139,9 @@ return {
 		-- Experimental signature help support
 		signature = {
 			enabled = true,
-			window = { border = "single" },
+			window = {
+				border = "rounded",
+			},
 		},
 	},
 	opts_extend = { "sources.default" },
