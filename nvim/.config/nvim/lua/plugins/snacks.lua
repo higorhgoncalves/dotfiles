@@ -18,14 +18,93 @@ return {
 		},
 		dim = { enabled = true },
 		git = { enabled = true },
-		notifier = { enabled = true, timeout = 3000, style = "fancy" },
 		input = { enabled = true },
-		-- statuscolumn = { enabled = true },
-		words = { enabled = true },
-		toggle = { enabled = true },
 		lazygit = { enabled = true },
+		notifier = { enabled = true, timeout = 3000, style = "fancy" },
+		scratch = {
+			enabled = true,
+			-- name = "SCRATCH",
+			ft = function()
+				if vim.bo.buftype == "" and vim.bo.filetype ~= "" then
+					return vim.bo.filetype
+				end
+				return "markdown"
+			end,
+			-- icon = nil,
+			-- root = vim.fn.stdpath("data") .. "/scratch",
+			-- autowrite = true,
+			-- filekey = {
+			-- 	cwd = true,
+			-- 	branch = true,
+			-- 	count = true,
+			-- },
+			win = {
+				keys = {
+					["execute"] = {
+						"<cr>",
+						function()
+							vim.cmd("%SnipRun")
+						end,
+						desc = "Execute buffer",
+						mode = { "n", "x" },
+					},
+				},
+			},
+			win_by_ft = {
+				lua = {
+					keys = {
+						["source"] = {
+							"<cr>",
+							function(self)
+								local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
+								Snacks.debug.run({ buf = self.buf, name = name })
+							end,
+							desc = "Source buffer",
+							mode = { "n", "x" },
+						},
+						["execute"] = {
+							"e",
+							function()
+								vim.cmd("%SnipRun")
+							end,
+							desc = "Execute buffer",
+							mode = { "n", "x" },
+						},
+					},
+				},
+				php = {
+					keys = {
+						["execute"] = {
+							"<cr>",
+							function()
+								vim.cmd("%SnipRun")
+							end,
+							desc = "Execute buffer",
+							mode = { "n", "x" },
+						},
+					},
+				},
+			},
+		},
+		-- statuscolumn = { enabled = true },
+		toggle = { enabled = true },
+		words = { enabled = true },
 	},
 	keys = {
+		{
+			"<leader>.",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>S",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
+		},
 		{
 			"<leader>rR",
 			function()
