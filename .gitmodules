@@ -4,3 +4,6 @@
 [submodule "nvim-kickstart/.config/nvim-kickstart"]
 	path = nvim-kickstart/.config/nvim-kickstart
 	url = https://github.com/nvim-lua/kickstart.nvim.git
+[submodule "nvim-lazyvim/.config/nvim-lazyvim"]
+	path = nvim-lazyvim/.config/nvim-lazyvim
+	url = https://github.com/LazyVim/starter
