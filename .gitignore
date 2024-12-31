@@ -1,5 +1,5 @@
 **/lazy-lock.json
-**/plugins/tmux-cpu
-**/plugins/tmux-battery
-**/plugins/tmux
-**/plugins/vim-tmux-navigator
+**/plugins/tmux-cpu/**
+**/plugins/tmux-battery/**
+**/plugins/tmux/**
+**/plugins/vim-tmux-navigator/**
