@@ -73,7 +73,7 @@ return {
 				then
 					return { "buffer" }
 				else
-					return { "lsp", "path", "snippets", "buffer" }
+					return { "lsp", "path", "snippets", "buffer", "dadbod" }
 				end
 			end,
 			providers = {
@@ -99,6 +99,10 @@ return {
 							return vim.bo.filetype
 						end,
 					},
+				},
+				dadbod = {
+					name = "Dadbod",
+					module = "vim_dadbod_completion.blink",
 				},
 			},
 			cmdline = {},
