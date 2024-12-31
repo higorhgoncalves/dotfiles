@@ -83,7 +83,18 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics", { "macro-recording", fmt = show_macro_recording } },
-					lualine_c = { "filename", "harpoon2" },
+					lualine_c = {
+						{
+							"harpoon2",
+							icon = "",
+							-- indicators = { "a", "s", "q", "w" },
+							-- active_indicators = { "A", "S", "Q", "W" },
+							color_active = { fg = "#00ff00" },
+							_separator = " ",
+							-- no_harpoon = "Harpoon not loaded",
+						},
+						"filename",
+					},
 					lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
