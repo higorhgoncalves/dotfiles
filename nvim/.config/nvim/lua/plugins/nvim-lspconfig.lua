@@ -22,7 +22,7 @@ return {
 						},
 					},
 				},
-				phpactor = {},
+				-- phpactor = {},
 				html = {},
 				cssls = {},
 				biome = {},
@@ -35,16 +35,16 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"intelephense",
-					"phpactor",
+					-- "phpactor",
 					"html",
 					"biome",
 					"cssls",
 				},
-				handlers = {
-					function(server_name)
-						require("lspconfig")[server_name].setup({})
-					end,
-				},
+				-- handlers = {
+				-- 	function(server_name)
+				-- 		require("lspconfig")[server_name].setup({})
+				-- 	end,
+				-- },
 			})
 
 			-- Autocomandos para LSP actions
