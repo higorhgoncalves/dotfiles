@@ -23,21 +23,12 @@ return {
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
 		scratch = {
 			enabled = true,
-			-- name = "SCRATCH",
 			ft = function()
 				if vim.bo.buftype == "" and vim.bo.filetype ~= "" then
 					return vim.bo.filetype
 				end
 				return "markdown"
 			end,
-			-- icon = nil,
-			-- root = vim.fn.stdpath("data") .. "/scratch",
-			-- autowrite = true,
-			-- filekey = {
-			-- 	cwd = true,
-			-- 	branch = true,
-			-- 	count = true,
-			-- },
 			win = {
 				keys = {
 					["execute"] = {
