@@ -7,3 +7,9 @@
 [submodule "nvim-lazyvim/.config/nvim-lazyvim"]
 	path = nvim-lazyvim/.config/nvim-lazyvim
 	url = https://github.com/LazyVim/starter
+[submodule "nvim-nv/.config/nvim-nv"]
+	path = nvim-nv/.config/nvim-nv
+	url = https://github.com/NvChad/starter
+[submodule "nvim-astro/.config/nvim-astro"]
+	path = nvim-astro/.config/nvim-astro
+	url = https://github.com/AstroNvim/template
