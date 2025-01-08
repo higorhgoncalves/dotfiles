@@ -65,7 +65,7 @@ return {
 					local _ = ctx
 					local success, node = pcall(vim.treesitter.get_node)
 					if vim.bo.filetype == "lua" then
-						return { "lazydev", "lsp", "path", "snippets", "buffer", "luasnip" }
+						return { "lazydev", "lsp", "path", "snippets", "buffer" }
 					elseif
 						success
 						and node
@@ -73,7 +73,7 @@ return {
 					then
 						return { "buffer" }
 					else
-						return { "lazydev", "lsp", "path", "snippets", "buffer", "luasnip", "dadbod" }
+						return { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod" }
 					end
 				end,
 				providers = {
@@ -100,21 +100,21 @@ return {
 						end,
 						-- score_offset = 90,
 					},
-					luasnip = {
-						name = "luasnip",
-						enabled = true,
-						module = "blink.cmp.sources.luasnip",
-						min_keyword_length = 2,
-						fallbacks = { "snippets" },
-						score_offset = 85,
-						max_items = 8,
-						opts = {
-							-- Whether to use show_condition for filtering snippets
-							use_show_condition = true,
-							-- Whether to show autosnippets in the completion list
-							show_autosnippets = true,
-						},
-					},
+					-- luasnip = {
+					-- 	name = "luasnip",
+					-- 	enabled = true,
+					-- 	module = "blink.cmp.sources.luasnip",
+					-- 	min_keyword_length = 2,
+					-- 	fallbacks = { "snippets" },
+					-- 	score_offset = 85,
+					-- 	max_items = 8,
+					-- 	opts = {
+					-- 		-- Whether to use show_condition for filtering snippets
+					-- 		use_show_condition = true,
+					-- 		-- Whether to show autosnippets in the completion list
+					-- 		show_autosnippets = true,
+					-- 	},
+					-- },
 					path = {
 						name = "Path",
 						module = "blink.cmp.sources.path",
@@ -122,7 +122,7 @@ return {
 						-- When typing a path, I would get snippets and text in the
 						-- suggestions, I want those to show only if there are no path
 						-- suggestions
-						fallbacks = { "luasnip", "buffer" },
+						fallbacks = { "buffer" },
 						opts = {
 							trailing_slash = false,
 							label_trailing_slash = true,
@@ -181,18 +181,19 @@ return {
 			},
 
 			snippets = {
-				expand = function(snippet)
-					require("luasnip").lsp_expand(snippet)
-				end,
-				active = function(filter)
-					if filter and filter.direction then
-						return require("luasnip").jumpable(filter.direction)
-					end
-					return require("luasnip").in_snippet()
-				end,
-				jump = function(direction)
-					require("luasnip").jump(direction)
-				end,
+				-- expand = function(snippet)
+				-- 	require("luasnip").lsp_expand(snippet)
+				-- end,
+				-- active = function(filter)
+				-- 	if filter and filter.direction then
+				-- 		return require("luasnip").jumpable(filter.direction)
+				-- 	end
+				-- 	return require("luasnip").in_snippet()
+				-- end,
+				-- jump = function(direction)
+				-- 	require("luasnip").jump(direction)
+				-- end,
+				preset = "default",
 			},
 
 			-- Style
