@@ -1,11 +1,4 @@
 return {
-	-- { -- Add indentation guides even on blank lines
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	-- Enable `lukas-reineke/indent-blankline.nvim`
-	-- 	-- See `:help ibl`
-	-- 	main = "ibl",
-	-- 	opts = {},
-	-- },
 	{
 		"mg979/vim-visual-multi",
 	},
@@ -68,12 +61,16 @@ return {
 					"prettier",
 					stop_after_first = true,
 				},
-				php = {
-					"pretty-php",
-					"pint",
-					"php-cs-fixer",
+				json = {
+					"prettier",
 					stop_after_first = true,
 				},
+				-- php = {
+				-- 	"pretty-php",
+				-- 	"pint",
+				-- 	"php-cs-fixer",
+				-- 	stop_after_first = true,
+				-- },
 			},
 			formatters = {
 				prettierd = {
