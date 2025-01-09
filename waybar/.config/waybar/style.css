@@ -15,8 +15,8 @@
 
 window#waybar {
   background: @crust;
-  border: 2px solid @mauve;
-  border-radius: 13px;
+  /* border: 2px solid @mauve; */
+  /* border-radius: 13px; */
 }
 
 tooltip {
