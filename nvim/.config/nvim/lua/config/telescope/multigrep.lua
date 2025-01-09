@@ -8,6 +8,7 @@ local M = {}
 local live_multigrep = function(opts)
 	opts = opts or {}
 	opts.cwd = opts.cwd or vim.uv.cwd()
+	opts.file_encoding = "latin1"
 
 	local finder = finders.new_async_job({
 		command_generator = function(prompt)
@@ -27,8 +28,7 @@ local live_multigrep = function(opts)
 				table.insert(args, pieces[2])
 			end
 
-			---@diagnostic disable-next-line: deprecated
-			return vim.tbl_flatten({
+			return vim.iter({
 				args,
 				{
 					"--color=never",
@@ -40,6 +40,8 @@ local live_multigrep = function(opts)
 					"--hidden",
 				},
 			})
+				:flatten()
+				:totable()
 		end,
 		entry_maker = make_entry.gen_from_vimgrep(opts),
 		cwd = opts.cwd,
