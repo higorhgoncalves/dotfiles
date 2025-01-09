@@ -54,8 +54,8 @@ return {
 		-- end
 
 		-- Keybindings
-		vim.keymap.set("n", "<leader>wf", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
-		vim.keymap.set("n", "<leader>wc", function()
+		vim.keymap.set("n", "<leader>wb", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
+		vim.keymap.set("n", "<leader>wf", function()
 			local MiniFiles = require("mini.files")
 			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
 			vim.defer_fn(function()
