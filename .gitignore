@@ -3,8 +3,8 @@
 **/plugins/tmux-battery
 **/plugins/tmux
 **/plugins/vim-tmux-navigator
-nvim-astro/.config/nvim-astro
-nvim-kickstart/.config/nvim-kickstart
-nvim-lazyvim/.config/nvim-lazyvim
-nvim-nv/.config/nvim-nv
-tmux/.tmux/plugins/tpm
+nvim-astro/.config
+nvim-kickstart/.config
+nvim-lazyvim/.config
+nvim-nv/.config
+tmux/.tmux
