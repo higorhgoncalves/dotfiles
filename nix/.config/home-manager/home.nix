@@ -188,10 +188,10 @@
 
       alias ls="eza"
       alias cd="z"
-      alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
-      alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
-      alias nvim-nv='NVIM_APPNAME="nvim-nv" nvim'
-      alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
+      # alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+      # alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
+      # alias nvim-nv='NVIM_APPNAME="nvim-nv" nvim'
+      # alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
 
       # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
