@@ -4,7 +4,10 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			{ "L3MON4D3/LuaSnip", version = "v2.*" },
+			-- {
+			-- 	"L3MON4D3/LuaSnip",
+			-- 	version = "v2.*",
+			-- },
 		},
 
 		-- use a release tag to download pre-built binaries
@@ -47,11 +50,13 @@ return {
 				end,
 				per_filetype = {
 					lua = { "lsp", "path", "snippets", "buffer" },
+					php = { "snippets" },
 				},
 				providers = {
 					lsp = {
 						name = "LSP",
 						module = "blink.cmp.sources.lsp",
+						fallbacks = { "snippets", "buffer" },
 						-- Filter text items from the LSP provider, since we have the buffer provider for that
 						transform_items = function(_, items)
 							for _, item in ipairs(items) do
@@ -97,21 +102,23 @@ return {
 						module = "blink.cmp.sources.snippets",
 						score_offset = 85,
 						opts = {
-							friendly_snippets = true,
-							global_snippets = { "all" },
-							extended_filetypes = {
-								php = {
-									"html",
-									-- "css",
-									-- "javascript"
-								},
-							},
-							ignored_filetypes = {},
-							get_filetype = function(ctx)
-								local _ = ctx
-								return vim.bo.filetype
-							end,
+							-- Whether to use show_condition for filtering snippets
+							-- use_show_condition = true,
+							-- Whether to show autosnippets in the completion list
+							show_autosnippets = true,
 						},
+						-- opts = {
+						-- 	friendly_snippets = true,
+						-- 	global_snippets = { "all" },
+						-- 	extended_filetypes = {
+						-- 		php = { "html", "css", "javascript" },
+						-- 	},
+						-- 	ignored_filetypes = {},
+						-- 	get_filetype = function(ctx)
+						-- 		local _ = ctx
+						-- 		return vim.bo.filetype
+						-- 	end,
+						-- },
 					},
 					dadbod = {
 						name = "Dadbod",
@@ -132,24 +139,19 @@ return {
 			})
 
 			opts.snippets = {
-				preset = "default",
+				-- preset = "default",
+				preset = "luasnip",
 				-- Function to use when expanding LSP provided snippets
 				expand = function(snippet)
-					-- vim.snippet.expand(snippet)
-					require("luasnip").lsp_expand(snippet)
+					vim.snippet.expand(snippet)
 				end,
 				-- Function to use when checking if a snippet is active
 				active = function(filter)
-					-- return vim.snippet.active(filter)
-					if filter and filter.direction then
-						return require("luasnip").jumpable(filter)
-					end
-					return require("luasnip").in_snippet()
+					return vim.snippet.active(filter)
 				end,
 				-- Function to use when jumping between tab stops in a snippet, where direction can be negative or positive
 				jump = function(direction)
-					-- vim.snippet.jump(direction)
-					require("luasnip").jump(direction)
+					vim.snippet.jump(direction)
 				end,
 			}
 
