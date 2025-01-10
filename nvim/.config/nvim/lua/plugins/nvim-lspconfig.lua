@@ -22,7 +22,7 @@ return {
 						},
 					},
 				},
-				-- phpactor = {},
+				phpactor = {},
 				html = {},
 				cssls = {},
 				biome = {},
@@ -35,7 +35,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"intelephense",
-					-- "phpactor",
+					"phpactor",
 					"html",
 					"biome",
 					"cssls",

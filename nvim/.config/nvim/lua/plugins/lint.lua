@@ -8,7 +8,7 @@ return {
 			lint.linters_by_ft = {
 				markdown = { "markdownlint" },
 				-- php = { 'phpcs' },
-				php = { "tlint" },
+				-- php = { "tlint" },
 			}
 
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,
