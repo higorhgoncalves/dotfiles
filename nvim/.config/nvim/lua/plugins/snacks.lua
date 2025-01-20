@@ -15,6 +15,38 @@ return {
 				{ section = "keys" },
 				{ section = "startup" },
 			},
+			preset = {
+				keys = {
+					{
+						icon = " ",
+						key = "f",
+						desc = "Find File",
+						action = ":Telescope find_files file_encoding=latin1",
+					},
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						desc = "Find Text",
+						action = ":Telescope live_grep file_encoding=latin1",
+					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":Telescope oldfiles file_encoding=latin1",
+					},
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua require('telescope.builtin').find_files {cwd = vim.fn.stdpath('config')}",
+					},
+					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{ icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+			},
 		},
 		dim = { enabled = true },
 		git = { enabled = true },
@@ -77,7 +109,20 @@ return {
 				},
 			},
 		},
-		-- statuscolumn = { enabled = true },
+		statuscolumn = {
+			enabled = true,
+			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+			right = { "fold", "git" }, -- priority of signs on the right (high to low)
+			folds = {
+				open = true, -- show open fold icons
+				git_hl = true, -- use Git Signs hl for fold icons
+			},
+			git = {
+				-- patterns to match Git signs
+				patterns = { "GitSign", "MiniDiffSign" },
+			},
+			refresh = 50,
+		},
 		toggle = { enabled = true },
 		words = { enabled = true },
 	},
@@ -151,6 +196,52 @@ return {
 				Snacks.notifier.hide()
 			end,
 			desc = "Dismiss All Notifications",
+		},
+		{
+			"<leader>fn",
+			function(opts)
+				local pickers = require("telescope.pickers")
+				local finders = require("telescope.finders")
+				-- local make_entry = require("telescope.make_entry")
+				local previewers = require("telescope.previewers")
+				local conf = require("telescope.config").values
+
+				opts = opts or {}
+				local notifications = {}
+				for k, v in pairs(Snacks.notifier.get_history()) do
+					-- table.insert(notifications, v["icon"] .. v["level"] .. ": " .. v["msg"])
+					table.insert(
+						notifications,
+						table.concat({
+							v["icon"],
+							v["level"],
+							": ",
+							v["msg"],
+						})
+					)
+					-- for key, values in pairs(v) do
+					-- 	Snacks.notify.notify(key)
+					-- end
+				end
+
+				pickers
+					.new(opts, {
+						prompt_title = "Notification History",
+						finder = finders.new_table({
+							results = notifications,
+						}),
+						sorter = conf.generic_sorter(opts),
+						previewer = conf.grep_previewer(opts),
+						-- previewer = previewers.new_buffer_previewer({
+						-- 	title = "Minha visualização",
+						-- 	define_preview = function(self, entry, status)
+						-- 		vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, { "linha 1", "linha 2" })
+						-- 	end,
+						-- }),
+					})
+					:find()
+			end,
+			desc = "Find in Notification History",
 		},
 	},
 	init = function()
