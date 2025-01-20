@@ -186,6 +186,7 @@
       bind \cr _atuin_search
       bind -M insert \cr _atuin_search
 
+      alias gnome-control-center="XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center"
       alias ls="eza"
       alias cd="z"
       # alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
