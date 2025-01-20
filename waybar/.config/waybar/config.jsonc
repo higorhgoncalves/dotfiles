@@ -3,23 +3,23 @@
     // sourced from header module //
     "layer": "top",
     "position": "top",
-    "mod": "dock",
+    // "mod": "dock",
     // "margin-left": 10,
     // "margin-right": 10,
     // "margin-top": 7,
     // "margin-bottom": 0,
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "reload_style_on_change": true,
+    // "exclusive": true,
+    // "passthrough": false,
+    // "gtk-layer-shell": true,
+    // "reload_style_on_change": true,
     // positions generated based on config.ctl //
     "modules-left": [
         "custom/smallspacer",
         "hyprland/workspaces",
         "custom/smallspacer",
         "hyprland/window",
-        "custom/spacer",
-        "mpris"
+        "custom/spacer"
+        // "mpris"
     ],
     "modules-center": [
         "custom/padd",
@@ -107,19 +107,19 @@
             "󰪥"
         ],
     },
-    "mpris": {
-        "format": "{player_icon} {dynamic}",
-        "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
-        "max-length": 30,
-        "player-icons": {
-            "default": "⏸",
-            "mpv": "🎵"
-        },
-        "status-icons": {
-            "paused": "▶"
-        },
-        // "ignored-players": ["firefox"]
-    },
+    // "mpris": {
+    //     "format": "{player_icon} {dynamic}",
+    //     "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
+    //     "max-length": 30,
+    //     "player-icons": {
+    //         "default": "⏸",
+    //         "mpv": "🎵"
+    //     },
+    //     "status-icons": {
+    //         "paused": "▶"
+    //     },
+    //     // "ignored-players": ["firefox"]
+    // },
     "tray": {
         "icon-size": 16,
         "rotate": 0,
@@ -143,26 +143,6 @@
         "format": "󰅃",
         "rotate": 90,
     },
-    // "custom/notification": {
-    //     "tooltip": false,
-    //     "format": "{icon}",
-    //     "format-icons": {
-    //         "notification": "󰅸",
-    //         "none": "󰂜",
-    //         "dnd-notification": "󰅸",
-    //         "dnd-none": "󱏨",
-    //         "inhibited-notification": "󰅸",
-    //         "inhibited-none": "󰂜",
-    //         "dnd-inhibited-notification": "󰅸",
-    //         "dnd-inhibited-none": "󱏨"
-    //     },
-    //     "return-type": "json",
-    //     "exec-if": "which swaync-client",
-    //     "exec": "swaync-client -swb",
-    //     "on-click-right": "swaync-client -d -sw",
-    //     "on-click": "swaync-client -t -sw",
-    //     "escape": true
-    // },
     "custom/notification": {
 		"format": "{icon}",
 		"format-icons": {
@@ -184,16 +164,16 @@
     "custom/power": {
 		"format": "󰐥 ",
 		"tooltip": false,
-        "on-click": "nwg-bar",
-		// "menu": "on-click",
-		// "menu-file": "~/.config/waybar/components/power_menu.xml",
-		// "menu-actions": {
-		// 	"lock": "loginctl lock-session",
-		// 	"shutdown": "poweroff",
-		// 	"reboot": "reboot",
-		// 	"suspend": "systemctl suspend",
-		// 	"hibernate": "systemctl hibernate"
-		// }
+        // "on-click": "nwg-bar",
+		"menu": "on-click",
+		"menu-file": "~/.config/waybar/components/power_menu.xml",
+		"menu-actions": {
+			"lock": "loginctl lock-session",
+			"shutdown": "poweroff",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			// "hibernate": "systemctl hibernate"
+		}
 	},
     "hyprland/window": {
         //"format": "{}"   // <--- these is the default value  
