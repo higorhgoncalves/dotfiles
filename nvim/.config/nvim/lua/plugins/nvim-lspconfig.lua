@@ -10,6 +10,15 @@ return {
 			servers = {
 				lua_ls = {},
 				intelephense = {
+					environment = {
+						includePaths = {
+							-- vim.fn.expand("$HOME/docker-lw/html/classes/vendor"),
+							"/home/administrador/docker-lw/html/classes",
+							"/home/administrador/docker-lw/html/classes/**",
+							"/home/administrador/docker-lw/html/classes/vendor",
+							"/home/administrador/docker-lw/html/classes/src",
+						},
+					},
 					single_file_support = false,
 					init_options = {
 						licenceKey = "/home/administrador/intelephense/key.txt",
