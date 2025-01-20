@@ -3,7 +3,9 @@ return {
 		"nvim-telescope/telescope.nvim",
 		-- tag = '0.1.8',
 		dependencies = {
+			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-media-files.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		keys = {
@@ -35,7 +37,7 @@ return {
 				"<cmd>Telescope oldfiles file_encoding=latin1<cr>",
 				desc = "Find in previously open files",
 			},
-			{ "<leader>fn", "<cmd>Telescope notify file_encoding=latin1<cr>", desc = "Find notifications" },
+			-- { "<leader>fn", "<cmd>Telescope notify file_encoding=latin1<cr>", desc = "Find notifications" },
 			{ "<leader>fD", "<cmd>Telescope diagnostics file_encoding=latin1<cr>", desc = "Find LSP diagnostics" },
 			{
 				"<leader>fI",
@@ -132,10 +134,18 @@ return {
 				},
 				extensions = {
 					"fzf",
+					media_files = {
+						-- filetypes whitelist
+						-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+						-- filetypes = { "png", "webp", "jpg", "jpeg" },
+						-- find command (defaults to `fd`)
+						find_cmd = "rg",
+					},
 				},
 			})
 
 			telescope.load_extension("fzf")
+			telescope.load_extension("media_files")
 
 			-- local builtin = require('telescope.builtin')
 			-- vim.keymap.set('n', '<leader>fc', function () builtin.find_files { cwd = vim.fn.stdpath("config") } end, { desc = 'Find in config' })
