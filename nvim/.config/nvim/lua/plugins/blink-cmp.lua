@@ -4,6 +4,7 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			"rafamadriz/friendly-snippets",
+			"giuxtaposition/blink-cmp-copilot",
 			{ "L3MON4D3/LuaSnip", version = "v2.*" },
 		},
 
@@ -25,7 +26,37 @@ return {
 				-- Will be removed in a future release
 				use_nvim_cmp_as_default = true,
 				kind_icons = {
-					Color = "██",
+					Copilot = " ",
+					Text = "󰉿 ",
+					Method = "󰊕 ",
+					Function = "󰊕 ",
+					Constructor = "󰒓 ",
+
+					Field = "󰜢 ",
+					Variable = "󰆦 ",
+					Property = "󰖷 ",
+
+					Class = "󱡠 ",
+					Interface = "󱡠 ",
+					Struct = "󱡠 ",
+					Module = "󰅩 ",
+
+					Unit = "󰪚 ",
+					Value = "󰦨 ",
+					Enum = "󰦨 ",
+					EnumMember = "󰦨 ",
+
+					Keyword = "󰻾 ",
+					Constant = "󰏿 ",
+
+					Snippet = "󱄽 ",
+					Color = "󰏘 ",
+					File = "󰈔 ",
+					Reference = "󰬲 ",
+					Folder = "󰉋 ",
+					Event = "󱐋 ",
+					Operator = "󰪚 ",
+					TypeParameter = "󰬛 ",
 				},
 			}
 
@@ -42,7 +73,7 @@ return {
 					then
 						return { "buffer" }
 					else
-						return { "lsp", "path", "snippets", "buffer", "dadbod" }
+						return { "lsp", "path", "snippets", "buffer", "dadbod", "copilot" }
 					end
 				end,
 				per_filetype = {
@@ -118,6 +149,12 @@ return {
 						module = "vim_dadbod_completion.blink",
 						score_offset = 85,
 					},
+					copilot = {
+						name = "copilot",
+						module = "blink-cmp-copilot",
+						score_offset = 100,
+						async = true,
+					},
 				},
 				cmdline = function()
 					local type = vim.fn.getcmdtype()
@@ -141,10 +178,11 @@ return {
 				-- Function to use when checking if a snippet is active
 				active = function(filter)
 					-- return vim.snippet.active(filter)
-					if filter and filter.direction then
-						return require("luasnip").jumpable(filter)
-					end
-					return require("luasnip").in_snippet()
+					-- if filter and filter.direction then
+					-- 	return require("luasnip").jumpable(filter)
+					-- end
+					-- return require("luasnip").in_snippet()
+					return require("luasnip").jumpable(filter)
 				end,
 				-- Function to use when jumping between tab stops in a snippet, where direction can be negative or positive
 				jump = function(direction)
@@ -155,6 +193,11 @@ return {
 
 			-- Style
 			opts.completion = {
+				-- accept = {
+				-- 	auto_brackets = {
+				-- 		enabled = true,
+				-- 	},
+				-- },
 				menu = {
 					border = "rounded",
 					draw = {
