@@ -55,6 +55,8 @@ return {
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>u", group = "[U]Toggle" },
 				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
+				{ "<BS>", desc = "Decrement Selection", mode = "x" },
+				{ "<c-space>", desc = "Increment Selection", mode = { "x", "n" } },
 			},
 		},
 		keys = {
