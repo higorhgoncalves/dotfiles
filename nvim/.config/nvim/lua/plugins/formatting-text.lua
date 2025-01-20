@@ -2,12 +2,6 @@ return {
 	{
 		"mg979/vim-visual-multi",
 	},
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
