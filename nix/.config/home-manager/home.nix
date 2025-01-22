@@ -197,6 +197,7 @@
       # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
       set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
+      set -x TERM tmux-256color
       thefuck --alias | source
       zoxide init fish | source
       end
