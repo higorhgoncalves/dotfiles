@@ -52,6 +52,25 @@ return {
 		dim = { enabled = true },
 		git = { enabled = true },
 		input = { enabled = true },
+		indent = {
+			enabled = true,
+			indent = {
+				char = "▏",
+				hl = {
+					"SnacksIndent1",
+					"SnacksIndent2",
+					"SnacksIndent3",
+					"SnacksIndent4",
+					"SnacksIndent5",
+					"SnacksIndent6",
+					"SnacksIndent7",
+					"SnacksIndent8",
+				},
+			},
+			scope = {
+				enabled = false, -- enable highlighting the current scope
+			},
+		},
 		lazygit = { enabled = true },
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
 		scratch = {
@@ -267,5 +286,21 @@ return {
 				Snacks.toggle.dim():map("<leader>uD")
 			end,
 		})
+
+		-- Ajustar os highlights usando a API Lua
+		-- vim.api.nvim_set_hl(0, "SnacksIndent1", { fg = "#E06C75" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent2", { fg = "#E5C07B" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent3", { fg = "#61AFEF" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent4", { fg = "#D19A66" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent5", { fg = "#98C379" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent6", { fg = "#C678DD" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent7", { fg = "#56B6C2" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent1", { fg = "#d20f39" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent2", { fg = "#df8e1d" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent3", { fg = "#1e66f5" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent4", { fg = "#fe640b" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent5", { fg = "#40a02b" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent6", { fg = "#8839ef" })
+		-- vim.api.nvim_set_hl(0, "SnacksIndent7", { fg = "#209fb5" })
 	end,
 }

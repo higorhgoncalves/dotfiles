@@ -63,6 +63,10 @@ return {
 			symbol = "▏",
 		})
 
+		-- Ajustar os highlights usando a API Lua
+		vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#7287FD", nocombine = true })
+		vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", { fg = "#8839ED", nocombine = true })
+
 		-- File browser
 		--
 		-- - <leader>mf - open file browser
