@@ -9,10 +9,13 @@ return {
 	},
 	cmd = "Neotree",
 	keys = {
-		{ "<C-b>", ":Neotree toggle<CR>", desc = "[B]rowse", silent = true },
-		{ "<leader>wt", ":Neotree toggle<CR>", desc = "Open Workspace File Tree", silent = true },
+		{ "<C-b>", ":Neotree filesystem reveal left<CR>", desc = "[B]rowse", silent = true },
+		-- { "<leader>wt", ":Neotree toggle<CR>", desc = "Open Workspace File Tree", silent = true },
 	},
 	opts = {
+		buffers = {
+			follow_current_file = { enabled = true },
+		},
 		filesystem = {
 			window = {
 				mappings = {
