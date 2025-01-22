@@ -24,6 +24,7 @@ return {
 						action = ":Telescope find_files file_encoding=latin1",
 					},
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{ icon = "󰙅 ", key = "e", desc = "Explore Files", action = ":lua MiniFiles.open()" },
 					{
 						icon = " ",
 						key = "g",
