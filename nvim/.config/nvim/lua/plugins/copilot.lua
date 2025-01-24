@@ -1,6 +1,21 @@
 return {
 	{
 		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_no_tab_map = true
+			vim.api.nvim_set_keymap("i", "<C-l>", "copilot#Accept()", { expr = true, silent = true, noremap = false })
+			vim.g.copilot_workspace_folders = {
+				"~/docker-lw/html/legisweb",
+				"~/docker-lw/html/classes",
+			}
+			-- <M-]> next suggestion
+			-- <M-[> previous suggestion
+			-- <C-]> dismiss suggestion
+			-- <C-l> accept suggestion
+			-- <M-Right> accept next word of the current suggestion
+			-- <M-C-Right> accept next line of the next suggestion
+			-- <M-\> open suggestion
+		end,
 	},
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
@@ -109,8 +124,37 @@ return {
 				height = 0.4,
 				row = 1,
 			},
+			prompts = {
+				Explain = {
+					prompt = "> /COPILOT_EXPLAIN\n\nEscreva uma explicação para o código selecionado em parágrafos de texto.",
+				},
+				Review = {
+					prompt = "> /COPILOT_REVIEW\n\nAnalise o código selecionado.",
+				},
+				Fix = {
+					prompt = "> /COPILOT_GENERATE\n\nHá um problema neste código. Reescreva o código corrigindo o erro.",
+				},
+				Optimize = {
+					prompt = "> /COPILOT_GENERATE\n\nOtimize o código selecionado para melhorar desempenho e legibilidade.",
+				},
+				Docs = {
+					prompt = "> /COPILOT_GENERATE\n\nAdicione comentários de documentação ao código selecionado.",
+				},
+				Tests = {
+					prompt = "> /COPILOT_GENERATE\n\nGere testes para o meu código.",
+				},
+				Commit = {
+					prompt = "> #git:staged\n\nEscreva uma mensagem de commit seguindo a convenção commitizen. O título deve ter no máximo 50 caracteres e o corpo deve ter quebras de linha a cada 72 caracteres. Coloque a mensagem completa em um bloco de código com a linguagem gitcommit.",
+				},
+			},
 		},
 		keys = {
+			{
+				"<leader>ccc",
+				":CopilotChat<CR>",
+				mode = { "n", "x" },
+				desc = "CopilotChat",
+			},
 			-- Quick chat with Copilot
 			{
 				"<leader>ccq",
