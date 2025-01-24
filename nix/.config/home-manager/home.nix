@@ -193,11 +193,14 @@
       # alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
       # alias nvim-nv='NVIM_APPNAME="nvim-nv" nvim'
       # alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
+      alias tmux-restore='tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
 
       # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
       set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
-      set -x TERM tmux-256color
+      set -x PATH $HOME/.config/herd-lite/bin $PATH
+      set -x TERM xterm-ghostty
+
       thefuck --alias | source
       zoxide init fish | source
       end
