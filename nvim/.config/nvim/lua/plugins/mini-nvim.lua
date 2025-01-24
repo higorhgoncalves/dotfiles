@@ -47,8 +47,6 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
-
-		require("mini.comment").setup()
 		require("mini.move").setup()
 		require("mini.operators").setup()
 		require("mini.icons").setup()
