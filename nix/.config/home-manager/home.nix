@@ -196,6 +196,7 @@
       alias tmux-restore='tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
 
       # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+      alias ghostty-ssh="TERM=xterm-256color ssh"
 
       set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
       set -x PATH $HOME/.config/herd-lite/bin $PATH
