@@ -37,6 +37,7 @@ return {
 				desc = "Document Auto Format (Formatter)",
 			},
 		},
+		-- optional = true,
 		opts = {
 			notify_on_error = false,
 			format_on_save = function(bufnr)
@@ -80,6 +81,13 @@ return {
 					"prettier",
 					stop_after_first = true,
 				},
+				sql = {
+					"sqlfluff",
+					-- "sqlfmt",
+				},
+				mysql = {
+					"sqlfluff",
+				},
 				-- php = {
 				-- 	"pretty-php",
 				-- 	"pint",
@@ -95,6 +103,13 @@ return {
 				},
 				prettier = {
 					append_args = { "--tab-width", "4" },
+				},
+				sqlfluff = { -- SQLFluff configuration
+					command = "sqlfluff",
+					args = { "fix", "-" }, -- -f forces formatting, "-" reads from stdin
+					stdin = true,
+					-- Optional: Add dialect (e.g., postgres, snowflake, bigquery)
+					-- args = { "fix", "-f", "--dialect", "postgres", "-" },
 				},
 			},
 		},
