@@ -35,6 +35,10 @@ return {
 				html = {},
 				cssls = {},
 				biome = {},
+				-- sqlls = {
+				-- 	cmd = { "sql-language-server", "up", "--method", "stdio" },
+				-- 	filetypes = { "sql", "mysql" },
+				-- },
 			},
 		},
 		config = function(_, opts)

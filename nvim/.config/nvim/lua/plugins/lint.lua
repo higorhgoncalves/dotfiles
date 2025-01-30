@@ -6,6 +6,7 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
+				sql = { "sqlfluff" },
 				markdown = { "markdownlint" },
 				-- php = { 'phpcs' },
 				-- php = { "tlint" },
