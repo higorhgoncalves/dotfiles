@@ -10,23 +10,28 @@ return {
 			servers = {
 				lua_ls = {},
 				intelephense = {
-					environment = {
-						includePaths = {
-							-- vim.fn.expand("$HOME/docker-lw/html/classes/vendor"),
-							"/home/administrador/docker-lw/html/classes",
-							"/home/administrador/docker-lw/html/classes/**",
-							"/home/administrador/docker-lw/html/classes/vendor",
-							"/home/administrador/docker-lw/html/classes/src",
-						},
-					},
-					single_file_support = false,
 					init_options = {
 						licenceKey = "/home/administrador/intelephense/key.txt",
 					},
 					settings = {
 						intelephense = {
+							environment = {
+								includePaths = {
+									-- Use Docker container paths if Intelephense runs inside container
+									"/home/administrador/docker-lw/html/classes",
+									-- "/home/administrador/docker-lw/html/classes/**",
+									-- "/home/administrador/docker-lw/html/classes/vendor",
+									-- "/home/administrador/docker-lw/html/classes/src",
+								},
+							},
 							files = {
 								maxSize = 5000000,
+							},
+							-- Add workspace settings if needed
+							workspace = {
+								-- Add other project roots if needed
+								-- "/var/www/html/intranet",
+								-- "/var/www/html/legisweb"
 							},
 						},
 					},
