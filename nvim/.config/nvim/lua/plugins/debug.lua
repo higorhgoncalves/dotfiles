@@ -141,7 +141,7 @@ return {
 			dap.adapters.php = {
 				type = "executable",
 				command = "node",
-				args = { "/home/administrador/vscode-php-debug/out/phpDebug.js" },
+				args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
 			}
 
 			dap.configurations.php = {
@@ -152,10 +152,35 @@ return {
 					port = 9003,
 					pathMappings = {
 						-- ["/var/www/html/"] = "${workspaceFolder}",
-						["/var/www/html/"] = "/home/administrador/docker-lw/html/",
+						-- ["/var/www/html/"] = "/home/administrador/docker-lw/html/",
+						["/var/www/html/intranet"] = "${workspaceFolder}",
+						["/var/www/html/legisweb"] = "${workspaceFolder}",
+						["/var/www/html/classes"] = "${workspaceFolder}",
 					},
 				},
 			}
+
+			-- dap.defaults.php.exception_breakpoints = {
+			-- 	"Notice",
+			-- 	"Warning",
+			-- 	"Error",
+			-- 	"Exception",
+			-- }
+		end,
+	},
+	{
+		"lucaSartore/nvim-dap-exception-breakpoints",
+		dependencies = { "mfussenegger/nvim-dap" },
+
+		config = function()
+			local set_exception_breakpoints = require("nvim-dap-exception-breakpoints")
+
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>,",
+				"",
+				{ desc = "Debug: Condition breakpoints", callback = set_exception_breakpoints }
+			)
 		end,
 	},
 }
