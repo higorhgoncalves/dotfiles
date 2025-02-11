@@ -10,13 +10,13 @@
   # certifique-se de verificar as notas de lançamento do Home Manager.
   home.stateVersion = "24.05"; # Leia o comentário antes de mudar.
 
-  home.keyboard = {
-    layout = "us";
-    variant = "alt-intl";
-    model = "";
-    options = "";
-    rules = "";
-  };
+  # home.keyboard = {
+  #   layout = "us";
+  #   variant = "alt-intl";
+  #   model = "";
+  #   options = "";
+  #   rules = "";
+  # };
   
   # Deixe o Home Manager instalar e gerenciar a si mesmo.
   programs.home-manager.enable = true;
@@ -35,6 +35,19 @@
             "a6f315b7231d44527e65901ff646f87d7f07862c87f33531daa109fb48c53db2"; # Substitua pelo hash correto
         };
       });
+    })
+    (pkgs.stdenv.mkDerivation {
+      name = "aparte";
+      src = pkgs.fetchFromGitHub {
+        owner = "paulfariello";
+        repo = "aparte";
+        rev = "develop";  # e.g., "main"
+        sha256 = "0mm9417w5d8s34vp200wd87rlljpq08rck99jfh5hf51xzhl9akx";  # Use `nix-prefetch-url --unpack <url>`
+      };
+      buildInputs = [ /* List dependencies here */ ];
+      installPhase = ''
+        make install PREFIX=$out
+      '';
     })
   ];
 
@@ -58,7 +71,7 @@
     # stow
     # git
     starship
-    # openvpn
+    openvpn
 
     # Pacotes de desenvolvimento
     # neovim
@@ -195,12 +208,12 @@
       # alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
       alias tmux-restore='tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
 
-      # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-      alias ghostty-ssh="TERM=xterm-256color ssh"
+      [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+      # alias ghostty-ssh="TERM=xterm-256color ssh"
 
       set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
       set -x PATH $HOME/.config/herd-lite/bin $PATH
-      set -x TERM xterm-ghostty
+      set -x TERM xterm-kitty
 
       thefuck --alias | source
       zoxide init fish | source
