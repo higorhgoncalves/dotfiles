@@ -47,10 +47,7 @@
     "upower": {
         "icon-size": 20,
         "format": "",
-        "format-alt": "{}<span color='orange'>[{time}]</span>",
-        "tooltip": true,
-        "tooltip-spacing": 20,
-        "on-click-right": "pkill waybar & hyprctl dispatch exec waybar"
+        "tooltip-format": "{} <span color='orange'>[{time}]</span>",
     },
     "upower#headset": {
         "format": " {percentage}",
