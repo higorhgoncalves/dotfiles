@@ -80,12 +80,36 @@ return {
 				},
 			},
 		},
+		config = function(_, opts)
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+			parser_config.blade = {
+				install_info = {
+					url = "https://github.com/EmranMR/tree-sitter-blade",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "blade",
+			}
+
+			vim.filetype.add({
+				pattern = {
+					[".*%.blade%.php"] = "blade",
+					[".*%.html"] = "htmldjango",
+					[".*%.html%.jinja"] = "htmldjango",
+					[".*%.html%.jinja2"] = "htmldjango",
+					[".*%.html%.j2"] = "htmldjango",
+				},
+			})
+
+			require("nvim-treesitter.configs").setup(opts)
+		end,
 	},
-	{
-		"windwp/nvim-ts-autotag",
-		-- event = "LazyFile",
-		opts = {},
-	},
+	-- {
+	-- 	"windwp/nvim-ts-autotag",
+	-- 	-- event = "LazyFile",
+	-- 	opts = {},
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
