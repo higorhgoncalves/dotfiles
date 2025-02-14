@@ -40,22 +40,6 @@ return {
 		-- optional = true,
 		opts = {
 			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true, php = true, lua = true }
-				local lsp_format_opt
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					lsp_format_opt = "never"
-				else
-					lsp_format_opt = "fallback"
-				end
-				return {
-					timeout_ms = 500,
-					lsp_format = lsp_format_opt,
-				}
-			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
@@ -82,18 +66,18 @@ return {
 					stop_after_first = true,
 				},
 				sql = {
-					"sqlfluff",
-					-- "sqlfmt",
+					-- "sqlfluff",
+					"sqlfmt",
 				},
-				mysql = {
-					"sqlfluff",
+				blade = {
+					"blade-formatter",
 				},
-				-- php = {
-				-- 	"pretty-php",
-				-- 	"pint",
-				-- 	"php-cs-fixer",
-				-- 	stop_after_first = true,
-				-- },
+				php = {
+					"pretty-php",
+					"pint",
+					"php-cs-fixer",
+					stop_after_first = true,
+				},
 			},
 			formatters = {
 				prettierd = {
@@ -104,13 +88,13 @@ return {
 				prettier = {
 					append_args = { "--tab-width", "4" },
 				},
-				sqlfluff = { -- SQLFluff configuration
-					command = "sqlfluff",
-					args = { "fix", "-" }, -- -f forces formatting, "-" reads from stdin
-					stdin = true,
-					-- Optional: Add dialect (e.g., postgres, snowflake, bigquery)
-					-- args = { "fix", "-f", "--dialect", "postgres", "-" },
-				},
+				-- sqlfluff = { -- SQLFluff configuration
+				-- 	command = "sqlfluff",
+				-- 	args = { "fix", "-" }, -- -f forces formatting, "-" reads from stdin
+				-- 	stdin = true,
+				-- 	-- Optional: Add dialect (e.g., postgres, snowflake, bigquery)
+				-- 	-- args = { "fix", "-f", "--dialect", "postgres", "-" },
+				-- },
 			},
 		},
 	},
