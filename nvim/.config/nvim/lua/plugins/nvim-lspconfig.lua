@@ -1,4 +1,13 @@
 return {
+    { "jwalton512/vim-blade" },
+    {
+        "NvChad/nvim-colorizer.lua",
+        opts = {
+            user_default_options = {
+                tailwind = true,
+            },
+        },
+    },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{
@@ -10,6 +19,7 @@ return {
 			servers = {
 				lua_ls = {},
 				intelephense = {
+                    filetypes = { "php", "blade", "php_only" },
 					init_options = {
 						licenceKey = "/home/administrador/intelephense/key.txt",
 					},
@@ -36,10 +46,23 @@ return {
 						},
 					},
 				},
+                stimulus_ls = {},
 				-- phpactor = {},
 				html = {},
 				cssls = {},
 				biome = {},
+                tailwindcss = {
+                    settings = {
+                        tailwindCSS = {
+                            experimental = {
+                                classRegex = {
+                                    "@?class\\(([^]*)\\)",
+                                    "'([^']*)'",
+                                },
+                            },
+                        },
+                    },
+                },
 				-- sqlls = {
 				-- 	cmd = { "sql-language-server", "up", "--method", "stdio" },
 				-- 	filetypes = { "sql", "mysql" },

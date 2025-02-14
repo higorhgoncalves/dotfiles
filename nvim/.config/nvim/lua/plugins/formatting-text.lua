@@ -71,6 +71,7 @@ return {
 				},
 				blade = {
 					"blade-formatter",
+                    "rustywind",
 				},
 				php = {
 					"pretty-php",
