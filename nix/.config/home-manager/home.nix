@@ -10,14 +10,6 @@
   # certifique-se de verificar as notas de lançamento do Home Manager.
   home.stateVersion = "24.05"; # Leia o comentário antes de mudar.
 
-  # home.keyboard = {
-  #   layout = "us";
-  #   variant = "alt-intl";
-  #   model = "";
-  #   options = "";
-  #   rules = "";
-  # };
-  
   # Deixe o Home Manager instalar e gerenciar a si mesmo.
   programs.home-manager.enable = true;
 
@@ -35,19 +27,6 @@
             "a6f315b7231d44527e65901ff646f87d7f07862c87f33531daa109fb48c53db2"; # Substitua pelo hash correto
         };
       });
-    })
-    (pkgs.stdenv.mkDerivation {
-      name = "aparte";
-      src = pkgs.fetchFromGitHub {
-        owner = "paulfariello";
-        repo = "aparte";
-        rev = "develop";  # e.g., "main"
-        sha256 = "0mm9417w5d8s34vp200wd87rlljpq08rck99jfh5hf51xzhl9akx";  # Use `nix-prefetch-url --unpack <url>`
-      };
-      buildInputs = [ /* List dependencies here */ ];
-      installPhase = ''
-        make install PREFIX=$out
-      '';
     })
   ];
 
