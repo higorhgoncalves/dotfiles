@@ -83,7 +83,7 @@ return {
 		-- Sessions
 		-- Save and restore your editing sessions
 		-- - :mksession - save session
-		require("mini.sessions").setup()
+		-- require("mini.sessions").setup()
 
 		-- Simple and easy statusline.
 		--  You could remove this setup call if you don't like it,
@@ -96,7 +96,7 @@ return {
 		-- You can configure sections in the statusline by overriding their
 		-- default behavior. For example, here we set the section for
 		-- cursor location to LINE:COLUMN
-		---@diagnostic disable-next-line: duplicate-set-field
+		-- ---@diagnostic disable-next-line: duplicate-set-field
 		-- statusline.section_location = function()
 		-- 	return "%2l:%-2v"
 		-- end
