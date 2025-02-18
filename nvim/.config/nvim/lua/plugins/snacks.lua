@@ -52,6 +52,7 @@ return {
 		dim = { enabled = true },
         explorer = {enabled = true,},
 		git = { enabled = true },
+        image = { enabled = true },
 		indent = {
 			enabled = true,
 			indent = {

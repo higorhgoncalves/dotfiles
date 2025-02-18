@@ -37,6 +37,7 @@ return {
             "php",
             "php_only",
             "query",
+            "regex",
             "sql",
             "typescript",
             "vim",
