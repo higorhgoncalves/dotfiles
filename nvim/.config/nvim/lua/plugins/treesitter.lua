@@ -1,9 +1,10 @@
 -- add more treesitter parsers
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })
-	end,
+	-- build = function()
+	-- 	require("nvim-treesitter.install").update({ with_sync = true })
+	-- end,
+    build = ":TSUpdate",
 	dependencies = {
 		{
 			"JoosepAlviste/nvim-ts-context-commentstring",
