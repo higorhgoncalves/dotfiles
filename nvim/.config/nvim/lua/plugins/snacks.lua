@@ -76,6 +76,10 @@ return {
 		lazygit = { enabled = true },
 		notifier = { enabled = true, timeout = 3000, style = "fancy" },
         picker = {
+            cmd = "rg",
+            args = {
+                "--encoding=latin1",
+            },
             hidden = true,
             follow = true,
             win = {
