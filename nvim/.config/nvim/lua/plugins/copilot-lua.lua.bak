@@ -1,0 +1,132 @@
+return {
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false,
+					auto_refresh = false,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-CR>",
+					},
+					layout = {
+						position = "bottom", -- | top | left | right | horizontal | vertical
+						ratio = 0.4,
+					},
+				},
+				suggestion = {
+					enabled = false,
+					auto_trigger = true,
+					hide_during_completion = true,
+					debounce = 75,
+					keymap = {
+						accept = "<C-l>",
+						accept_word = false,
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				filetypes = {
+					-- yaml = false,
+					-- markdown = false,
+					-- help = false,
+					-- gitcommit = false,
+					-- gitrebase = false,
+					-- hgcommit = false,
+					-- svn = false,
+					-- cvs = false,
+					-- ["."] = false,
+				},
+				copilot_node_command = "node", -- Node.js version must be > 18.x
+				server_opts_overrides = {},
+			})
+		end,
+	},
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "main",
+		dependencies = {
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			-- { "zbirenbaum/copilot.lua" },
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		build = "make tiktoken", -- Only on MacOS or Linux
+		opts = {
+			-- See Configuration section for options
+			mappings = {
+				submit_prompt = {
+					normal = "<Leader>s",
+					insert = "<C-s>",
+				},
+			},
+			window = {
+				layout = "float",
+				relative = "cursor",
+				width = 1,
+				height = 0.4,
+				row = 1,
+			},
+			prompts = {
+				Explain = {
+					prompt = "> /COPILOT_EXPLAIN\n\nEscreva uma explicação para o código selecionado em parágrafos de texto.",
+				},
+				Review = {
+					prompt = "> /COPILOT_REVIEW\n\nAnalise o código selecionado.",
+				},
+				Fix = {
+					prompt = "> /COPILOT_GENERATE\n\nHá um problema neste código. Reescreva o código corrigindo o erro.",
+				},
+				Optimize = {
+					prompt = "> /COPILOT_GENERATE\n\nOtimize o código selecionado para melhorar desempenho e legibilidade.",
+				},
+				Docs = {
+					prompt = "> /COPILOT_GENERATE\n\nAdicione comentários de documentação ao código selecionado.",
+				},
+				Tests = {
+					prompt = "> /COPILOT_GENERATE\n\nGere testes para o meu código.",
+				},
+				Commit = {
+					prompt = "> #git:staged\n\nEscreva uma mensagem de commit seguindo a convenção commitizen. O título deve ter no máximo 50 caracteres e o corpo deve ter quebras de linha a cada 72 caracteres. Coloque a mensagem completa em um bloco de código com a linguagem gitcommit.",
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>ccc",
+				":CopilotChat<CR>",
+				mode = { "n", "x" },
+				desc = "CopilotChat",
+			},
+			-- Quick chat with Copilot
+			{
+				"<leader>ccq",
+				function()
+					local input = vim.fn.input("Quick Chat: ")
+					if input ~= "" then
+						require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+					end
+				end,
+				mode = { "n", "x" },
+				desc = "CopilotChat - Quick chat",
+			},
+			{
+				"<leader>ccp",
+				function()
+					local actions = require("CopilotChat.actions")
+					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+				end,
+				mode = { "n", "x" },
+				desc = "CopilotChat - Prompt actions",
+			},
+		},
+		-- See Commands section for default commands if you want to lazy load on them
+	},
+}
