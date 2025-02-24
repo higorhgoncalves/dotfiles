@@ -8,7 +8,7 @@ return {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
             behaviour = {
-                auto_suggestions = true, -- Experimental stage
+                auto_suggestions = false, -- Experimental stage
             },
             mappings = {
                 diff = {
@@ -42,7 +42,7 @@ return {
                 },
             },
             suggestion = {
-                debounce = 600,
+                debounce = 400,
             },
         },
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
