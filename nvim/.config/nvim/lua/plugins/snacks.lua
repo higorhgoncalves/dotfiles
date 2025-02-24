@@ -140,6 +140,18 @@ return {
 						},
 					},
 				},
+				javascript = {
+					keys = {
+						["execute"] = {
+							"<cr>",
+							function()
+								vim.cmd("%SnipRun")
+							end,
+							desc = "Execute buffer",
+							mode = { "n", "x" },
+						},
+					},
+				},
 			},
 		},
 		statuscolumn = {
