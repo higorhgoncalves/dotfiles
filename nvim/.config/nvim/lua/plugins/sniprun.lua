@@ -28,6 +28,15 @@ return {
 						compiler = "", -- exactly one of those MUST be non-empty
 						-- boilerplate_pre = "<?php ",
 					},
+                    MyJSConfig = { -- any key name is ok
+						supported_filetypes = { "javascript" }, -- mandatory
+						extension = ".js", -- recommended, but not mandatory. Sniprun use this to create temporary files
+
+						interpreter = "node", -- interpreter or compiler (+ options if any)
+						compiler = "", -- exactly one of those MUST be non-empty
+						-- boilerplate_pre = "<?php ",
+					},
+
 				},
 			},
 			selected_interpreters = { "Generic" },
