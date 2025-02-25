@@ -69,10 +69,11 @@ return {
 
 			-- Document existing key chains
 			spec = {
-				{ "<BS>", desc = "Decrement Selection", mode = "x" },
-				{ "<c-space>", desc = "Increment Selection", mode = { "x", "n" } },
+				-- { "<BS>", desc = "Decrement Selection", mode = { "x", "n" } },
+				-- { "<C-space>", desc = "Increment Selection", mode = { "x", "n" } },
+				{ "<leader>a", group = "[A]vante", mode = { "n" } },
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>cc", group = "[C]opilot[C]hat", mode = { "n" } },
+				-- { "<leader>cc", group = "[C]opilot[C]hat", mode = { "n" } },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>dc", group = "[D]ocument [C]lipboard" },
 				{ "<leader>df", group = "[D]ocument [F]ormat" },
