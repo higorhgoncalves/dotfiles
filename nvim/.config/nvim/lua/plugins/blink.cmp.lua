@@ -35,9 +35,9 @@ return {
 
             ['<Up>'] = { 'select_prev', 'fallback' },
             ['<Down>'] = { 'select_next', 'fallback' },
-            -- ['<C-space>'] = {
-            --     function(cmp) cmp.show({ providers = { 'snippets' } }) end
-            -- },
+            ['<C-Space>'] = {
+                function(cmp) cmp.show({ providers = { 'snippets' } }) end
+            },
 
             ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
             ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
