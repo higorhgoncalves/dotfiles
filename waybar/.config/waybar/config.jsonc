@@ -69,6 +69,7 @@
     },
     "custom/smallspacer": {
         "format": " ",
+        "tooltip": false
     },
     "memory": {
         "interval": 1,
