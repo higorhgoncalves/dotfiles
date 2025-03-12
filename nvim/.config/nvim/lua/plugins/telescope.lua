@@ -11,81 +11,82 @@ return {
 		keys = {
 			{
 				"<leader>f/",
-				"<cmd>Telescope current_buffer_fuzzy_find file_encoding=latin1<cr>",
+				"<cmd>Telescope current_buffer_fuzzy_find<cr>",
 				desc = "Find in buffer",
 			},
-			{ "<leader>ff", "<cmd>Telescope find_files file_encoding=latin1<cr>", desc = "Find find files" },
-			{ "<leader>fg", "<cmd>Telescope live_grep file_encoding=latin1<cr>", desc = "Find live grep" },
-			{ "<leader>fb", "<cmd>Telescope buffers file_encoding=latin1<cr>", desc = "Find buffers" },
-			{ "<leader>fB", "<cmd>Telescope builtin file_encoding=latin1<cr>", desc = "Find built-in pickers" },
-			{ "<leader>fk", "<cmd>Telescope keymaps file_encoding=latin1<cr>", desc = "Find keymaps" },
+			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find find files" },
+			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find live grep" },
+			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+			{ "<leader>fB", "<cmd>Telescope builtin<cr>", desc = "Find built-in pickers" },
+			{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
 			{
 				"<leader>fC",
-				"<cmd>Telescope commands file_encoding=latin1<cr>",
+				"<cmd>Telescope commands<cr>",
 				desc = "Find available plugin/user commands",
 			},
 			{
 				"<leader>f:",
-				"<cmd>Telescope command_history file_encoding=latin1<cr>",
+				"<cmd>Telescope command_history<cr>",
 				desc = "Find commands that were executed recently",
 			},
-			{ "<leader>fq", "<cmd>Telescope quickfix file_encoding=latin1<cr>", desc = "Find in quickfix list" },
-			{ "<leader>fM", "<cmd>Telescope man_pages file_encoding=latin1<cr>", desc = "Find in manpage entries" },
-			{ "<leader>fh", "<cmd>Telescope help_tags file_encoding=latin1<cr>", desc = "Find help tags" },
+			{ "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Find in quickfix list" },
+			{ "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Find in manpage entries" },
+			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find help tags" },
 			{
 				"<leader>fo",
-				"<cmd>Telescope oldfiles file_encoding=latin1<cr>",
+				"<cmd>Telescope oldfiles<cr>",
 				desc = "Find in previously open files",
 			},
-			-- { "<leader>fn", "<cmd>Telescope notify file_encoding=latin1<cr>", desc = "Find notifications" },
-			{ "<leader>fD", "<cmd>Telescope diagnostics file_encoding=latin1<cr>", desc = "Find LSP diagnostics" },
-			{
-				"<leader>fI",
-				"<cmd>Telescope lsp_incoming_calls file_encoding=latin1<cr>",
-				desc = "Find LSP incoming calls",
-			},
-			{
-				"<leader>fO",
-				"<cmd>Telescope lsp_outgoing_calls file_encoding=latin1<cr>",
-				desc = "Find LSP outgoing calls",
-			},
-			{ "<leader>fd", "<cmd>Telescope lsp_definitions file_encoding=latin1<cr>", desc = "Find LSP definitions" },
-			{ "<leader>fr", "<cmd>Telescope lsp_references file_encoding=latin1<cr>", desc = "Find LSP references" },
-			{
-				"<leader>fi",
-				"<cmd>Telescope lsp_implementations file_encoding=latin1<cr>",
-				desc = "Find LSP implementations",
-			},
-			{
-				"<leader>ft",
-				"<cmd>Telescope lsp_type_definitions file_encoding=latin1<cr>",
-				desc = "Find LSP type definitions",
-			},
-			{
-				"<leader>fs",
-				"<cmd>Telescope lsp_document_symbols file_encoding=latin1<cr>",
-				desc = "Find LSP document symbols",
-			},
-			{
-				"<leader>fw",
-				"<cmd>Telescope lsp_workspace_symbols file_encoding=latin1<cr>",
-				desc = "Find LSP workspace symbols",
-			},
-			{
-				"<leader>fW",
-				"<cmd>Telescope lsp_dynamic_workspace_symbols file_encoding=latin1<cr>",
-				desc = "Find LSP dynamic workspace symbols",
-			},
-			{ "<leader>fGc", "<cmd>Telescope git_commits file_encoding=latin1<cr>", desc = "Find Git Commits" },
+            -- LSP
+			-- { "<leader>fn", "<cmd>Telescope notify<cr>", desc = "Find notifications" },
+			-- { "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Find LSP diagnostics" },
+			-- {
+			-- 	"<leader>fI",
+			-- 	"<cmd>Telescope lsp_incoming_calls<cr>",
+			-- 	desc = "Find LSP incoming calls",
+			-- },
+			-- {
+			-- 	"<leader>fO",
+			-- 	"<cmd>Telescope lsp_outgoing_calls<cr>",
+			-- 	desc = "Find LSP outgoing calls",
+			-- },
+			-- { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "Find LSP definitions" },
+			-- { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Find LSP references" },
+			-- {
+			-- 	"<leader>fi",
+			-- 	"<cmd>Telescope lsp_implementations<cr>",
+			-- 	desc = "Find LSP implementations",
+			-- },
+			-- {
+			-- 	"<leader>ft",
+			-- 	"<cmd>Telescope lsp_type_definitions<cr>",
+			-- 	desc = "Find LSP type definitions",
+			-- },
+			-- {
+			-- 	"<leader>fs",
+			-- 	"<cmd>Telescope lsp_document_symbols<cr>",
+			-- 	desc = "Find LSP document symbols",
+			-- },
+			-- {
+			-- 	"<leader>fw",
+			-- 	"<cmd>Telescope lsp_workspace_symbols<cr>",
+			-- 	desc = "Find LSP workspace symbols",
+			-- },
+			-- {
+			-- 	"<leader>fW",
+			-- 	"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+			-- 	desc = "Find LSP dynamic workspace symbols",
+			-- },
+			{ "<leader>fGc", "<cmd>Telescope git_commits<cr>", desc = "Find Git Commits" },
 			{
 				"<leader>fGC",
-				"<cmd>Telescope git_bcommits file_encoding=latin1<cr>",
+				"<cmd>Telescope git_bcommits<cr>",
 				desc = "Find Git Buffer's Commits",
 			},
-			{ "<leader>fGb", "<cmd>Telescope git_branches file_encoding=latin1<cr>", desc = "Find Git Branches" },
-			{ "<leader>fGs", "<cmd>Telescope git_status file_encoding=latin1<cr>", desc = "Find Git Status" },
-			{ "<leader>fGf", "<cmd>Telescope git_files file_encoding=latin1<cr>", desc = "Find Git Files" },
-			{ "<leader>fGa", "<cmd>Telescope git_stash file_encoding=latin1<cr>", desc = "Find Git Stash" },
+			{ "<leader>fGb", "<cmd>Telescope git_branches<cr>", desc = "Find Git Branches" },
+			{ "<leader>fGs", "<cmd>Telescope git_status<cr>", desc = "Find Git Status" },
+			{ "<leader>fGf", "<cmd>Telescope git_files<cr>", desc = "Find Git Files" },
+			{ "<leader>fGa", "<cmd>Telescope git_stash<cr>", desc = "Find Git Stash" },
 			{
 				"<leader>fc",
 				'<cmd>lua require("telescope.builtin").find_files { cwd = vim.fn.stdpath("config") }<cr>',
@@ -109,6 +110,7 @@ return {
 						"--line-number",
 						"--column",
 						"--smart-case",
+                        "--encoding=latin1",
 						-- "--hidden",
 					},
 					find_command = {
@@ -121,6 +123,18 @@ return {
 						"-E",
 						".git/*",
 					},
+                    file_encoding = "latin1",
+                    preview = {
+                        filesize_limit = 1, -- Ajuste conforme necessário
+                        -- Hook para configurar a codificação do buffer de preview
+                        file_encoding = "latin1",
+                        -- Forçar codificação via hook de buffer
+                        _setup = function(bufnr)
+                            vim.bo[bufnr].fileencoding = "latin1"
+                            ---@diagnostic disable-next-line: inject-field
+                            vim.bo[bufnr].fileencodings = "latin1"
+                        end
+                    },
 				},
 				pickers = {
 					find_files = {
@@ -144,13 +158,24 @@ return {
 				},
 			})
 
+            -- Adicione este autocomando para garantir a codificação
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "TelescopePreview",
+                callback = function(args)
+                    vim.bo[args.buf].fileencoding = "latin1"
+                    vim.bo[args.buf].fileencodings = "latin1"
+                end
+            })
+
 			telescope.load_extension("fzf")
 			telescope.load_extension("media_files")
 
 			-- local builtin = require('telescope.builtin')
 			-- vim.keymap.set('n', '<leader>fc', function () builtin.find_files { cwd = vim.fn.stdpath("config") } end, { desc = 'Find in config' })
 			-- vim.keymap.set('n', '<leader>fp', function () builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") } end, { desc = 'Find in packages' })
-			require("config.telescope.multigrep").setup()
+			require("config.telescope.multigrep").setup({
+                file_encoding = "latin1",
+            })
 
 			-- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 			-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
