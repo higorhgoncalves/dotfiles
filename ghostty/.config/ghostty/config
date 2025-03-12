@@ -23,4 +23,4 @@ gtk-single-instance=true
 
 keybind = super+shift+;=reload_config
 
-term = xterm
+term = xterm-ghostty
