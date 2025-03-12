@@ -8,7 +8,7 @@ local M = {}
 local live_multigrep = function(opts)
 	opts = opts or {}
 	opts.cwd = opts.cwd or vim.uv.cwd()
-	opts.file_encoding = "latin1"
+	opts.file_encoding = opts.file_encoding or nil
 
 	local finder = finders.new_async_job({
 		command_generator = function(prompt)
@@ -38,6 +38,7 @@ local live_multigrep = function(opts)
 					"--column",
 					"--smart-case",
 					"--hidden",
+                    opts.file_encoding and "--encoding=" .. opts.file_encoding or ""
 				},
 			})
 				:flatten()
@@ -58,10 +59,15 @@ local live_multigrep = function(opts)
 		:find()
 end
 
-M.setup = function()
-	vim.keymap.set("n", "<leader>fm", live_multigrep, { desc = "Find multi grep" })
-end
+-- M.setup = function()
+-- 	vim.keymap.set("n", "<leader>fm", live_multigrep, { desc = "Find multi grep" })
+-- end
 
--- live_multigrep()
+M.setup = function(user_opts)
+    user_opts = user_opts or {}
+    vim.keymap.set("n", "<leader>fm", function()
+        live_multigrep(user_opts)
+    end, { desc = "Find multi grep" })
+end
 
 return M
