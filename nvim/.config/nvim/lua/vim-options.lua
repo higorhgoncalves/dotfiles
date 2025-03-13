@@ -36,7 +36,7 @@ vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Navigate to the right pa
 
 -- Other keymaps
 vim.keymap.set("n", "<M-r>", ":set rnu! rnu?<CR>", { desc = "Toggle relative line numbers" })
-vim.keymap.set("n", "<leader>di", "gg=G", { desc = "Document Auto Indent" })
+vim.keymap.set("n", "<leader>dfi", "gg=G", { desc = "Document Auto Format (NVIM)" })
 vim.keymap.set("n", "<leader>dca", ":let @+ = expand('%:p')<CR>", { desc = "Document Clipboard Absolute Path" })
 vim.keymap.set("n", "<leader>dcr", ":let @+ = expand('%:.')<CR>", { desc = "Document Clipboard Relative Path" })
 vim.keymap.set("n", "<leader>dcf", ":let @+ = expand('%:t')<CR>", { desc = "Document Clipboard Filename" })
