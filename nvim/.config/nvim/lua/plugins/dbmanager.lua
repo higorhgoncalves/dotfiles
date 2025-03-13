@@ -5,7 +5,7 @@ return {
 		{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "mariadb", "plsql" }, lazy = true }, -- Optional
 	},
 	keys = {
-		{ "<leader>D", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
+		{ "<leader>uB", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
 	},
 	cmd = {
 		"DBUI",

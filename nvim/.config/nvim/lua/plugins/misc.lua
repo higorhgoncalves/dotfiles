@@ -21,7 +21,7 @@ return {
     {
         "mbbill/undotree",
         keys = {
-            { "<leader>du", ":UndotreeToggle<CR>:UndotreeFocus<CR>", desc = "Toggle undotree" },
+            { "<leader>uU", ":UndotreeToggle<CR>:UndotreeFocus<CR>", desc = "Toggle Undotree" },
         },
     },
 	{

@@ -2,7 +2,7 @@ return {
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = "VeryLazy", -- Or `LspAttach`
-        priority = 1000, -- needs to be loaded in first
+        priority = 1000,    -- needs to be loaded in first
         config = function()
             vim.diagnostic.config({ virtual_text = false })
             require("tiny-inline-diagnostic").setup()
@@ -105,53 +105,46 @@ return {
             vim.api.nvim_create_autocmd("LspAttach", {
                 desc = "LSP actions",
                 callback = function(event)
-                    vim.keymap.set(
-                        "n",
-                        "<leader>cK",
-                        vim.lsp.buf.hover,
-                        { buffer = event.buf, desc = "Show LSP Information" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>cd",
-                        vim.lsp.buf.definition,
-                        { buffer = event.buf, desc = "Goto definition" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>cD",
-                        vim.lsp.buf.declaration,
-                        { buffer = event.buf, desc = "Goto Declaration" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>ci",
-                        vim.lsp.buf.implementation,
-                        { buffer = event.buf, desc = "Goto Implementation" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>co",
-                        vim.lsp.buf.type_definition,
-                        { buffer = event.buf, desc = "Goto Type Definition" }
-                    )
-                    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = event.buf, desc = "Goto References" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>cs",
-                        vim.lsp.buf.signature_help,
-                        { buffer = event.buf, desc = "Show Signature Help" }
-                    )
-                    vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename LSP" })
-                    vim.keymap.set({ "n", "x" }, "<leader>dfl", function()
-                        vim.lsp.buf.format({ async = true })
-                    end, { buffer = event.buf, desc = "Document Auto Format (LSP)" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>ca",
-                        vim.lsp.buf.code_action,
-                        { buffer = event.buf, desc = "Show Code Actions" }
-                    )
+                    local keymap_opts = { buffer = event.buf, silent = true, noremap = true }
+
+                    -- Navegação LSP
+                    -- vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Definição" }))
+                    -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
+                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Declaração" }))
+                    -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Implementação" }))
+                    -- vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
+                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Tipo da Definição" }))
+                    -- vim.keymap.set("n", "gr", vim.lsp.buf.references,
+                    --     vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Referências" }))
+
+                    -- Informações e documentação
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Informações LSP" }))
+                    vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Assinatura" }))
+
+                    -- Ações do LSP
+                    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Renomear Símbolo" }))
+                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Ações de Código" }))
+
+                    -- Diagnósticos
+                    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Erro Anterior" }))
+                    vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Próximo Erro" }))
+                    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Diagnóstico Atual" }))
+                    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Enviar Diagnósticos para Lista" }))
+
+                    -- Formatação
+                    vim.keymap.set("n", "<C-S-i>", function()
+                        vim.lsp.buf.format { async = true }
+                    end, vim.tbl_extend("force", keymap_opts, { desc = "Formatar Código" }))
                 end,
             })
 

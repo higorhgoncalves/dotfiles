@@ -48,7 +48,7 @@ return {
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
 		require("mini.move").setup()
-		require("mini.operators").setup()
+		-- require("mini.operators").setup()
 		require("mini.icons").setup()
 		require("mini.pairs").setup()
 		require("mini.indentscope").setup({
