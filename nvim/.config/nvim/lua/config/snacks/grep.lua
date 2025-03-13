@@ -16,23 +16,46 @@ function M.setup(user_opts)
     default_opts = vim.tbl_deep_extend("force", default_opts, user_opts or {})
 end
 
--- Implementação simples que funciona com a API do Snacks
 function M.grep(opts)
     opts = vim.tbl_deep_extend("force", default_opts, opts or {})
 
-    -- Usar a implementação básica do grep
+    -- Usar implementação que suporta entrada direta no prompt
     Snacks.picker.grep({
-        prompt_title = "Multi Grep",
+        prompt_title = "Multi Grep (Padrão  Glob)",
+        prompt_prefix = "Padrão  Glob> ",
 
-        -- Configurações básicas da busca
-        args = { "--encoding=" .. opts.file_encoding, "--fixed-strings" },
-        hidden = true,
-        smartcase = true,
-        regex = false,
+        -- Configuração do comando ripgrep personalizado
+        command = function(input)
+            -- Split por dois ou mais espaços
+            local parts = vim.split(input, "%s%s+")
+            local pattern = parts[1] or ""
+            local glob = parts[2] or ""
 
-        -- Format function com verificação de valores nulos
+            -- Montar o comando base do ripgrep
+            local cmd = { "rg", "--column", "--line-number", "--no-heading", "--color=never" }
+
+            -- Adicionar encoding e configurar como fixed-strings (literal)
+            table.insert(cmd, "--encoding=" .. opts.file_encoding)
+            table.insert(cmd, "--fixed-strings")
+
+            -- Se tiver um padrão glob, adicione ao comando
+            if glob and glob ~= "" then
+                table.insert(cmd, "--glob")
+                table.insert(cmd, glob)
+            end
+
+            -- Adicionar o hidden e outros argumentos padrão
+            table.insert(cmd, "--hidden")
+
+            -- Adicionar o padrão de busca no final
+            table.insert(cmd, pattern)
+
+            -- Retornar o comando completo
+            return cmd
+        end,
+
+        -- Formatação dos resultados
         format = function(item)
-            -- Garantir que temos valores válidos
             local file = item.file or "[Unknown file]"
             local lnum = item.lnum or 0
             local text = item.text or ""
@@ -51,7 +74,10 @@ function M.grep(opts)
                     fileencoding = opts.file_encoding
                 }
             }
-        }
+        },
+
+        -- Adicionar texto de ajuda explicando o formato
+        help = "Digite o padrão de busca seguido de dois espaços e um padrão glob (ex: texto  *.php)"
     })
 end
 
