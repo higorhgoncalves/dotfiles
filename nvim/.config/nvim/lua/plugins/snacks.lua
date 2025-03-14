@@ -77,115 +77,26 @@ return {
         notifier = { enabled = true, timeout = 3000, style = "fancy" },
         picker = {
             cmd = "rg",
-            hidden = true,
-            follow = true,
             -- Configure sources directly
             sources = {
                 grep = {
                     args = { "--encoding=latin1", "--fixed-strings" },
-                    regex = false,
                 },
                 grep_buffers = {
                     args = { "--encoding=latin1", "--fixed-strings" },
-                    regex = false,
                 },
                 grep_word = {
                     args = { "--encoding=latin1", "--fixed-strings" },
-                    regex = false,
                 },
                 files = {
                     args = { "--encoding=latin1" },
                 }
-            },
-            commands = {
-                grep = {
-                    args = {
-                        "--encoding=latin1",
-                        "--fixed-strings", -- Treat the pattern as a literal string
-                        "--no-unicode"     -- Disable Unicode features
-                    }                      -- Only for grep commands
-                },
-                files = {
-                    args = { "--encoding=latin1" } -- Only for files commands
-                }
-                -- Git commands won't get these arguments
-            },
-            -- Este é o elemento principal que precisamos modificar para a janela de preview completo!
-            previewers = {
-                -- A configuração principal do previewer de arquivo, que controla a janela direita
-                file = {
-                    -- Substituir o método de exibição do arquivo completamente
-                    view = function(self, ctx)
-                        local file = ctx.item.file
-                        if not file or not vim.loop.fs_stat(file) then
-                            return false
-                        end
-
-                        -- Usar iconv para converter de Latin1 para UTF-8
-                        local temp_file = os.tmpname()
-                        os.execute(string.format("iconv -f latin1 -t utf-8 '%s' > '%s'", file, temp_file))
-
-                        -- Permitir modificação
-                        local was_modifiable = vim.bo[ctx.buf].modifiable
-                        vim.bo[ctx.buf].modifiable = true
-
-                        -- Ler arquivo convertido com codificação UTF-8
-                        local lines = {}
-                        local f = io.open(temp_file, "r")
-                        if f then
-                            for line in f:lines() do
-                                table.insert(lines, line)
-                            end
-                            f:close()
-                            os.remove(temp_file)
-                        end
-
-                        -- Definir linhas no buffer de preview
-                        vim.api.nvim_buf_set_lines(ctx.buf, 0, -1, false, lines)
-
-                        -- Detecção de tipo de arquivo para syntax highlighting
-                        local filetype = vim.filetype.match({ filename = file })
-                        if filetype then
-                            vim.bo[ctx.buf].filetype = filetype
-                        end
-
-                        -- Restaurar modificabilidade
-                        vim.bo[ctx.buf].modifiable = was_modifiable
-
-                        -- Scrollar até a linha correspondente, se aplicável
-                        if ctx.item.lnum then
-                            vim.api.nvim_win_set_cursor(ctx.win, { ctx.item.lnum, 0 })
-                            vim.api.nvim_win_call(ctx.win, function()
-                                vim.cmd("normal! zz")
-                            end)
-                        end
-
-                        return true
-                    end,
-                },
-
-                grep = {
-                    args = { "--encoding=latin1" },
-                },
-                git = {
-                    cmd = "git",
-                    args = {
-                        "-c", "core.quotepath=false",
-                        "--no-pager"
-                    }
-                },
             },
             win = {
                 list = {
                     keys = {
                         ["<C-b>"] = "close",
                     }
-                },
-                preview = {
-                    bo = {
-                        fileencoding = "latin1", -- This is the key setting for the preview buffer
-                        fileformat = "unix",
-                    },
                 },
             },
         },
@@ -276,25 +187,7 @@ return {
     },
     config = function(_, opts)
         require("snacks").setup(opts)
-
-        -- Setup the Multi Grep plugin
-        require("config.snacks.grep").setup()
-
-        -- Apenas verificar quando um buffer do tipo snacks_picker_preview é criado
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "snacks_picker_preview",
-            callback = function(ev)
-                -- Aplica a codificação latina ao buffer de preview
-                vim.bo[ev.buf].fileencoding = "latin1"
-
-                -- Recarrega o buffer com a nova codificação, se possível
-                if vim.api.nvim_buf_get_name(ev.buf) ~= "" then
-                    vim.cmd("edit!")
-                end
-            end
-        })
     end,
-
 
     keys = {
         { "<leader>.",       function() Snacks.scratch() end,                      desc = "Toggle Scratch Buffer", },
@@ -335,29 +228,6 @@ return {
         { "<leader>sB",      function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
         { "<leader>sg",      function() Snacks.picker.grep() end,                  desc = "Grep" },
         { "<leader>sw",      function() Snacks.picker.grep_word() end,             desc = "Visual selection or word",     mode = { "n", "x" } },
-        -- Multi Grep keybindings
-        {
-            "<leader>sm",
-            function()
-                require("config.snacks.grep").grep({
-                    -- Opções específicas podem ser sobrescritas aqui
-                    -- file_encoding = "latin1",
-                    -- layout_preset = "dropdown"
-                })
-            end,
-            desc = "Multi Grep"
-        },
-        {
-            "<leader>sg",
-            function()
-                require("config.snacks.grep").glob_grep({
-                    -- Opções específicas podem ser sobrescritas aqui
-                    -- file_encoding = "latin1",
-                    -- layout_preset = "dropdown"
-                })
-            end,
-            desc = "Multi Grep"
-        },
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {
