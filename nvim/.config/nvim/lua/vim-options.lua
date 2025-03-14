@@ -34,14 +34,6 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { desc = "Navigate to the bottom p
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { desc = "Navigate to the top pane" })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Navigate to the right pane" })
 
--- Other keymaps
-vim.keymap.set("n", "<M-r>", ":set rnu! rnu?<CR>", { desc = "Toggle relative line numbers" })
-vim.keymap.set("n", "<leader>dfi", "gg=G", { desc = "Document Auto Format (NVIM)" })
-vim.keymap.set("n", "<leader>dca", ":let @+ = expand('%:p')<CR>", { desc = "Document Clipboard Absolute Path" })
-vim.keymap.set("n", "<leader>dcr", ":let @+ = expand('%:.')<CR>", { desc = "Document Clipboard Relative Path" })
-vim.keymap.set("n", "<leader>dcf", ":let @+ = expand('%:t')<CR>", { desc = "Document Clipboard Filename" })
-vim.keymap.set("n", "<leader>dcp", ":let @+ = expand('%')<CR>", { desc = "Document Clipboard Path" })
-
 -- Folding Opts
 vim.opt.foldenable = true
 vim.opt.foldlevel = 20
@@ -52,3 +44,4 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.keymap.set("n", "i", function()
 	return string.match(vim.api.nvim_get_current_line(), "%g") == nil and "cc" or "i"
 end, { expr = true, noremap = true })
+

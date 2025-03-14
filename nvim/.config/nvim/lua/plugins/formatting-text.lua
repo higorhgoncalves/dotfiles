@@ -29,12 +29,12 @@ return {
 		cmd = { "ConformInfo" },
 		keys = {
 			{
-				"<leader>dff",
+				"<leader>Ff",
 				function()
 					require("conform").format({ async = true, lsp_format = "fallback" })
 				end,
 				mode = "",
-				desc = "Document Auto Format (Formatter)",
+				desc = "Format (Formatter)",
 			},
 		},
 		-- optional = true,

@@ -145,6 +145,9 @@ return {
                     vim.keymap.set("n", "<C-S-i>", function()
                         vim.lsp.buf.format { async = true }
                     end, vim.tbl_extend("force", keymap_opts, { desc = "Formatar Código" }))
+                    vim.keymap.set("n", "<leader>Fl", function()
+                        vim.lsp.buf.format { async = true }
+                    end, vim.tbl_extend("force", keymap_opts, { desc = "Format (LSP)" }))
                 end,
             })
 

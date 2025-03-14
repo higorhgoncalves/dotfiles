@@ -17,7 +17,7 @@ return {
         end,
         keys = {
             {
-                "<leader>dfn", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", desc = "Document Auto Format (NULL)",
+                "<leader>Fn", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", desc = "Format (NULL)",
             }
         },
     }

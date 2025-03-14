@@ -102,14 +102,14 @@ return {
 		-- end
 
 		-- Keybindings
-		vim.keymap.set("n", "<leader>wb", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
-		vim.keymap.set("n", "<leader>wf", function()
-			local MiniFiles = require("mini.files")
-			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-			vim.defer_fn(function()
-				MiniFiles.reveal_cwd()
-			end, 30)
-		end, { desc = "Open Workspace File Browser in CWD" })
+		-- vim.keymap.set("n", "<leader>wb", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
+		-- vim.keymap.set("n", "<leader>wf", function()
+		-- 	local MiniFiles = require("mini.files")
+		-- 	local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+		-- 	vim.defer_fn(function()
+		-- 		MiniFiles.reveal_cwd()
+		-- 	end, 30)
+		-- end, { desc = "Open Workspace File Browser in CWD" })
 
 		-- ... and there is more!
 		--  Check out: https://github.com/echasnovski/mini.nvim
