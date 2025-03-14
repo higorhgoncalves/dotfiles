@@ -166,37 +166,39 @@
     enable = true;
 
     interactiveShellInit = ''
-      if status is-interactive
-      set -U fish_greeting ""
+        if status is-interactive
+            set -U fish_greeting ""
 
-      starship init fish | source
+            starship init fish | source
 
-      set -gx ATUIN_NOBIND "true"
-      atuin init fish | source
+            set -gx ATUIN_NOBIND "true"
+            atuin init fish | source
+            gh fish source | source
 
-      # vincular ao ctrl-r no modo normal e de inserção, adicione quaisquer outras vinculações aqui também
-      bind \cr _atuin_search
-      bind -M insert \cr _atuin_search
+            # vincular ao ctrl-r no modo normal e de inserção, adicione quaisquer outras vinculações aqui também
+            bind \cr _atuin_search
+            bind -M insert \cr _atuin_search
 
-      alias gnome-control-center="XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center"
-      alias ls="eza"
-      alias cd="z"
-      # alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
-      # alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
-      # alias nvim-nv='NVIM_APPNAME="nvim-nv" nvim'
-      # alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
-      alias tmux-restore='tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
+            alias gnome-control-center="XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center"
+            alias ls="eza"
+            alias cd="z"
 
-      [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-      # alias ghostty-ssh="TERM=xterm-256color ssh"
+            # alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+            # alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
+            # alias nvim-nv='NVIM_APPNAME="nvim-nv" nvim'
+            # alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
 
-      set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
-      set -x PATH $HOME/.config/herd-lite/bin $PATH
-      set -x TERM xterm-kitty
+            alias tmux-restore='tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
+            alias fzftop='ps aux | fzf --multi --reverse --bind "ctrl-r:reload(ps aux)" --header="Press CTRL-R to reload" --header-lines=2 --preview="echo {}" --preview-window=down,3,wrap | awk "{print $2}" | xargs kill -9'
 
-      thefuck --alias | source
-      zoxide init fish | source
-      end
+            [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+            set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
+            set -x PATH $HOME/.config/herd-lite/bin $PATH
+
+            thefuck --alias | source
+            zoxide init fish | source
+        end
     '';
   };
 
