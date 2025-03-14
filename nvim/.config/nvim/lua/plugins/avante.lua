@@ -55,7 +55,7 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
-            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+            -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
             "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
             "zbirenbaum/copilot.lua",        -- for providers='copilot'
             {
