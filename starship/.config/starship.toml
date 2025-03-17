@@ -28,6 +28,7 @@ $time\
 $line_break$character"""
 
 palette = 'catppuccin_mocha'
+command_timeout = 1000
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
