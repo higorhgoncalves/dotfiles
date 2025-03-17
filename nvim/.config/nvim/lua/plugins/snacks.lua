@@ -203,7 +203,7 @@ return {
         -- Top Pickers & Explorer
         { "<leader>P",       function() Snacks.picker() end,                                         desc = "Show Pickers", },
         { "<C-b>",           function() Snacks.explorer() end,                                       desc = "Toggle Explorer", },
-        { "<leader>wf",      function() Snacks.explorer() end,                                       desc = "Toggle Explorer", },
+        { "<leader>ue",      function() Snacks.explorer() end,                                       desc = "Toggle Explorer", },
         { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
         { "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
         { "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
