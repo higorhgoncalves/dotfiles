@@ -14,8 +14,9 @@ theme = catppuccin-mocha
 font-family = "JetBrainsMonoNL Nerd Font"
 # background-opacity = 0.9
 window-theme = ghostty
-window-padding-y = 0
-# window-padding-balance = true
+gtk-custom-css = tab-style.css
+# window-padding-y = 0
+window-padding-balance = true
 
 gtk-single-instance=true
 # quit-after-last-window-closed=false
