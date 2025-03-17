@@ -18,12 +18,12 @@ return {
             { "<leader>qd", ":lua require('persistence').stop()<CR>",                desc = "Don't Save Current Session" },
         },
     },
-    {
-        "mbbill/undotree",
-        keys = {
-            { "<leader>uU", ":UndotreeToggle<CR>:UndotreeFocus<CR>", desc = "Toggle Undotree" },
-        },
-    },
+    -- {
+    --     "mbbill/undotree",
+    --     keys = {
+    --         { "<leader>uU", ":UndotreeToggle<CR>:UndotreeFocus<CR>", desc = "Toggle Undotree" },
+    --     },
+    -- },
 	{
 		-- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
@@ -69,14 +69,10 @@ return {
 
 			-- Document existing key chains
 			spec = {
-				-- { "<BS>", desc = "Decrement Selection", mode = { "x", "n" } },
-				-- { "<C-space>", desc = "Increment Selection", mode = { "x", "n" } },
 				{ "<leader>a", group = "[A]vante", mode = { "n" } },
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				-- { "<leader>cc", group = "[C]opilot[C]hat", mode = { "n" } },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>C", group = "[C]lipboard" },
-				{ "<leader>df", group = "[D]ocument [F]ormat" },
 				{ "<leader>f", group = "[F]ind" },
 				{ "<leader>F", group = "[F]ormat" },
 				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
@@ -85,7 +81,6 @@ return {
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>u", group = "[U]Toggle" },
-				{ "<leader>w", group = "[W]orkspace" },
 			},
 		},
 		keys = {
