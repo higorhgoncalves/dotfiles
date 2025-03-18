@@ -47,10 +47,11 @@ return {
 		auto_install = true,
 		highlight = {
 			enable = true,
+            -- additional_vim_regex_highlighting = true
 		},
 		-- Needed because treesitter highlight turns off autoindent for php files
 		indent = {
-			enable = true,
+			enable = false,
 		},
 	},
 	config = function(_, opts)
