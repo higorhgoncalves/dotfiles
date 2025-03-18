@@ -23,5 +23,6 @@ gtk-single-instance=true
 # initial-window=false
 
 keybind = super+shift+;=reload_config
+keybind = ctrl+shift+i=unbind
 
 term = xterm-ghostty
