@@ -19,8 +19,8 @@ return {
 			vim.keymap.set("x", "<M-n>", "<Plug>(VM-Find-Under)")
 
 			-- Your custom keymaps
-			vim.keymap.set("n", "<leader>mc", "<Plug>(VM-Find-Under)", { desc = "Multi-Cursor" })
-			vim.keymap.set("n", "<leader>ma", "<Plug>(VM-Select-All)", { desc = "Select All Occurrences" })
+			vim.keymap.set("n", "<leader>Mc", "<Plug>(VM-Find-Under)", { desc = "Multi-Cursor" })
+			vim.keymap.set("n", "<leader>Ma", "<Plug>(VM-Select-All)", { desc = "Select All Occurrences" })
 		end,
 	},
 	{ -- Autoformat
