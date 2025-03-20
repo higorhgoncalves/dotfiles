@@ -1,15 +1,24 @@
 return {
     {
-        'nmac427/guess-indent.nvim',
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
+        -- Optional dependency
+        dependencies = { 'hrsh7th/nvim-cmp' },
         config = function()
-            require('guess-indent').setup {}
+            require('nvim-autopairs').setup {}
+            -- If you want to automatically add `(` after selecting a function or method
+            local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+            local cmp = require 'cmp'
+            cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
         end,
     },
     {
+        'nmac427/guess-indent.nvim',
+        opts = {},
+    },
+    {
         "numToStr/Comment.nvim",
-        opts = {
-            -- add any options here
-        },
+        opts = {},
     },
     {
         "folke/persistence.nvim",
@@ -82,7 +91,7 @@ return {
                 { "<leader>f", group = "[F]ind" },
                 { "<leader>F", group = "[F]ormat" },
                 { "<leader>g", group = "[G]it",         mode = { "n", "v" } },
-                { "<leader>m", group = "[M]ulti Cursor" },
+                { "<leader>M", group = "[M]ulti Cursor" },
                 { "<leader>q", group = "[Q]Session",    mode = { "n", "x" } },
                 { "<leader>r", group = "[R]ename" },
                 { "<leader>s", group = "[S]earch" },
