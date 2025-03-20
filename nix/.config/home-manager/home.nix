@@ -196,6 +196,8 @@
             set -x PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
             set -x PATH $HOME/.config/herd-lite/bin $PATH
 
+            set -x COMPOSE_BAKE true
+
             thefuck --alias | source
             zoxide init fish | source
         end
