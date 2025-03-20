@@ -24,5 +24,11 @@ gtk-single-instance=true
 
 keybind = super+shift+;=reload_config
 keybind = ctrl+shift+i=unbind
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+l=goto_split:right
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+"=new_split:right
+keybind = ctrl+%=goto_split:down
 
 term = xterm-ghostty
