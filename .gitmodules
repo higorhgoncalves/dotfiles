@@ -13,6 +13,3 @@
 [submodule "nvim-astro/.config/nvim-astro"]
 	path = nvim-astro/.config/nvim-astro
 	url = https://github.com/AstroNvim/template
-[submodule "nvim/vscode-php-debug"]
-	path = nvim/vscode-php-debug
-	url = https://github.com/xdebug/vscode-php-debug
