@@ -13,9 +13,10 @@ return {
 			-- Installs the debug adapters for you
 			"williamboman/mason.nvim",
 			"jay-babu/mason-nvim-dap.nvim",
+			"xdebug/vscode-php-debug",
 
 			-- Add your own debuggers here
-			"leoluz/nvim-dap-go",
+			-- "leoluz/nvim-dap-go",
 		},
 		keys = {
 			-- Basic debugging keymaps, feel free to change to your liking!
@@ -54,13 +55,13 @@ return {
 				end,
 				desc = "Debug: Toggle Breakpoint",
 			},
-			{
-				"<leader>B",
-				function()
-					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-				end,
-				desc = "Debug: Set Breakpoint",
-			},
+			-- {
+			-- 	"<leader>B",
+			-- 	function()
+			-- 		require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+			-- 	end,
+			-- 	desc = "Debug: Set Breakpoint",
+			-- },
 			-- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
 			{
 				"<F7>",
@@ -138,11 +139,11 @@ return {
 			--     },
 			-- }
 
-			dap.adapters.php = {
-				type = "executable",
-				command = "node",
-				args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
-			}
+			-- dap.adapters.php = {
+			-- 	type = "executable",
+			-- 	command = "node",
+			-- 	args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
+			-- }
 
 			dap.configurations.php = {
 				{
@@ -153,19 +154,19 @@ return {
 					pathMappings = {
 						-- ["/var/www/html/"] = "${workspaceFolder}",
 						-- ["/var/www/html/"] = "/home/administrador/docker-lw/html/",
-						["/var/www/html/intranet"] = "${workspaceFolder}",
-						["/var/www/html/legisweb"] = "${workspaceFolder}",
-						["/var/www/html/classes"] = "${workspaceFolder}",
+						["/var/www/html/intranet"] = "/home/administrador/docker-lw/html/intranet/",
+						["/var/www/html/legisweb"] = "/home/administrador/docker-lw/html/legisweb/",
+						["/var/www/html/classes"] = "/home/administrador/docker-lw/html/classes/",
 					},
 				},
 			}
 
-			-- dap.defaults.php.exception_breakpoints = {
-			-- 	"Notice",
-			-- 	"Warning",
-			-- 	"Error",
-			-- 	"Exception",
-			-- }
+			dap.defaults.php.exception_breakpoints = {
+				"Notice",
+				"Warning",
+				"Error",
+				"Exception",
+			}
 		end,
 	},
 	{
@@ -177,7 +178,7 @@ return {
 
 			vim.api.nvim_set_keymap(
 				"n",
-				"<leader>,",
+				"<leader>B",
 				"",
 				{ desc = "Debug: Condition breakpoints", callback = set_exception_breakpoints }
 			)
