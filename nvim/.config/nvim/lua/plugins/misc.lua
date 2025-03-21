@@ -1,5 +1,9 @@
 return {
     {
+        "arnamak/stay-centered.nvim",
+        opts = {},
+    },
+    {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         -- Optional dependency
@@ -84,17 +88,17 @@ return {
 
             -- Document existing key chains
             spec = {
-                { "<leader>a", group = "[A]vante",      mode = { "n" } },
-                { "<leader>c", group = "[C]ode",        mode = { "n", "x" } },
-                { "<leader>d", group = "[D]ocument" },
+                { "<leader>a", group = "[A]vante",      mode = { "n", "x" } },
+                { "<leader>c", group = "[C]ode" },
                 { "<leader>C", group = "[C]lipboard" },
+                { "<leader>d", group = "[D]ocument" },
                 { "<leader>f", group = "[F]ind" },
-                { "<leader>F", group = "[F]ormat" },
-                { "<leader>g", group = "[G]it",         mode = { "n", "v" } },
+                { "<leader>F", group = "[F]ormat",      mode = { "n", "x" } },
+                { "<leader>g", group = "[G]it",         mode = { "n" } },
                 { "<leader>M", group = "[M]ulti Cursor" },
-                { "<leader>q", group = "[Q]Session",    mode = { "n", "x" } },
+                { "<leader>q", group = "[Q]Session",    mode = { "n" } },
                 { "<leader>r", group = "[R]ename" },
-                { "<leader>s", group = "[S]earch" },
+                { "<leader>s", group = "[S]earch",     mode = { "n", "x" } },
                 { "<leader>u", group = "[U]Toggle" },
             },
         },
