@@ -13,8 +13,6 @@ vim.cmd("vmap <S-TAB> <gv")
 
 -- Line Numbers Opts
 vim.opt.number = true
--- vim.opt.relativenumber = true
--- vim.o.statuscolumn = "%l\\ %r"
 
 -- Clipboard Opts
 vim.opt.clipboard = "unnamedplus"
