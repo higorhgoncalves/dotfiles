@@ -48,9 +48,7 @@ return {
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
 		require("mini.move").setup()
-		-- require("mini.operators").setup()
 		require("mini.icons").setup()
-		-- require("mini.pairs").setup()
 		require("mini.indentscope").setup({
 			event = "LazyFile",
 			draw = {
@@ -65,53 +63,23 @@ return {
 		vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#7287FD", nocombine = true })
 		vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", { fg = "#8839ED", nocombine = true })
 
-		-- File browser
-		--
-		-- - <leader>mf - open file browser
-		require("mini.files").setup()
 
 		-- Split and join lines
-		--
-		-- - gS - [G]split lines
 		require("mini.splitjoin").setup({
 			mappings = {
-				toggle = "",
+				toggle = "gS",
 			},
 		})
-		vim.keymap.set("n", "<leader>ds", ":lua MiniSplitjoin.toggle()<cr>", { desc = "Document Split/Join lines" })
 
-		-- Sessions
-		-- Save and restore your editing sessions
-		-- - :mksession - save session
-		-- require("mini.sessions").setup()
+		-- File browser
+		require("mini.files").setup()
+		vim.keymap.set("n", "<leader>uf", function()
+			local MiniFiles = require("mini.files")
+			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+			vim.defer_fn(function()
+				MiniFiles.reveal_cwd()
+			end, 30)
+		end, { desc = "Toggle Mini.Files" })
 
-		-- Simple and easy statusline.
-		--  You could remove this setup call if you don't like it,
-		--  and try some other statusline plugin
-		-- local statusline = require("mini.statusline")
-
-		-- set use_icons to true if you have a Nerd Font
-		-- statusline.setup({ use_icons = vim.g.have_nerd_font })
-
-		-- You can configure sections in the statusline by overriding their
-		-- default behavior. For example, here we set the section for
-		-- cursor location to LINE:COLUMN
-		-- ---@diagnostic disable-next-line: duplicate-set-field
-		-- statusline.section_location = function()
-		-- 	return "%2l:%-2v"
-		-- end
-
-		-- Keybindings
-		-- vim.keymap.set("n", "<leader>wb", ":lua MiniFiles.open()<CR>", { desc = "Open Workspace File Browser" })
-		-- vim.keymap.set("n", "<leader>wf", function()
-		-- 	local MiniFiles = require("mini.files")
-		-- 	local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-		-- 	vim.defer_fn(function()
-		-- 		MiniFiles.reveal_cwd()
-		-- 	end, 30)
-		-- end, { desc = "Open Workspace File Browser in CWD" })
-
-		-- ... and there is more!
-		--  Check out: https://github.com/echasnovski/mini.nvim
 	end,
 }
