@@ -1,7 +1,6 @@
 return {
-    -- Para PHP_CodeSniffer (análise)
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         opts = function(_, opts)
             local null_ls = require("null-ls")
             opts.sources = {
