@@ -90,6 +90,7 @@ return {
                 },
                 files = {
                     args = { "--encoding=latin1" },
+                    hidden = true,
                 },
                 explorer = {
                     hidden = true,
