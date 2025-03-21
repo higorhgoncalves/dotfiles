@@ -121,45 +121,23 @@ return {
                 callback = function(event)
                     local keymap_opts = { buffer = event.buf, silent = true, noremap = true }
 
-                    -- Navegação LSP
-                    -- vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Definição" }))
-                    -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
-                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Declaração" }))
-                    -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
-                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Implementação" }))
-                    -- vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
-                    --     vim.tbl_extend("force", keymap_opts, { desc = "Ir para Tipo da Definição" }))
-                    -- vim.keymap.set("n", "gr", vim.lsp.buf.references,
-                    --     vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Referências" }))
-
-                    -- Informações e documentação
+                    -- Docs and Info
                     vim.keymap.set("n", "K", vim.lsp.buf.hover,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Informações LSP" }))
-                    vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Assinatura" }))
+                        vim.tbl_extend("force", keymap_opts, { desc = "Show Info" }))
+                    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help,
+                        vim.tbl_extend("force", keymap_opts, { desc = "Signature Help" }))
 
-                    -- Ações do LSP
+                    -- LSP Actions
                     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Renomear Símbolo" }))
+                        vim.tbl_extend("force", keymap_opts, { desc = "Rename Symbol" }))
                     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Ações de Código" }))
+                        vim.tbl_extend("force", keymap_opts, { desc = "Code Action" }))
 
-                    -- Diagnósticos
-                    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Erro Anterior" }))
-                    vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Próximo Erro" }))
-                    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Mostrar Diagnóstico Atual" }))
-                    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist,
-                        vim.tbl_extend("force", keymap_opts, { desc = "Enviar Diagnósticos para Lista" }))
-
-                    -- Formatação
-                    vim.keymap.set("n", "<C-S-i>", function()
+                    -- Formatting
+                    vim.keymap.set({ "n", "x" }, "<C-S-i>", function()
                         vim.lsp.buf.format { async = true }
-                    end, vim.tbl_extend("force", keymap_opts, { desc = "Formatar Código" }))
-                    vim.keymap.set("n", "<leader>Fl", function()
+                    end, vim.tbl_extend("force", keymap_opts, { desc = "Format (LSP)" }))
+                    vim.keymap.set({ "n", "x" }, "<leader>Fl", function()
                         vim.lsp.buf.format { async = true }
                     end, vim.tbl_extend("force", keymap_opts, { desc = "Format (LSP)" }))
                 end,
