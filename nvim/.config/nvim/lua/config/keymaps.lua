@@ -29,8 +29,11 @@ function M.setup()
 
     vim.keymap.set("x", "<leader>p", [["_dP]])
 
-    vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-    vim.keymap.set("n", "<leader>Y", [["+Y]])
+    ---@diagnostic disable-next-line: undefined-field
+    if not vim.tbl_contains(vim.opt.clipboard:get(), "unnamedplus") then
+        vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to system clipboard" })
+        vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy line to system clipboard" })
+    end
 
     vim.keymap.set("n", "Q", "<nop>")
     -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -38,7 +41,8 @@ function M.setup()
     -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
     -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-    vim.keymap.set("n", "<leader>cs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Change word under cursor" })
+    vim.keymap.set("n", "<leader>cs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+        { desc = "Change word under cursor" })
 end
 
 return M
