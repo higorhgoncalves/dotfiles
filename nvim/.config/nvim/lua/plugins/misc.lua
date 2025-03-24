@@ -37,12 +37,6 @@ return {
             { "<leader>qd", ":lua require('persistence').stop()<CR>",                desc = "Don't Save Current Session" },
         },
     },
-    -- {
-    --     "mbbill/undotree",
-    --     keys = {
-    --         { "<leader>uU", ":UndotreeToggle<CR>:UndotreeFocus<CR>", desc = "Toggle Undotree" },
-    --     },
-    -- },
     {
         -- Useful plugin to show you pending keybinds.
         "folke/which-key.nvim",
@@ -98,7 +92,7 @@ return {
                 { "<leader>M", group = "[M]ulti Cursor" },
                 { "<leader>q", group = "[Q]Session",    mode = { "n" } },
                 { "<leader>r", group = "[R]ename" },
-                { "<leader>s", group = "[S]earch",     mode = { "n", "x" } },
+                { "<leader>s", group = "[S]earch",      mode = { "n", "x" } },
                 { "<leader>u", group = "[U]Toggle" },
             },
         },
