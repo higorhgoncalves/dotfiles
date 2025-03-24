@@ -7,10 +7,6 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
-vim.cmd("inoremap <S-Tab> <C-d>")
-vim.cmd("vmap <TAB> >gv")
-vim.cmd("vmap <S-TAB> <gv")
-
 -- Line Numbers Opts
 vim.opt.number = true
 
@@ -22,8 +18,3 @@ vim.opt.foldenable = true
 vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
--- Fix Insert Indent
-vim.keymap.set("n", "i", function()
-	return string.match(vim.api.nvim_get_current_line(), "%g") == nil and "cc" or "i"
-end, { expr = true, noremap = true })
