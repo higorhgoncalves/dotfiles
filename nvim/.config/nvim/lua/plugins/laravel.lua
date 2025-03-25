@@ -5,6 +5,7 @@ return {
         "adalessa/laravel.nvim",
         dependencies = {
             "tpope/vim-dotenv",
+            "MunifTanjim/nui.nvim",
             "folke/snacks.nvim",
             "kevinhwang91/promise-async",
         },
