@@ -59,13 +59,6 @@ return {
 					"php",
 				},
 				-- Verifica se o buffer atual é do tipo php e desabilita o highlight de html, retornando uma table com o valor html
-				disable = function()
-					if vim.bo.filetype == "php" then
-						return { "html" }
-					end
-
-					return {}
-				end,
 			},
 			indent = {
 				-- Desabilitado, pois a indentação está sendo feita pelo GuessIndent

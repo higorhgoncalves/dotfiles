@@ -33,7 +33,7 @@ return {
                 "intelephense",
                 "lua_ls",
                 "sqls",
-                "stimulus_ls",
+                -- "stimulus_ls",
                 "tailwindcss",
             },
         },
