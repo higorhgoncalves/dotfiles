@@ -15,6 +15,9 @@ return {
             behaviour = {
                 auto_suggestions = false, -- Experimental stage
             },
+            file_selector = {
+                provider = "snacks",
+            },
             mappings = {
                 diff = {
                     ours = "co",
