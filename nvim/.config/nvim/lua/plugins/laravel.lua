@@ -5,8 +5,8 @@ return {
         "adalessa/laravel.nvim",
         dependencies = {
             "tpope/vim-dotenv",
-            "MunifTanjim/nui.nvim",
             "folke/snacks.nvim",
+            "MunifTanjim/nui.nvim",
             "kevinhwang91/promise-async",
         },
         cmd = { "Laravel" },
@@ -19,14 +19,12 @@ return {
         opts = {
             lsp_server = "intelephense",
             features = {
-                null_ls = { enable = false }
-            },
-            pickers = {
-                enabled = true,
-                provider = "snacks",
+                pickers = {
+                    provider = "snacks",
+                },
             },
         },
-        config = true,
+        -- config = true,
     },
     {
         -- Add the blade-nav.nvim plugin which provides Goto File capabilities
