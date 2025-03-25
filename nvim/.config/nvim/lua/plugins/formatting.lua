@@ -1,28 +1,4 @@
 return {
-	{
-		"mg979/vim-visual-multi",
-		init = function()
-			vim.g.VM_set_default_mappings = 0 -- Disable default keybinds
-		end,
-		config = function()
-			-- Delete lingering default keybinds
-			vim.keymap.del("n", "<C-Up>")
-			vim.keymap.del("n", "<C-Down>")
-			vim.keymap.del({ "n", "x" }, "<C-n>")
-
-			-- Normal mode mappings
-			vim.keymap.set("n", "<M-n>", "<Plug>(VM-Find-Under)")
-			vim.keymap.set("n", "<M-Up>", "<Plug>(VM-Add-Cursor-Up)")
-			vim.keymap.set("n", "<M-Down>", "<Plug>(VM-Add-Cursor-Down)")
-
-			-- Visual mode mappings
-			vim.keymap.set("x", "<M-n>", "<Plug>(VM-Find-Under)")
-
-			-- Your custom keymaps
-			vim.keymap.set("n", "<leader>Mc", "<Plug>(VM-Find-Under)", { desc = "Multi-Cursor" })
-			vim.keymap.set("n", "<leader>Ma", "<Plug>(VM-Select-All)", { desc = "Select All Occurrences" })
-		end,
-	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
