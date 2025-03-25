@@ -32,11 +32,9 @@ return {
                 "html",
                 "intelephense",
                 "lua_ls",
-                -- "phpactor",
                 "sqls",
                 "stimulus_ls",
-                -- "tailwindcss",
-                "ts_ls",
+                "tailwindcss",
             },
         },
         -- handlers = {
