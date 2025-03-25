@@ -1,5 +1,8 @@
 return {
 	{
+		"gbprod/php-enhanced-treesitter.nvim",
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		opts = {
@@ -34,7 +37,7 @@ return {
 				"c",
 				"css",
 				"diff",
-				-- "html",
+				"html",
 				"javascript",
 				"lua",
 				"luadoc",
@@ -54,7 +57,15 @@ return {
 				enable = true,
 				additional_vim_regex_highlighting = {
 					"php",
-				}
+				},
+				-- Verifica se o buffer atual é do tipo php e desabilita o highlight de html, retornando uma table com o valor html
+				disable = function()
+					if vim.bo.filetype == "php" then
+						return { "html" }
+					end
+
+					return {}
+				end,
 			},
 			indent = {
 				-- Desabilitado, pois a indentação está sendo feita pelo GuessIndent
