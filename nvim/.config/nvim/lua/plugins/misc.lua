@@ -113,6 +113,7 @@ return {
                 { "<leader>f", group = "[F]ind" },
                 { "<leader>F", group = "[F]ormat",      mode = { "n", "x" } },
                 { "<leader>g", group = "[G]it",         mode = { "n" } },
+                { "<leader>l", group = "[L]aravel",     mode = { "n" } },
                 { "<leader>M", group = "[M]ulti Cursor" },
                 { "<leader>q", group = "[Q]Session",    mode = { "n" } },
                 { "<leader>r", group = "[R]ename" },
