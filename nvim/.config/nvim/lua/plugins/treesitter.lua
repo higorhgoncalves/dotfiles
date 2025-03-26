@@ -15,6 +15,10 @@ return {
 		build = ":TSUpdate",
 		dependencies = {
 			{
+				"windwp/nvim-ts-autotag",
+				opts = {},
+			},
+			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				opts = {
 					custom_calculation = function(_, language_tree)
