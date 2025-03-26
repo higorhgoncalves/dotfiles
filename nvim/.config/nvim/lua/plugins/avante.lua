@@ -59,7 +59,6 @@ return {
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
             "folke/snacks.nvim",
-            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
             "github/copilot.vim",
             {
                 -- support for image pasting
