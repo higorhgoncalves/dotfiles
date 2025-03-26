@@ -25,9 +25,28 @@ return {
             {
                 'L3MON4D3/LuaSnip',
                 version = 'v2.*',
+                dependencies = {
+                    'rafamadriz/friendly-snippets',
+                    config = function()
+                        -- Adiciona extended snippets para PHP
+                        require("luasnip").filetype_extend(
+                            "php",
+                            {
+                                "html",
+                                -- "css",
+                                -- "javascript",
+                            }
+                        )
+                        require("luasnip.loaders.from_vscode").lazy_load()
+                    end,
+                },
                 config = function()
-                    --- I had to add this option compared to the old syntax
-                    require("luasnip.loaders.from_vscode").lazy_load()
+                    -- Adiciona o diretório de snippets personalizados
+                    require("luasnip.loaders.from_vscode").lazy_load({
+                        paths = {
+                            vim.fn.stdpath 'config' .. '/snippets'
+                        }
+                    })
                 end,
             },
         },
@@ -183,16 +202,16 @@ return {
                         -- should_show_items = function(ctx)
                         --     return ctx.trigger.initial_kind == 'trigger_character'
                         -- end
-                        opts = {
-                            friendly_snippets = true,
-                            extended_filetypes = {
-                                php = {
-                                    "html",
-                                    -- "css",
-                                    -- "javascript"
-                                },
-                            },
-                        },
+                        -- opts = {
+                        --     friendly_snippets = true,
+                        --     extended_filetypes = {
+                        --         php = {
+                        --             "html",
+                        --             -- "css",
+                        --             -- "javascript"
+                        --         },
+                        --     },
+                        -- },
                     },
                     dadbod = {
                         name = "Dadbod",
@@ -231,13 +250,13 @@ return {
             },
 
             snippets = {
-                preset = "default",
-                -- Function to use when expanding LSP provided snippets
-                expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
-                -- Function to use when checking if a snippet is active
-                active = function(filter) return require("luasnip").jumpable(filter) end,
-                -- Function to use when jumping between tab stops in a snippet, where direction can be negative or positive
-                jump = function(direction) require("luasnip").jump(direction) end,
+                preset = "luasnip",
+                -- -- Function to use when expanding LSP provided snippets
+                -- expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
+                -- -- Function to use when checking if a snippet is active
+                -- active = function(filter) return require("luasnip").jumpable(filter) end,
+                -- -- Function to use when jumping between tab stops in a snippet, where direction can be negative or positive
+                -- jump = function(direction) require("luasnip").jump(direction) end,
             },
 
             completion = {
