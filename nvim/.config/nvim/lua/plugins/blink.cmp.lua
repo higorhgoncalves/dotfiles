@@ -12,8 +12,8 @@ return {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
         dependencies = {
-            "ricardoramirezr/blade-nav.nvim",
             'rafamadriz/friendly-snippets',
+            "ricardoramirezr/blade-nav.nvim",
             {
                 'Kaiser-Yang/blink-cmp-avante',
                 config = function()
