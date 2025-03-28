@@ -89,7 +89,20 @@ return {
                     args = { "--encoding=latin1", "--fixed-strings" },
                 },
                 files = {
-                    args = { "--encoding=latin1" },
+                    cmd = "fd",
+                    action = function()
+                        local cwd = vim.fn.getcwd()
+                        local cmd = "fd"
+                        local args = {}
+                        if cwd:find("legisweb") or cwd:find("classes") or cwd:find("intranet") then
+                            cmd = "rg"
+                            args = { "--encoding=latin1", "--fixed-strings" }
+                        end
+                        Snacks.picker.files({
+                            cmd = cmd,
+                            args = args
+                        })
+                    end,
                     hidden = true,
                 },
                 explorer = {
