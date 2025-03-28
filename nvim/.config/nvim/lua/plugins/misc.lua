@@ -3,7 +3,7 @@ return {
         "arnamak/stay-centered.nvim",
         opts = {},
     },
-    	{
+    {
 		"mg979/vim-visual-multi",
 		init = function()
 			vim.g.VM_set_default_mappings = 0 -- Disable default keybinds
