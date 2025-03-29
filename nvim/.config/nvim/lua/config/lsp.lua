@@ -1,0 +1,9 @@
+vim.lsp.enable({
+    "lua_ls",
+    "intelephense",
+    "biome",
+    "html",
+    "cssls",
+    "tailwindcss",
+    "sqls",
+})
