@@ -1,12 +1,15 @@
 return {
-    filetypes = {                 -- Lista de filetypes onde o Tailwind CSS deve ativar
-        "html",
+    cmd = {
+        "/home/administrador/.local/share/nvim/mason/bin/tailwindcss-language-server"
+    },
+    filetypes = {
+        -- "html",
         "blade",
-        "css",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
+        -- "css",
+        -- "javascript",
+        -- "javascriptreact",
+        -- "typescript",
+        -- "typescriptreact",
         -- Remova "php" se estiver presente
     },
     settings = {

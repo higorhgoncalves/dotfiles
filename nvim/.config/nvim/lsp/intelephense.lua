@@ -1,5 +1,8 @@
 return {
-    cmd = { "intelephense", "--stdio" },
+    cmd = {
+        "/home/administrador/.local/share/nvim/mason/bin/intelephense",
+        "--stdio"
+    },
     filetypes = {
         "php",
         "blade",

@@ -136,6 +136,7 @@ return {
                             'snippets',
                             'buffer',
                             'dadbod',
+                            'omni',
                             -- 'copilot'
                         }
                     end
@@ -235,6 +236,14 @@ return {
                     -- 		return items
                     -- 	end,
                     -- },
+                    omni = {
+                        module = 'blink.cmp.sources.complete_func',
+                        enabled = function() return vim.bo.omnifunc ~= 'v:lua.vim.lsp.omnifunc' end,
+                        ---@type blink.cmp.CompleteFuncOpts
+                        opts = {
+                            complete_func = function() return vim.bo.omnifunc end,
+                        },
+                    },
                 }
             },
 
