@@ -20,50 +20,50 @@ vim.lsp.config('*', {
     root_markers = { '.git' },
 })
 
-for _, server in pairs(servers) do
-    -- Check if the server has the filetype from the buffer
-    local filetype = vim.bo.filetype
-    local config = vim.lsp.config[server]
+vim.lsp.enable(servers)
 
-    if config and config.filetypes then
-        -- If server has specific filetypes, check if current filetype is supported
-        if vim.tbl_contains(config.filetypes, filetype) then
-            vim.lsp.enable(server)
-        end
-    else
-        -- If server doesn't specify filetypes, enable it (or use your own logic)
-        vim.lsp.enable(server)
-    end
-end
+-- Habilitar os servidores LSP quando o buffer é aberto
+-- vim.api.nvim_create_autocmd('BufReadPost', {
+--     group = vim.api.nvim_create_augroup('my.lsp', {}),
+--     callback = function()
+--         local bufnr = vim.api.nvim_get_current_buf()
+--         local filetype = vim.bo.filetype
+--
+--         -- Enable LSP for the current buffer
+--         for _, server in pairs(servers) do
+--             local config = vim.lsp.config[server]
+--             if config and config.filetypes and vim.tbl_contains(config.filetypes, filetype) then
+--                 vim.lsp.enable(server)
+--             end
+--         end
+--     end,
+-- })
+
+-- for _, server in pairs(servers) do
+--     -- Check if the server has the filetype from the buffer
+--     local filetype = vim.bo.filetype
+--     local config = vim.lsp.config[server]
+--
+--     print("Checking server: " .. server .. " for filetype: " .. filetype)
+--     if config and config.filetypes then
+--         -- If server has specific filetypes, check if current filetype is supported
+--         print("1")
+--         if vim.tbl_contains(config.filetypes, filetype) then
+--             print("2")
+--             vim.lsp.enable(server)
+--         end
+--     else
+--         print("3")
+--         -- If server doesn't specify filetypes, enable it (or use your own logic)
+--         vim.lsp.enable(server)
+--     end
+-- end
 
 -- Configuração de keybindings para quando um LSP conecta
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),
     callback = function(args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-        if client:supports_method('textDocument/implementation') then
-            -- Create a keymap for vim.lsp.buf.implementation ...
-        end
-        -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-        if client:supports_method('textDocument/completion') then
-            -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-            -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-            -- client.server_capabilities.completionProvider.triggerCharacters = chars
-            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
-        end
-        -- Auto-format ("lint") on save.
-        -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-        if not client:supports_method('textDocument/willSaveWaitUntil')
-            and client:supports_method('textDocument/formatting') then
-            vim.api.nvim_create_autocmd('BufWritePre', {
-                group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-                buffer = args.buf,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-                end,
-            })
-        end
         local bufnr = args.buf
 
         -- Keymaps
