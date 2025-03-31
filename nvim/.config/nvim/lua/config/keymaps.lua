@@ -9,6 +9,10 @@ function M.setup()
     vim.keymap.set('n', '<leader>Cw', ":let @+ = fnamemodify(getcwd(), ':t') . '/' . expand('%:.')<CR>",
         { desc = 'Clipboard Workspace Relative Path' })
 
+    -- Esc to Normal Mode
+    vim.keymap.set("i", "jj", "<Esc>", { desc = "Esc to Normal Mode", noremap = false })
+    vim.keymap.set("i", "jk", "<Esc>", { desc = "Esc to Normal Mode", noremap = false })
+
     -- Navigate vim panes better
     vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { desc = "Navigate to the left pane" })
     vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { desc = "Navigate to the bottom pane" })
