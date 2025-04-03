@@ -8,18 +8,18 @@ local servers = {
     "lua_ls",
 }
 
-local capabilities = function()
+local function get_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
     ---@diagnostic disable-next-line: inject-field
     capabilities.textDocument.completion.autotrigger = false
 
     return capabilities
-end,
+end
 
 -- Defined in init.lua
 vim.lsp.config('*', {
-    capabilities = capabilities,
+    capabilities = get_capabilities(),
     root_markers = { '.git' },
 })
 vim.lsp.enable(servers)
@@ -30,6 +30,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         -- local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        if client ~= nil and client:supports_method('textDocument/foldingRange') then
+            local win = vim.api.nvim_get_current_win()
+            vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
 
         -- Keymaps
         local keymap_opts = { buffer = bufnr, silent = true, noremap = true }
