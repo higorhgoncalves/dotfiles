@@ -89,7 +89,11 @@ return {
                     args = { "--encoding=latin1", "--fixed-strings" },
                 },
                 files = {
-                    args = { "--encoding=latin1" },
+                    cmd = "fd",
+                    hidden = true,
+                },
+                smart = {
+                    cmd = "fd",
                     hidden = true,
                 },
                 explorer = {
