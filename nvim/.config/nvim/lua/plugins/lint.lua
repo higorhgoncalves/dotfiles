@@ -8,6 +8,7 @@ return {
 				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
 				php = { 'phpcs' },
+				sql = { "sqlfluff" },
 			}
 
 			local phpcs = require('lint').linters.phpcs
