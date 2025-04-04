@@ -17,4 +17,5 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
