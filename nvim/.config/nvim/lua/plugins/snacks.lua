@@ -92,6 +92,10 @@ return {
                     cmd = "fd",
                     hidden = true,
                 },
+                smart = {
+                    cmd = "fd",
+                    hidden = true,
+                },
                 explorer = {
                     hidden = true,
                 },

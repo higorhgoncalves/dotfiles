@@ -10,6 +10,8 @@ return {
     },
     {
         'saghen/blink.cmp',
+        event = { 'InsertEnter', 'VeryLazy' },
+        lazy = true,
         -- optional: provides snippets for the snippet source
         dependencies = {
             'rafamadriz/friendly-snippets',
@@ -134,6 +136,7 @@ return {
                             'snippets',
                             'buffer',
                             'dadbod',
+                            'omni',
                             -- 'copilot'
                         }
                     end
@@ -233,6 +236,14 @@ return {
                     -- 		return items
                     -- 	end,
                     -- },
+                    omni = {
+                        module = 'blink.cmp.sources.complete_func',
+                        enabled = function() return vim.bo.omnifunc ~= 'v:lua.vim.lsp.omnifunc' end,
+                        ---@type blink.cmp.CompleteFuncOpts
+                        opts = {
+                            complete_func = function() return vim.bo.omnifunc end,
+                        },
+                    },
                 }
             },
 

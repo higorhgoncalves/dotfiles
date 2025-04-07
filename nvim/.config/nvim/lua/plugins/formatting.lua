@@ -43,6 +43,8 @@ return {
 				},
 				sql = {
 					"sqlfmt",
+					"sqlfluff",
+					-- "sleek",
 				},
 				blade = {
 					"blade-formatter",
