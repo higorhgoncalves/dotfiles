@@ -45,6 +45,12 @@ return {
                     },
                     { icon = " ", key = "s", desc = "Restore Session", section = "session" },
                     { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+                    {
+                        icon = "󰏗 ",
+                        key = "m",
+                        desc = "LSP Manager",
+                        action = function() vim.cmd("Mason") end,
+                    },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
             },
