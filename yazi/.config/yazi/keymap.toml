@@ -364,3 +364,8 @@ keymap = [
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
+
+[[manager.prepend_keymap]]
+on   = "<C-o>"
+run  = "plugin open-with-cmd"
+desc = "Open with command"
