@@ -11,6 +11,9 @@ return {
 
         opts = {
             provider = "copilot",
+            copilot = {
+                model = "claude-3.7-sonnet"
+            },
             auto_suggestions_provider = "copilot",
             behaviour = {
                 auto_suggestions = false, -- Experimental stage
@@ -60,6 +63,7 @@ return {
             --- The below dependencies are optional,
             "folke/snacks.nvim",
             "github/copilot.vim",
+            -- "zbirenbaum/copilot.lua",
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
