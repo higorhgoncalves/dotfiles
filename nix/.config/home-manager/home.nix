@@ -173,7 +173,8 @@
 
             set -gx ATUIN_NOBIND "true"
             atuin init fish | source
-            gh fish source | source
+            # gh fish source | source
+            gh completion -s fish > ~/.config/fish/completions/gh.fish
 
             # vincular ao ctrl-r no modo normal e de inserção, adicione quaisquer outras vinculações aqui também
             bind \cr _atuin_search
