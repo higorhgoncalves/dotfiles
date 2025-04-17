@@ -11,9 +11,17 @@ return {
 
         opts = {
             provider = "copilot",
+
+            -- Original Copilot provider config
             copilot = {
-                model = "claude-3.7-sonnet"
+                -- model = "gpt-4o"
+                -- model = "gpt-4.1"
+                -- model = "o1"
+                -- model = "o3-mini"
+                -- model = "claude-3.7-sonnet"
+                model = "gemini-2.5-pro"
             },
+            -- Make sure the provider models are properly configured
             auto_suggestions_provider = "copilot",
             behaviour = {
                 auto_suggestions = false, -- Experimental stage
@@ -57,7 +65,7 @@ return {
             },
             web_search_engine = {
                 provider = "google", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
-                proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+                proxy = nil,         -- proxy support, e.g., http://127.0.0.1:7890
             }
         },
         dependencies = {
