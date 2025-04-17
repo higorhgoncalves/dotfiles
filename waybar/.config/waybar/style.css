@@ -112,6 +112,10 @@ tooltip {
   min-height: 10px;
 }
 
+#tray item {
+  margin: 10px;
+}
+
 #custom-spacer {
   opacity: 0;
 }
@@ -329,6 +333,11 @@ tooltip {
 
 #taskbar {
   padding: 1px;
+}
+
+#backlight-slider,
+#pulseaudio-slider {
+  padding-left: 0px;
 }
 
 #custom-r_end {
