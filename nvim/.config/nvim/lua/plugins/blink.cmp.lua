@@ -17,6 +17,17 @@ return {
             'rafamadriz/friendly-snippets',
             "ricardoramirezr/blade-nav.nvim",
             {
+                "folke/lazydev.nvim",
+                ft = "lua", -- only load on lua files
+                opts = {
+                    library = {
+                        -- See the configuration section for more details
+                        -- Load luvit types when the `vim.uv` word is found
+                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                    },
+                },
+            },
+            {
                 'Kaiser-Yang/blink-cmp-avante',
                 config = function()
                     vim.api.nvim_set_hl(0, 'BlinkCmpKindAvante', { default = false, fg = '#89b4fa' })
@@ -87,7 +98,7 @@ return {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
                 -- Useful for when your theme doesn't support blink.cmp
                 -- Will be removed in a future release
-                use_nvim_cmp_as_default = true,
+                -- use_nvim_cmp_as_default = true,
                 kind_icons = {
                     Copilot = ' ',
                     Text = '󰉿 ',
@@ -142,6 +153,14 @@ return {
                     end
                 end,
                 per_filetype = {
+                    lua = {
+                        'lazydev',
+                        'avante',
+                        'lsp',
+                        'path',
+                        'snippets',
+                        'buffer',
+                    },
                     blade = {
                         'avante',
                         'lsp',
@@ -160,6 +179,12 @@ return {
                         opts = {
                             close_tag_on_complete = true,
                         }
+                    },
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        -- make lazydev completions top priority (see `:h blink.cmp`)
+                        score_offset = 100,
                     },
                     avante = {
                         module = 'blink-cmp-avante',
@@ -244,6 +269,13 @@ return {
                             complete_func = function() return vim.bo.omnifunc end,
                         },
                     },
+                    cmdline = {
+                        min_keyword_length = function(ctx)
+                            -- when typing a command, only show when the keyword is 3 characters or longer
+                            if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 3 end
+                            return 0
+                        end
+                    }
                 }
             },
 
@@ -258,6 +290,14 @@ return {
                     end
                     return {}
                 end,
+                completion = {
+                    menu = {
+                        auto_show = true
+                    },
+                    ghost_text = {
+                        enabled = true,
+                    }
+                },
             },
 
             snippets = {
@@ -281,7 +321,6 @@ return {
                     border = "rounded",
                     draw = {
                         treesitter = { "lsp" },
-                        -- columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
                         columns = {
                             { 'item_idx' },
                             { "label",     "label_description", gap = 1 },
@@ -291,9 +330,6 @@ return {
                             kind_icon = {
                                 ellipsis = false,
                                 text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
-                                -- highlight = function(ctx)
-                                --     return require('blink.cmp.completion.windows.render.tailwind').get_hl(ctx) or 'BlinkCmpKind' .. ctx.kind
-                                -- end,
                             },
                             item_idx = {
                                 text = function(ctx)
