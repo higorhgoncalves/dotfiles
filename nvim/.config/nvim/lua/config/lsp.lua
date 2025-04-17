@@ -1,5 +1,6 @@
 local servers = {
     "intelephense",
+    "phpactor",
     "ts_ls",
     "html",
     "cssls",

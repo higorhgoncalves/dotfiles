@@ -3,6 +3,9 @@ return {
         "/home/administrador/.local/share/nvim/mason/bin/intelephense",
         "--stdio"
     },
+    on_attach = function(client)
+        client.server_capabilities.workspaceSymbolProvider = false
+    end,
     filetypes = {
         "php",
         "blade",
@@ -29,5 +32,10 @@ return {
                 -- "/var/www/html/legisweb"
             },
         },
+        php = {
+            completion = {
+                callSnippet = "Replace"
+            }
+        }
     },
 }
