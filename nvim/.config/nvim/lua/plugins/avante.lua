@@ -74,8 +74,8 @@ return {
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
             "folke/snacks.nvim",
-            "github/copilot.vim",
-            -- "zbirenbaum/copilot.lua",
+            -- "github/copilot.vim",
+            "zbirenbaum/copilot.lua",
             -- "github/copilot.vim",
             -- {
             --     -- support for image pasting
