@@ -1,17 +1,18 @@
 return {
-	{
-		"letieu/harpoon-lualine",
-		dependencies = {
-			{
-				"ThePrimeagen/harpoon",
-				branch = "harpoon2",
-			},
-		},
-	},
+	-- {
+	-- 	"letieu/harpoon-lualine",
+	-- 	dependencies = {
+	-- 		{
+	-- 			"ThePrimeagen/harpoon",
+	-- 			branch = "harpoon2",
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+			"folke/noice.nvim",
 		},
 		config = function()
 			local lualine = require("lualine")
@@ -94,18 +95,27 @@ return {
 						-- { "macro-recording", fmt = show_macro_recording }
 					},
 					lualine_c = {
-						{
-							"harpoon2",
-							icon = "",
-							-- indicators = { "a", "s", "q", "w" },
-							-- active_indicators = { "A", "S", "Q", "W" },
-							color_active = { fg = "#00ff00" },
-							_separator = " ",
-							-- no_harpoon = "Harpoon not loaded",
-						},
+						-- {
+						-- 	"harpoon2",
+						-- 	icon = "",
+						-- 	-- indicators = { "a", "s", "q", "w" },
+						-- 	-- active_indicators = { "A", "S", "Q", "W" },
+						-- 	color_active = { fg = "#00ff00" },
+						-- 	_separator = " ",
+						-- 	-- no_harpoon = "Harpoon not loaded",
+						-- },
 						"filename",
 					},
-					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_x = {
+						{
+							require("noice").api.statusline.mode.get,
+							cond = require("noice").api.statusline.mode.has,
+							color = { fg = "#ff9e64" },
+						},
+						"encoding",
+						"fileformat",
+						"filetype"
+					},
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},

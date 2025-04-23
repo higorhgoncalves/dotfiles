@@ -291,9 +291,9 @@ return {
                     return {}
                 end,
                 completion = {
-                    menu = {
-                        auto_show = true
-                    },
+                    -- menu = {
+                    --     auto_show = true
+                    -- },
                     ghost_text = {
                         enabled = true,
                     }
