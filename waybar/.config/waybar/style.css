@@ -44,20 +44,19 @@ tooltip {
   color: @text;
   box-shadow: none;
   text-shadow: none;
-  border-radius: 9px;
+  border: none;
   transition: 0.2s ease;
   padding-left: 2px;
   padding-right: 2px;
-  /*   animation: ws_normal 20s ease-in-out 1; */
+  animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-  /* background-image: url("/home/anik/Documents/bar1.png");*/
   color: @text;
   transition: all 0.3s ease;
   padding-left: 2px;
   padding-right: 2px;
-  /*  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682); */
+  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682);
 }
 
 #workspaces button:hover {
