@@ -74,13 +74,31 @@ return {
                 -- 'default' for mappings similar to built-in completion
                 -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
                 -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-                preset = 'default',
+                preset = 'none',
 
-                ['<Up>'] = { 'select_prev', 'fallback' },
-                ['<Down>'] = { 'select_next', 'fallback' },
                 ['<C-Space>'] = {
                     function(cmp) cmp.show({ providers = { 'snippets' } }) end
                 },
+
+                -- ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+                ['<C-e>'] = { 'hide' },
+                ['<C-y>'] = { 'select_and_accept' },
+
+                ['<Up>'] = { 'select_prev', 'fallback' },
+                ['<Down>'] = { 'select_next', 'fallback' },
+                ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+                ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+
+                ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+                ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+                -- ['<Tab>'] = { 'snippet_forward', 'fallback' },
+                -- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+                ['<C-h>'] = { 'snippet_backward', 'fallback' },
+                ['<C-l>'] = { 'snippet_forward', 'fallback' },
+
+                ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+
 
                 ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
                 ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
