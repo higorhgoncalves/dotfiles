@@ -18,8 +18,8 @@ return {
                 -- model = "gpt-4.1"
                 -- model = "o1"
                 -- model = "o3-mini"
-                -- model = "claude-3.7-sonnet"
-                model = "gemini-2.5-pro"
+                model = "claude-3.7-sonnet"
+                -- model = "gemini-2.5-pro"
             },
             -- Make sure the provider models are properly configured
             auto_suggestions_provider = "copilot",

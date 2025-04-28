@@ -42,10 +42,10 @@ return {
 						dismiss = "<C-]>",
 					},
 				},
-				-- copilot_model = "gpt-4o-copilot",
-				server_opts_overrides = {
-					offset_encoding = "utf-8" -- Set the offset encoding same as above, see `:h vim.lsp.start` for more info
-				},
+				copilot_model = "claude-3.7-sonnet",
+				-- server_opts_overrides = {
+				-- 	offset_encoding = "utf-8" -- Set the offset encoding same as above, see `:h vim.lsp.start` for more info
+				-- },
 				workspace_folders = {
 					"/home/administrador/docker-lw/html/legisweb",
 					"/home/administrador/docker-lw/html/classes",
