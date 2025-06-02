@@ -1,5 +1,16 @@
 return {
     {
+        'ricardoramirezr/blade-nav.nvim',
+        dependencies = {                       -- totally optional
+            'saghen/blink.cmp',                -- if using blink.cmp
+        },
+        ft = { 'blade', 'php' },               -- optional, improves startup time
+        opts = {
+            -- This applies for nvim-cmp and coq, for blink refer to the configuration of this plugin
+            close_tag_on_complete = true, -- default: true
+        },
+    },
+    {
         'saghen/blink.compat',
         -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
         version = '*',
@@ -15,7 +26,6 @@ return {
         -- optional: provides snippets for the snippet source
         dependencies = {
             'rafamadriz/friendly-snippets',
-            "ricardoramirezr/blade-nav.nvim",
             {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
@@ -186,13 +196,12 @@ return {
                         'snippets',
                         'buffer',
                         'dadbod',
-                        'bladenav'
+                        'blade-nav'
                     },
                 },
                 providers = {
-                    bladenav = {
-                        name = "blade-nav",
-                        module = "blink.compat.source",
+                    ['blade-nav'] = {
+                        module = "blade-nav.blink",
                         score_offset = -3,
                         opts = {
                             close_tag_on_complete = true,
