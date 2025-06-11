@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = {}
 
-config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
+config.font = wezterm.font("JetBrains Mono NL")
 
 config.color_scheme = "Catppuccin Mocha"
 -- config.window_background_opacity = 0.75
