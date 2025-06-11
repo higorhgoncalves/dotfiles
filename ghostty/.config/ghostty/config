@@ -11,7 +11,7 @@ window-inherit-working-directory = false
 # cursor-style = underline
 
 theme = catppuccin-mocha
-font-family = "JetBrainsMonoNL Nerd Font"
+font-family = "JetBrains Mono NL"
 # background-opacity = 0.9
 window-theme = ghostty
 gtk-custom-css = tab-style.css
