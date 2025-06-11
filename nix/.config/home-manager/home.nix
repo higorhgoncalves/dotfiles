@@ -8,7 +8,7 @@
   #
   # Você não deve mudar este valor, mesmo se atualizar o Home Manager. Se quiser atualizar o valor,
   # certifique-se de verificar as notas de lançamento do Home Manager.
-  home.stateVersion = "24.05"; # Leia o comentário antes de mudar.
+  home.stateVersion = "25.05"; # Leia o comentário antes de mudar.
 
   # Deixe o Home Manager instalar e gerenciar a si mesmo.
   programs.home-manager.enable = true;
@@ -35,7 +35,7 @@
     # fontes
     # nerd-fonts.profont
     # nerd-fonts.caskaydia-mono
-    nerd-fonts.jetbrains-mono
+    # nerd-fonts.jetbrains-mono
 
     # Pacotes de sistema
     fish
@@ -50,7 +50,7 @@
     # stow
     # git
     starship
-    openvpn
+    # openvpn
 
     # Pacotes de desenvolvimento
     # neovim
@@ -104,7 +104,7 @@
     #     adjust_line_height 120%
 
     #     # BEGIN_KITTY_FONTS
-    #     font_family      family="JetBrainsMonoNL Nerd Font"
+    #     font_family      family="JetBrains Mono NL"
     #     bold_font        auto
     #     italic_font      auto
     #     bold_italic_font auto
@@ -146,7 +146,7 @@
     enable = true;
     cursorTheme.name = "Bibata-Modern-Classic";
     iconTheme.name = "Papirus-Dark";
-    font.name = "JetBrains Mono Nerd Font 11";
+    font.name = "JetBrains Mono NL 11";
 
     gtk2.extraConfig = ''
       gtk-theme-name = "Dracula"
@@ -176,6 +176,8 @@
             # gh fish source | source
             gh completion -s fish > ~/.config/fish/completions/gh.fish
 
+            fzf --fish | FZF_CTRL_R_COMMAND= source
+
             # vincular ao ctrl-r no modo normal e de inserção, adicione quaisquer outras vinculações aqui também
             bind \cr _atuin_search
             bind -M insert \cr _atuin_search
@@ -198,6 +200,12 @@
             set -x PATH $HOME/.config/herd-lite/bin $PATH
 
             set -x COMPOSE_BAKE true
+            set -x TERMINAL /usr/bin/kitty
+
+            set -x GOOGLE_SEARCH_ENGINE_ID "956ead57766404115"
+            set -x GOOGLE_SEARCH_API_KEY "AIzaSyAMCWGpnuXzsBING56M_ryNuQWpI8d7G1Q"
+
+            set -x TAVILY_API_KEY "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"
 
             thefuck --alias | source
             zoxide init fish | source
@@ -221,6 +229,6 @@
   # Configurações de aplicativos padrão
   xdg.mimeApps.defaultApplications = {
     "text/plain" = "nvim.desktop";
-    "application/pdf" = "zen-alpha.desktop";
+    "application/pdf" = "firefox.desktop";
   };
 }
