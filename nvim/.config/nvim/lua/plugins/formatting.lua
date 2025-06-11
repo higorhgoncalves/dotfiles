@@ -41,9 +41,9 @@ return {
 					stop_after_first = true,
 				},
 				sql = {
-					"sqlfmt",
-					"sqlfluff",
-					-- "sleek",
+					-- "sqlfmt",
+					-- "sqlfluff",
+					"sleek",
 				},
 				blade = {
 					"blade-formatter",

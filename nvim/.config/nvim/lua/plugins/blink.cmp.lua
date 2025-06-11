@@ -1,16 +1,13 @@
 return {
     {
         'ricardoramirezr/blade-nav.nvim',
-        dependencies = {                       -- totally optional
-            'saghen/blink.cmp',                -- if using blink.cmp
+        dependencies = {         -- totally optional
+            'saghen/blink.cmp',  -- if using blink.cmp
         },
-        ft = { 'blade', 'php' },               -- optional, improves startup time
-        opts = {
-            -- This applies for nvim-cmp and coq, for blink refer to the configuration of this plugin
-            close_tag_on_complete = true, -- default: true
-        },
+        ft = { 'blade', 'php' }, -- optional, improves startup time
     },
     {
+
         'saghen/blink.compat',
         -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
         version = '*',
@@ -133,6 +130,7 @@ return {
                     Method = '󰊕 ',
                     Function = '󰊕 ',
                     Constructor = '󰒓 ',
+                    BladeNav = "",
 
                     Field = "󰜢 ",
                     Variable = "󰆦 ",
@@ -174,8 +172,8 @@ return {
                             'path',
                             'snippets',
                             'buffer',
-                            'dadbod',
-                            'omni',
+                            -- 'dadbod',
+                            -- 'omni',
                             -- 'copilot'
                         }
                     end
@@ -195,12 +193,13 @@ return {
                         'path',
                         'snippets',
                         'buffer',
-                        'dadbod',
+                        -- 'dadbod',
                         'blade-nav'
                     },
                 },
                 providers = {
                     ['blade-nav'] = {
+                        name = "Blade-nav",
                         module = "blade-nav.blink",
                         score_offset = -3,
                         opts = {
@@ -268,11 +267,11 @@ return {
                         --     },
                         -- },
                     },
-                    dadbod = {
-                        name = "Dadbod",
-                        module = "vim_dadbod_completion.blink",
-                        score_offset = 85,
-                    },
+                    -- dadbod = {
+                    --     name = "Dadbod",
+                    --     module = "vim_dadbod_completion.blink",
+                    --     score_offset = 85,
+                    -- },
                     -- copilot = {
                     -- 	name = "copilot",
                     -- 	module = "blink-cmp-copilot",
@@ -288,14 +287,14 @@ return {
                     -- 		return items
                     -- 	end,
                     -- },
-                    omni = {
-                        module = 'blink.cmp.sources.complete_func',
-                        enabled = function() return vim.bo.omnifunc ~= 'v:lua.vim.lsp.omnifunc' end,
-                        ---@type blink.cmp.CompleteFuncOpts
-                        opts = {
-                            complete_func = function() return vim.bo.omnifunc end,
-                        },
-                    },
+                    -- omni = {
+                    --     module = 'blink.cmp.sources.complete_func',
+                    --     enabled = function() return vim.bo.omnifunc ~= 'v:lua.vim.lsp.omnifunc' end,
+                    --     ---@type blink.cmp.CompleteFuncOpts
+                    --     opts = {
+                    --         complete_func = function() return vim.bo.omnifunc end,
+                    --     },
+                    -- },
                     cmdline = {
                         min_keyword_length = function(ctx)
                             -- when typing a command, only show when the keyword is 3 characters or longer
@@ -356,7 +355,26 @@ return {
                         components = {
                             kind_icon = {
                                 ellipsis = false,
-                                text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
+                                -- text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
+                                text = function(ctx)
+                                    local icon = ctx.kind_icon
+
+                                    if ctx.source_name == 'Blade-nav' then
+                                        icon = ''
+                                    end
+
+                                    return ' ' .. icon .. ctx.icon_gap .. ' '
+                                end,
+                                -- If you do not want the custom highlight color you can delete this
+                                highlight = function(ctx)
+                                    local hl = 'BlinkCmpKind' .. ctx.kind
+
+                                    if ctx.source_name == 'Blade-nav' then
+                                        hl = 'BlinkCmpKindBladeNav'
+                                    end
+
+                                    return hl
+                                end,
                             },
                             item_idx = {
                                 text = function(ctx)

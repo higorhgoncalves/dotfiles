@@ -1,6 +1,8 @@
 return {
     cmd = {
-        "/home/administrador/.local/share/nvim/mason/bin/phpactor",
+        -- "/home/administrador/.local/share/nvim/mason/bin/phpactor",
+        -- vim.fn.stdpath("data") .. "/mason/bin/" .. "phpactor",
+        "phpactor",
         "language-server",
         "-vvv"
     },

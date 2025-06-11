@@ -1,6 +1,9 @@
 return {
     cmd = {
-        "/home/administrador/.local/share/nvim/mason/bin/intelephense",
+        -- "/home/administrador/.local/share/nvim/mason/bin/intelephense",
+        -- os.getenv("HOME") .. ".local/share/nvim/mason/bin/intelephense",
+        -- vim.fn.stdpath("data") .. "/mason/bin/" .. "intelephense",
+        "intelephense",
         "--stdio"
     },
     on_attach = function(client)

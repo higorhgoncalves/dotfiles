@@ -1,6 +1,8 @@
 return {
     cmd = {
-        "/home/administrador/.local/share/nvim/mason/bin/tailwindcss-language-server"
+        -- "/home/administrador/.local/share/nvim/mason/bin/tailwindcss-language-server"
+        -- vim.fn.stdpath("data") .. "/mason/bin/" .. "tailwindcss-language-server",
+        "tailwindcss-language-server",
     },
     filetypes = {
         -- "html",
