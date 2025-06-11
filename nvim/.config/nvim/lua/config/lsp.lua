@@ -7,6 +7,7 @@ local servers = {
     "tailwindcss",
     "sqls",
     "lua_ls",
+    "bashls",
 }
 
 local function get_capabilities()
