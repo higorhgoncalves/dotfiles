@@ -1,13 +1,13 @@
 @import "mocha.css";
 
 * {
-  font-family: "JetBrainsMonoNL Nerd Font";
+  font-family: "JetBrains Mono NL";
   font-weight: bold;
   font-size: 15px;
 }
 
 #custom-notification {
-  font-family: "JetBrainsMonoNL Nerd Font";
+  font-family: "JetBrains Mono NL";
   font-size: 18px;
   color: @flamingo;
   margin: 2px 0.5em 0px 0px;
@@ -16,7 +16,7 @@
 window#waybar {
   background: @crust;
   /* border: 2px solid @mauve; */
-  /* border-radius: 13px; */
+  border-radius: 0px;
 }
 
 tooltip {
@@ -178,7 +178,7 @@ tooltip {
 
 #clock {
   color: @text;
-  font-family: "JetBrainsMonoNL Nerd Font";
+  font-family: "JetBrains Mono NL";
   margin: 3px 0px 0px 0px;
 }
 
@@ -264,7 +264,7 @@ tooltip {
 #custom-wbar,
 #window {
   color: @text;
-  font-family: "JetBrainsMonoNL Nerd Font";
+  font-family: "JetBrains Mono NL";
   padding: 3px 0px 0px 0px;
 }
 

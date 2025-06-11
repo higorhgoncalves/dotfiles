@@ -1,7 +1,7 @@
 @import "mocha.css";
 
 * {
-	font-family: JetBrainsMonoNL Nerd Font;
+	font-family: JetBrains Mono NL;
 	color: @text;
 }
 
