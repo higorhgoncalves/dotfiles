@@ -45,6 +45,14 @@ function M.setup()
     -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
     -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+    -- Desabilita o comportamento padrão de 's' no modo Normal
+    vim.keymap.set('n', 's', '<Nop>',
+        { noremap = true, silent = true, desc = "Desabilitar 's' padrão para plugin Flash" })
+
+    -- Desabilita o comportamento padrão de 's' no modo Visual
+    vim.keymap.set('x', 's', '<Nop>',
+        { noremap = true, silent = true, desc = "Desabilitar 's' padrão para plugin Flash" })
+
     vim.keymap.set("n", "<leader>cs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
         { desc = "Change word under cursor" })
 end
