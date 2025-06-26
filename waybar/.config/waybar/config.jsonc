@@ -26,39 +26,13 @@
         "memory",
         "cpu",
         "group/expand",
-        // "network",
-        "group/expand-3",
-        "group/expand-2",
-        "group/expand-4",
-        
+        "network",
+        "bluetooth",
+        "pulseaudio",
+        "backlight",
         "custom/notification",
         "custom/power"
     ],
-    // sourced from modules based on config.ctl //
-    "upower": {
-        "icon-size": 20,
-        "format": "",
-        "tooltip-format": "{} <span color='orange'>[{time}]</span>",
-    },
-    "upower#headset": {
-        "format": " {percentage}",
-        "native-path": "/org/freedesktop/UPower/devices/headset_dev_A6_98_9A_0D_D3_49",
-        "show-icon": false,
-        "tooltip": false,
-    },
-    "group/expand-4": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "children-class": "not-power",
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": [
-            "upower",
-            "upower/headset"
-        ]
-    },
     "custom/smallspacer": {
         "format": " ",
         "tooltip": false
@@ -108,15 +82,16 @@
         "orientation": "horizontal",
         "tooltip": false,
         "drawer": {
-            "transition-duration": 600,
+            "transition-duration": 300,
             "children-class": "not-power",
             "transition-to-left": true,
-            //  "click-to-reveal": true
+            "click-to-reveal": true
         },
         "modules": [
             "custom/menu",
             "custom/spacer",
-            "tray"
+            "tray",
+            // "idle_inhibitor",
         ]
     },
     "custom/menu": {
@@ -146,7 +121,8 @@
 		"format": "󰐥 ",
 		"tooltip": false,
         // "on-click": "nwg-bar",
-		"menu": "on-click",
+        "on-click": "~/.config/waybar/scripts/power-menu.sh",
+		"menu": "on-click-right",
 		"menu-file": "~/.config/waybar/components/power_menu.xml",
 		"menu-actions": {
 			"lock": "pidof hyprlock || hyprlock",
@@ -172,7 +148,7 @@
         "format": "{icon}",
         "format-icons": {
             "default": "",
-            "active": "",
+            "active": "",
         },
     },
     // "wlr/workspaces": {
@@ -193,11 +169,14 @@
     },
     "idle_inhibitor": {
         "format": "{icon}",
-        "rotate": 0,
         "format-icons": {
-            "activated": "󰥔",
-            "deactivated": ""
-        }
+            "activated": "󰈈 ",
+            "deactivated": "󰈉 "
+        },
+
+        "tooltip-format-activated": "Presentation Mode",
+        "tooltip-format-deactivated": "Idle Mode",
+        "start-activated": false
     },
     "clock": {
         "timezone": "America/Sao_Paulo",
@@ -262,32 +241,6 @@
         "scroll-step": 1,
         "min-length": 2
     },
-    "group/expand-2": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "children-class": "not-power",
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": [
-            "backlight",
-            "backlight/slider"
-        ]
-    },
-    "group/expand-3": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "children-class": "not-power",
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": [
-            "pulseaudio",
-            "pulseaudio/slider"
-        ]
-    },
     "network": {
         "tooltip": true,
         "format-wifi": "{icon} ",
@@ -296,35 +249,57 @@
             "󰤢",
             "󰤥"
         ],
-        //  "format-wifi": "<i class='fa-solid fa-wifi-slash'></i>",
         "rotate": 0,
-        "format-ethernet": "󰈀 ",
-        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format": "󰈀 ",
+        "tooltip-format": "Network: {ifname}\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": " ",
         "tooltip-format-disconnected": "Disconnected",
-        "on-click": "/usr/local/bin/ags -t ControlPanel",
+        "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+        "on-click-right": "XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center network",
+        "on-click-middle": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
         "interval": 2,
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰂱",
+
+        "tooltip-format": 
+        "{num_connections} connected",
+        "tooltip-format-disabled": 
+        "Bluetooth Disabled",
+        "tooltip-format-connected": 
+        "{device_enumerate}",
+        "tooltip-format-enumerate-connected": 
+        "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": 
+        "{device_alias}: 󱊣 {device_battery_percentage}%",
+
+        "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+        "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
+        "interval": 1,
+        "min-length": 1,
+        "max-length": 1
     },
     "pulseaudio": {
         "format": "{icon}",
         "rotate": 0,
         "format-muted": "婢",
         "tooltip-format": "{icon} {desc} // {volume}%",
-        "scroll-step": 5,
+        "scroll-step": 10,
+        "on-click": "pavucontrol",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": [
                 "",
                 "",
                 ""
-            ]
-        }
+            ],
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+        },
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
@@ -338,44 +313,6 @@
         "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
         "scroll-step": 5
     },
-    "custom/notifications": {
-        "tooltip": false,
-        "format": "{icon} {}",
-        "rotate": 0,
-        "format-icons": {
-            "email-notification": "<span foreground='white'><sup></sup></span>",
-            "chat-notification": "󱋊<span foreground='white'><sup></sup></span>",
-            "warning-notification": "󱨪<span foreground='yellow'><sup></sup></span>",
-            "error-notification": "󱨪<span foreground='red'><sup></sup></span>",
-            "network-notification": "󱂇<span foreground='white'><sup></sup></span>",
-            "battery-notification": "󰁺<span foreground='white'><sup></sup></span>",
-            "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
-            "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
-            "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
-            "notification": "<span foreground='white'><sup></sup></span>",
-            "none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which dunstctl",
-        "exec": "notifications.py",
-        "on-click": "sleep 0.1 && dunstctl history-pop",
-        "on-click-middle": "dunstctl history-clear",
-        "on-click-right": "dunstctl close-all",
-        "interval": 1,
-        "tooltip": true,
-        "escape": true
-    },
-    "custom/keybindhint": {
-        "format": " ",
-        "rotate": 0,
-        "on-click": "keybinds_hint.sh"
-    },
-    "custom/expand": {
-        "on-click": "~/.config/hypr/scripts/expand_toolbar",
-        "format": "{}",
-        "exec": "~/.config/hypr/scripts/tools/expand arrow-icon"
-    },
-    // modules for padding //
     "custom/l_end": {
         "format": " ",
         "interval": "once",
@@ -410,19 +347,5 @@
         "format": "  ",
         "interval": "once",
         "tooltip": false
-    },
-    "backlight/slider": {
-        "min": 5,
-        "max": 100,
-        "rotate": 0,
-        "device": "intel_backlight",
-        "scroll-step": 1,
-    },
-    "pulseaudio/slider": {
-        "min": 5,
-        "max": 100,
-        "rotate": 0,
-        "device": "pulseaudio",
-        "scroll-step": 1,
     },
 }
