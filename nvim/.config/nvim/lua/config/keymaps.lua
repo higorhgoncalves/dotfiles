@@ -53,8 +53,15 @@ function M.setup()
     vim.keymap.set('x', 's', '<Nop>',
         { noremap = true, silent = true, desc = "Desabilitar 's' padrão para plugin Flash" })
 
-    vim.keymap.set("n", "<leader>cs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
         { desc = "Change word under cursor" })
+
+    vim.keymap.set("v", "<leader>cs", [[y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>]],
+        { desc = "Change selected text" })
+
+    -- vim.keymap.set("v", "<leader>cs", [[:<C-u>%s/\V<C-r>=escape(@", '/\')<CR>//gI<Left><Left><Left>]], {
+    --     desc = "Change selected text"
+    -- })
 end
 
 return M
