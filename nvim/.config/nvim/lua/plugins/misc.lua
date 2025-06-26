@@ -4,6 +4,19 @@ return {
         opts = {},
     },
     {
+        'MagicDuck/grug-far.nvim',
+        -- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
+        -- additional lazy config to defer loading is not really needed...
+        config = function()
+            -- optional setup call to override plugin options
+            -- alternatively you can set options with vim.g.grug_far = { ... }
+            require('grug-far').setup({
+                -- options, see Configuration section below
+                -- there are no required options atm
+            });
+        end
+    },
+    {
         "mg979/vim-visual-multi",
         init = function()
             vim.g.VM_set_default_mappings = 0 -- Disable default keybinds
@@ -100,18 +113,18 @@ return {
 
             -- Document existing key chains
             spec = {
-                { "<leader>a", group = "[A]vante",      mode = { "n", "x" } },
-                { "<leader>c", group = "[C]ode" },
+                { "<leader>a", group = "[A]vante",        mode = { "n", "x" } },
+                { "<leader>c", group = "[C]ode/[C]hange", mode = { "n", "x" } },
                 { "<leader>C", group = "[C]lipboard" },
                 { "<leader>d", group = "[D]ocument" },
                 { "<leader>f", group = "[F]ind" },
-                { "<leader>F", group = "[F]ormat",      mode = { "n", "x" } },
-                { "<leader>g", group = "[G]it",         mode = { "n" } },
-                { "<leader>l", group = "[L]aravel",     mode = { "n" } },
+                { "<leader>F", group = "[F]ormat",        mode = { "n", "x" } },
+                { "<leader>g", group = "[G]it",           mode = { "n" } },
+                { "<leader>l", group = "[L]aravel",       mode = { "n" } },
                 { "<leader>M", group = "[M]ulti Cursor" },
-                { "<leader>q", group = "[Q]Session",    mode = { "n" } },
+                { "<leader>q", group = "[Q]Session",      mode = { "n" } },
                 { "<leader>r", group = "[R]ename" },
-                { "<leader>s", group = "[S]earch",      mode = { "n", "x" } },
+                { "<leader>s", group = "[S]earch",        mode = { "n", "x" } },
                 { "<leader>u", group = "[U]Toggle" },
             },
         },
