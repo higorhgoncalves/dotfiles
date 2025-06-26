@@ -54,7 +54,7 @@ function fzfpass
     read -s -P "Digite a senha para KeePassXC: " keepasswd
 
     # Selecionar entrada e copiar senha
-    printf "%s\n" "$keepasswd" | keepassxc-cli ls "$db_path" | fzf --multi --reverse --preview="echo {}" --preview-window=down,3,wrap | \
+    printf "%s\n" "$keepasswd" | keepassxc-cli ls -q "$db_path" | fzf --multi --reverse --preview="echo {}" --preview-window=down,3,wrap | \
     while read -l entry
         printf "%s\n" "$keepasswd" | keepassxc-cli show -q "$db_path" "$entry" -a Password | tr -d '\n' | wl-copy
         echo "Senha copiada para clipboard: $entry"
