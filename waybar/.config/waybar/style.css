@@ -8,9 +8,9 @@
 
 #custom-notification {
     font-family: "JetBrains Mono NL";
-    font-size: 18px;
-    color: @flamingo;
-    margin: 2px 0.5em 0px 0px;
+    font-size: 17px;
+    color: @yellow;
+    margin: 0.1em 0.7em 0px 0px;
 }
 
 window#waybar {
@@ -222,29 +222,26 @@ tooltip {
 }
 
 #network {
-    color: @text;
+    color: @mauve;
     font-weight: normal;
-    font-size: 19px;
-    padding-right: 0px;
-    padding-left: 4px;
+    font-size: 17px;
+    margin: 0.1em 0em 0px 0px;
 }
 
 #bluetooth {
-    color: @text;
-    font-size: 19px;
+    color: @blue;
+    font-size: 17px;
+    margin: 0.1em 0em 0px 0px;
 }
 
 #pulseaudio {
     font-weight: normal;
-    font-size: 17px;
-    color: @blue;
-    background: rgba(22, 19, 32, 0);
-    opacity: 1;
-    margin: 0px 0.9em 0px 0.3em;
+    font-size: 16px;
+    color: @red;
+    margin: 0px 0.8em 0px 0em;
     padding: 2px 0px 0px 3px;
 }
 
-#custom-notifications,
 #custom-spotify,
 #taskbar,
 #custom-theme {
