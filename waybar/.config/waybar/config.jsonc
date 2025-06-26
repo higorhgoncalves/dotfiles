@@ -305,8 +305,8 @@
     },
     "pulseaudio": {
         "format": "{icon}",
-        // "format-muted": "",
-        "format-muted": "",
+        "format-muted": "",
+        // "format-muted": "",
         "tooltip-format": "{icon}  {desc} // {volume}%",
         "scroll-step": 10,
         "on-click": "pavucontrol",
