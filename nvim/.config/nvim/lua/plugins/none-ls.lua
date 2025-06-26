@@ -9,7 +9,7 @@ return {
                 }),
                 -- null_ls.builtins.formatting.phpcbf,
                 -- null_ls.builtins.formatting.phpcsfixer,
-                null_ls.builtins.formatting.pint,
+                -- null_ls.builtins.formatting.pint,
                 -- null_ls.builtins.formatting.prettyphp,
             }
             return opts
