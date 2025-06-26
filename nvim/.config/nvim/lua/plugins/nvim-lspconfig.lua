@@ -33,6 +33,7 @@ return {
                 "cssls",
                 "html",
                 "intelephense",
+                -- "phpactor",
                 "lua_ls",
                 "sqls",
                 "tailwindcss",
@@ -59,6 +60,7 @@ return {
             ensure_installed = {
                 "blade-formatter",
                 "nixfmt",
+                "phpcs",
                 "php-cs-fixer",
                 "rustywind",
                 "shfmt",
