@@ -5,6 +5,7 @@ alias fzftop 'ps aux | \
     awk '\''{print $2}'\'' | \
     xargs kill -9\
     '
+alias ejetar 'udisksctl power-off -b'
 alias gnome-control-center 'XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center'
 alias ls eza
 alias tmux-restore 'tmux new -d -t temp && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh && tmux kill-session -t temp && tmux attach'
