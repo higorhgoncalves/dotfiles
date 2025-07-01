@@ -1,0 +1,37 @@
+[Desktop Entry]
+Name=MinerU (0.4.1)
+Exec=/home/administrador/Applications/minerU-0.4.1_26ffaaee444a441d3dc12bf4a026ecf6.AppImage --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=appimagekit_5b9fa5453f517a1634a61f574818e884_mineru
+StartupWMClass=MinerU
+X-AppImage-Version=0.4.1
+Comment=Miner Desktop for developer
+Categories=Utility;
+
+TryExec=/home/administrador/Applications/minerU-0.4.1_26ffaaee444a441d3dc12bf4a026ecf6.AppImage
+X-AppImage-Old-Icon=mineru
+X-AppImage-Old-Name=MinerU
+X-AppImage-Identifier=5b9fa5453f517a1634a61f574818e884
+Actions=AppImageLauncher-Remove-AppImage;
+X-AppImageLauncher-Version=2.2.0 (git commit d9d4c73), built on 2022-09-08 14:49:51 UTC
+
+[Desktop Action AppImageLauncher-Remove-AppImage]
+Name=Delete this AppImage
+Icon=AppImageLauncher
+Exec=/usr/lib/x86_64-linux-gnu/appimagelauncher/remove "/home/administrador/Applications/minerU-0.4.1_26ffaaee444a441d3dc12bf4a026ecf6.AppImage"
+Name[ast]=Desaniciar AppImage del sistema
+Name[cs]=Odebrat AppImage ze systému
+Name[de]=Dieses AppImage löschen
+Name[en]=Delete this AppImage
+Name[es]=Eliminar Appimage del Sistema
+Name[fr]=Supprimer cette AppImage
+Name[it]=Rimuovi questa AppImage
+Name[nb_NO]=Slett AppImage
+Name[nl]=AppImage deïnstalleren
+Name[pl]=Usuń AppImage z systemu
+Name[pt]=Remover AppImage do sistema
+Name[pt_BR]=Remover AppImage do sistema
+Name[ru]=Удалить AppImage
+Name[tr]=Bu AppImage uygulamasını sil
+Name[zh_Hans]=删除此 AppImage
