@@ -124,7 +124,9 @@
 		"format": "󰐥",
 		"tooltip": false,
         // "on-click": "nwg-bar",
-        "on-click": "~/.config/waybar/scripts/power-menu.sh",
+        // "on-click": "~/.config/waybar/scripts/power-menu.sh",
+        // "on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+        "on-click": "~/.config/rofi/scripts/power-menu.sh",
 		"menu": "on-click-right",
 		"menu-file": "~/.config/waybar/components/power_menu.xml",
 		"menu-actions": {
@@ -257,7 +259,9 @@
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": " ",
         "tooltip-format-disconnected": "Disconnected",
-        "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+        // "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+        // "on-click": "rofi-wifi-menu",
+        "on-click": "~/.config/rofi/scripts/wifi-menu.sh",
         "on-click-right": "XDG_CURRENT_DESKTOP=Gnome /usr/bin/gnome-control-center network",
         "on-click-middle": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
         "interval": 2,
@@ -281,7 +285,9 @@
         "tooltip-format-enumerate-connected-battery": 
         "{device_alias}: 󱊣 {device_battery_percentage}%",
 
-        "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+        // "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+        // "on-click": "rofi-bluetooth",
+        "on-click": "~/.config/rofi/scripts/bluetooth-menu.sh",
         "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
         "interval": 1,
         "min-length": 1,
